@@ -1,0 +1,29 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.navbar {
+  background-color: aqua;
+  width: 100%;
+  height: auto;
+  color: white;
+
+  display: flex;
+  align-items: center;
+
+  &__nav {
+    width: 100%;
+    padding: 0 5rem;
+
+    @include space-between;
+  }
+
+  &__ul {
+    @include center;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+}
