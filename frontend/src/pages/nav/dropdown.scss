@@ -5,16 +5,11 @@
 
 .dropdown {
   position: absolute;
-  top: 5.6rem;
-  right: 0rem;
-  width: 20rem;
-  background-color: white;
+  top: 4rem;
+  right: -5rem;
+  width: 13rem;
+  color: $color-white;
+  background-color: $color-blue-dark;
   padding: 1rem;
-  // transform: translateX(-45%);
   overflow: hidden;
-}
-
-.menu {
-  width: 100%;
-  background-color: red;
 }

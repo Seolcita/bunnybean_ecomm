@@ -1,21 +1,24 @@
 /** @format */
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-//CSS
+// CSS
 import './navItem.scss';
 
 function NavItem(props) {
-  const { icon, children } = props;
+  const { icon, title, children } = props;
+  const address = title.toLowerCase();
 
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="navItem">
-      <li className="navItem__list" onClick={() => setOpen(!open)}>
-        <a href="#" className="navItem__btn">
-          {icon}
-        </a>
+    <div className="navItem" onClick={() => setOpen(!open)}>
+      <li className="navItem__list">
+        <Link to={`/${address}`} className="navItem__btn">
+          <span className="navItem__btn--icon">{icon}</span>
+          <span className="navItem__btn--title">{title}</span>
+        </Link>
         {open ? children : null}
       </li>
     </div>

@@ -30,4 +30,21 @@ li {
 
 a {
   text-decoration: none;
+
+  &:visited,
+  &:link {
+    color: inherit;
+  }
+}
+
+input {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button {
+  border: none;
 }

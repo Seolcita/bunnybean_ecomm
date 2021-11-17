@@ -8,7 +8,7 @@ import DropdownItem from './DropdownItem';
 // CSS
 import './dropdown.scss';
 
-function Dropdown() {
+function Dropdown(props) {
   return (
     <div className="dropdown">
       <DropdownItem icon="👈">

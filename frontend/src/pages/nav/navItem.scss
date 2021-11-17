@@ -4,17 +4,27 @@
 @import 'mixin.scss';
 
 .navItem {
-  color: black;
+  color: $color-white;
   margin: 1rem;
-  padding: 1rem 1.3rem;
-  background-color: grey;
-  border-radius: 100px;
-  font-size: 2rem;
-  transition: filter 300ms;
-
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  display: inline-block;
   position: relative;
 
   &:hover {
-    filter: brightness(1.2);
+    color: $color-orange;
+  }
+
+  &__btn {
+    @include center;
+
+    &--icon {
+      margin: 0.3rem 0 0 0;
+    }
+
+    &--title {
+      padding-left: 0.8rem;
+      padding-right: 0.4rem;
+    }
   }
 }

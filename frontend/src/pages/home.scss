@@ -1,7 +1,8 @@
 /** @format */
 
 @import 'variables.scss';
+@import 'mixin.scss';
 
 p {
-  color: $color-red;
+  color: $color-crimson-dark;
 }

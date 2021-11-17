@@ -4,10 +4,11 @@
 @import 'mixin.scss';
 
 .navbar {
-  background-color: aqua;
+  background-color: $color-blue-dark;
   width: 100%;
   height: auto;
   color: white;
+  padding: 1rem 0 0.5rem;
 
   display: flex;
   align-items: center;
@@ -23,7 +24,21 @@
     @include center;
   }
 
-  h1 {
-    font-size: 3rem;
+  &__logo {
+    @include center;
+
+    &--img {
+      width: 3.5rem;
+      height: 3.5rem;
+      object-fit: cover;
+      margin-right: 2rem;
+      border: 3px solid white;
+      border-radius: 50rem;
+    }
+
+    &--title {
+      font-size: 2rem;
+      color: $color-white;
+    }
   }
 }
