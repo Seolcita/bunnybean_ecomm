@@ -2,17 +2,29 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import './scss/base.scss';
-import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// Redux
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from './reducers';
+
+// CSS
+import './scss/base.scss';
+
+// For Redux
+const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
