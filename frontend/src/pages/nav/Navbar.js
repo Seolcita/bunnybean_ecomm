@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase'; // To implement logout
 
 // Components
 import NavItem from './NavItem';
@@ -22,9 +23,9 @@ function Navbar() {
           <h1 className="navbar__logo--title"> Bunnybean Shop </h1>
         </Link>
         <ul className="navbar__ul">
-          {/* <NavItem icon="🥰" /> */}
           <NavItem icon={<Login />} title="Login" />
-          <NavItem icon={<Login />} title="Register">
+          <NavItem icon="🥰" title="Register" />
+          <NavItem icon={<Login />} title="User">
             {/* Dropdown */}
             <Dropdown />
           </NavItem>

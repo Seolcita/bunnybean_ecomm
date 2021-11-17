@@ -1,6 +1,9 @@
 /** @format */
 
 import React, { useState } from 'react';
+import firebase from 'firebase'; // To implement logout
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // Component
 import DropdownItem from './DropdownItem';
@@ -9,13 +12,25 @@ import DropdownItem from './DropdownItem';
 import './dropdown.scss';
 
 function Dropdown(props) {
+  let dispatch = useDispatch();
+  let history = useHistory();
+
+  const logout = () => {
+    firebase.auth().signOut();
+    dispatch({
+      type: 'LOGOUT',
+      payload: null,
+    });
+    history.push('/login');
+  };
+
   return (
     <div className="dropdown">
       <DropdownItem icon="👈">
-        <span>Title 1</span>
+        <span>Dashboard</span>
       </DropdownItem>
       <DropdownItem icon="👉">
-        <span>Title 2</span>
+        <span onClick={logout}>Logout</span>
       </DropdownItem>
     </div>
   );
