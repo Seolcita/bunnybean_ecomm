@@ -47,4 +47,8 @@ input {
 
 button {
   border: none;
+
+  &:disabled {
+    opacity: 0.3;
+  }
 }

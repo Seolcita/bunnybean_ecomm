@@ -2,17 +2,16 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase'; // To implement logout
 
 // Components
 import NavItem from './NavItem';
 import Dropdown from './Dropdown';
 
 //CSS & MUI
-import { Login } from '@mui/icons-material';
-import { Modal } from '@mui/material';
+import { Login, Person } from '@mui/icons-material';
 import logo from '../../images/logo.png';
 import './navbar.scss';
+// import { Modal } from '@mui/material';
 
 function Navbar() {
   return (
@@ -25,7 +24,7 @@ function Navbar() {
         <ul className="navbar__ul">
           <NavItem icon={<Login />} title="Login" />
           <NavItem icon="🥰" title="Register" />
-          <NavItem icon={<Login />} title="User">
+          <NavItem icon={<Person />} title="User">
             {/* Dropdown */}
             <Dropdown />
           </NavItem>
