@@ -5,15 +5,12 @@ import { auth } from '../../firebase';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 
-// CSS
-import './register.scss';
-
-const Register = (props) => {
+function ForgotPassword(props) {
   const { history } = props;
+  const { user } = useSelector((state) => ({ ...state }));
 
   const [email, setEmail] = useState('');
-
-  const { user } = useSelector((state) => ({ ...state }));
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (user?.token) history.push('/');
@@ -21,27 +18,36 @@ const Register = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log('ENV', process.env.REACT_APP_REGISTER_REDIRECT_URL);
+    setLoading(true);
 
     const config = {
-      url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
+      url: process.env.REACT_APP_FORGOT_PASSWORD_REDIRECT,
       handleCodeInApp: true,
     };
 
-    await auth.sendSignInLinkToEmail(email, config);
-    toast.success(
-      `Email is sent to ${email}. Click the link to complete your registration.`
-    );
-
-    window.localStorage.setItem('emailForRegistration', email);
-
-    setEmail('');
+    await auth
+      .sendPasswordResetEmail(email, config)
+      .then(() => {
+        setEmail('');
+        setLoading(false);
+        toast.success(`Reset password link sent to ${email}`);
+      })
+      .catch((err) => {
+        console.log('ERR', err);
+        toast.error(err.message);
+        setLoading(false);
+      });
   };
 
   return (
     <div className="register">
       <div className="register__container">
-        <h1 className="register__title">Register</h1>
+        {loading ? (
+          <h1 className="register__title">Loading...</h1>
+        ) : (
+          <h1 className="register__title">Forgot Password</h1>
+        )}
+
         <div className="register__form">
           <input
             className="register__input"
@@ -54,6 +60,7 @@ const Register = (props) => {
           <button
             className="register__btn"
             type="submit"
+            disabled={!email}
             onClick={handleSubmit}
           >
             Submit
@@ -62,6 +69,6 @@ const Register = (props) => {
       </div>
     </div>
   );
-};
+}
 
-export default Register;
+export default ForgotPassword;

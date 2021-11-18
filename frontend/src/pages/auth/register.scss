@@ -14,7 +14,7 @@
 
   &__container {
     width: 50%;
-    height: 40vh;
+    height: 50vh;
     background-color: $color-crimson-dark;
     color: $color-blue-dark;
     border-radius: 1rem;
@@ -62,6 +62,18 @@
 
     &:active {
       transform: scale(0.9);
+    }
+  }
+
+  &__link {
+    p {
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    a {
+      font-weight: 500;
+      margin-left: 2rem;
     }
   }
 }

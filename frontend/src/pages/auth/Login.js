@@ -1,9 +1,10 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { auth, googleProvider } from '../../firebase';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 //CSS
 import '../../app.scss';
@@ -18,6 +19,11 @@ const Login = (props) => {
   const [loading, setLoading] = useState(false);
 
   let dispatch = useDispatch();
+  const { user } = useSelector((state) => ({ ...state }));
+
+  useEffect(() => {
+    if (user?.token) history.push('/');
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -108,8 +114,11 @@ const Login = (props) => {
             onClick={handleSubmit}
             disabled={!email || password.length < 6}
           >
-            Submit
+            Login with Email &amp; Password
           </button>
+          <div>
+            <Link to="/forgot/password">Forgot password?</Link>
+          </div>
           <br />
           <button
             className="register__btn"
@@ -119,6 +128,12 @@ const Login = (props) => {
           >
             Google Login
           </button>
+          <div className="register__link">
+            <p>
+              New customer?
+              <a href="/register">Start here</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

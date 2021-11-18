@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // Components
 import NavItem from './NavItem';
@@ -14,6 +15,8 @@ import './navbar.scss';
 // import { Modal } from '@mui/material';
 
 function Navbar() {
+  let { user } = useSelector((state) => ({ ...state }));
+
   return (
     <div className="navbar">
       <nav className="navbar__nav">
@@ -22,12 +25,19 @@ function Navbar() {
           <h1 className="navbar__logo--title"> Bunnybean Shop </h1>
         </Link>
         <ul className="navbar__ul">
-          <NavItem icon={<Login />} title="Login" />
-          <NavItem icon="🥰" title="Register" />
-          <NavItem icon={<Person />} title="User">
-            {/* Dropdown */}
-            <Dropdown />
-          </NavItem>
+          {!user ? (
+            <NavItem icon={<Login />} title="Login" />
+          ) : (
+            <NavItem
+              icon={<Person />}
+              title="User"
+              username={user.email?.split('@')[0]}
+            >
+              <Dropdown />
+            </NavItem>
+          )}
+
+          {/* <NavItem icon="🥰" title="Register" /> */}
         </ul>
       </nav>
     </div>
