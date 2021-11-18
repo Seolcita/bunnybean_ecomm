@@ -3,8 +3,9 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/create', (req, res) => {
-  res.json({ data: 'It is from backend ' });
-});
+// import
+const { createOrUpdateUser } = require('../controllers/auth');
+
+router.get('/create-or-update-user', createOrUpdateUser);
 
 module.exports = router;
