@@ -24,11 +24,9 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       console.log('USER >>>>>>>', user);
-
       // If there is user, update the info into redux store/state
       if (user) {
         const idTokenResult = await user.getIdTokenResult();
-
         dispatch({
           type: 'LOGGED_IN_USER',
           payload: {
@@ -38,7 +36,6 @@ const App = () => {
         });
       }
     });
-
     // Cleanup - to prevent memory leak
     return () => unsubscribe();
   }, []);

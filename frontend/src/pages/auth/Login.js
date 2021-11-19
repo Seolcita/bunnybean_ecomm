@@ -5,11 +5,25 @@ import { Link } from 'react-router-dom';
 import { auth, googleProvider } from '../../firebase';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 //CSS
 import '../../app.scss';
 import './login.scss';
 import './register.scss';
+
+const createOrUpdateUser = async (authtoken) => {
+  console.log(authtoken);
+  return await axios.post(
+    `${process.env.REACT_APP_API}/create-or-update-user`,
+    {},
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};
 
 const Login = (props) => {
   const { history } = props;
@@ -35,17 +49,23 @@ const Login = (props) => {
       const result = await auth.signInWithEmailAndPassword(email, password);
       //console.log('result ****', result);
       const { user } = result;
-      const idTokenResult = user.getIdTokenResult;
+      const idTokenResult = await user.getIdTokenResult();
 
-      dispatch({
-        type: 'LOGGED_IN_USER',
-        payload: {
-          email: user.email,
-          token: idTokenResult.token,
-        },
-      });
+      // Once I get a token from firebase,
+      // I send this to backend to check if it is valid token or not.
+      createOrUpdateUser(idTokenResult.token)
+        .then((res) => console.log('CREATE OR UPDATE USER RES ---', res))
+        .catch((err) => console.log(err));
 
-      history.push('/');
+      // dispatch({
+      //   type: 'LOGGED_IN_USER',
+      //   payload: {
+      //     email: user.email,
+      //     token: idTokenResult.token,
+      //   },
+      // });
+
+      // history.push('/');
     } catch (err) {
       console.log(err.message);
       toast.error(err.message);
@@ -66,14 +86,14 @@ const Login = (props) => {
         const { user } = result;
         const idTokenResult = user.getIdTokenResult();
 
-        dispatch({
-          type: 'LOGGED_IN_USER',
-          payload: {
-            email: user.email,
-            token: idTokenResult.token,
-          },
-        });
-        history.push('/');
+        // dispatch({
+        //   type: 'LOGGED_IN_USER',
+        //   payload: {
+        //     email: user.email,
+        //     token: idTokenResult.token,
+        //   },
+        // });
+        // history.push('/');
       })
       .catch((err) => {
         console.log(err.message);
