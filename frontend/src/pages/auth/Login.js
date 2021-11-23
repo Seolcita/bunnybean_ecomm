@@ -1,42 +1,29 @@
 /** @format */
 
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { auth, googleProvider } from '../../firebase';
-import { toast } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { auth, googleProvider } from "../../firebase";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { createOrUpdateUser } from "../../connections/auth";
 
 //CSS
-import '../../app.scss';
-import './login.scss';
-import './register.scss';
-
-const createOrUpdateUser = async (authtoken) => {
-  console.log(authtoken);
-  return await axios.post(
-    `${process.env.REACT_APP_API}/create-or-update-user`,
-    {},
-    {
-      headers: {
-        authtoken,
-      },
-    }
-  );
-};
+import "../../app.scss";
+import "./login.scss";
+import "./register.scss";
 
 const Login = (props) => {
   const { history } = props;
 
-  const [email, setEmail] = useState('sseori30@gmail.com');
-  const [password, setPassword] = useState('seol1111');
+  const [email, setEmail] = useState("sseori30@gmail.com");
+  const [password, setPassword] = useState("seol1111");
   const [loading, setLoading] = useState(false);
 
   let dispatch = useDispatch();
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    if (user?.token) history.push('/');
+    if (user?.token) history.push("/");
   }, [user]);
 
   const handleSubmit = async (e) => {
@@ -54,18 +41,22 @@ const Login = (props) => {
       // Once I get a token from firebase,
       // I send this to backend to check if it is valid token or not.
       createOrUpdateUser(idTokenResult.token)
-        .then((res) => console.log('CREATE OR UPDATE USER RES ---', res))
+        .then((res) => {
+          console.log("CREATE OR UPDATE USER RES ---", res);
+          dispatch({
+            type: "LOGGED_IN_USER",
+            payload: {
+              name: res.data.name,
+              email: res.data.email,
+              token: idTokenResult.token,
+              role: res.data.role,
+              _id: res.data._id,
+            },
+          });
+        })
         .catch((err) => console.log(err));
 
-      // dispatch({
-      //   type: 'LOGGED_IN_USER',
-      //   payload: {
-      //     email: user.email,
-      //     token: idTokenResult.token,
-      //   },
-      // });
-
-      // history.push('/');
+      history.push("/");
     } catch (err) {
       console.log(err.message);
       toast.error(err.message);
@@ -76,24 +67,32 @@ const Login = (props) => {
     // setPassword('');
   };
 
-  const googleLogin = () => {
+  const googleLogin = async () => {
     setLoading(true);
 
     auth
       .signInWithPopup(googleProvider)
-      .then((result) => {
+      .then(async (result) => {
         console.log(result);
         const { user } = result;
-        const idTokenResult = user.getIdTokenResult();
+        const idTokenResult = await user.getIdTokenResult();
 
-        // dispatch({
-        //   type: 'LOGGED_IN_USER',
-        //   payload: {
-        //     email: user.email,
-        //     token: idTokenResult.token,
-        //   },
-        // });
-        // history.push('/');
+        createOrUpdateUser(idTokenResult.token)
+          .then((res) => {
+            console.log("GOOGLE LOGIN - CREATE OR UPDATE USER RES ---", res);
+            dispatch({
+              type: "LOGGED_IN_USER",
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
+          })
+          .catch((err) => console.log(err));
+        //history.push("/");
       })
       .catch((err) => {
         console.log(err.message);
