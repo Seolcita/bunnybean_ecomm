@@ -1,5 +1,6 @@
 /** @format */
 
+const user = require("../models/user");
 const User = require("../models/user");
 
 exports.createOrUpdateUser = async (req, res) => {
@@ -25,4 +26,11 @@ exports.createOrUpdateUser = async (req, res) => {
     //console.log("New User Created", newUser);
     res.json(newUser);
   }
+};
+
+exports.currentUser = async (req, res) => {
+  await user.findOne({ email: req.user.email }).exec((err, user) => {
+    if (err) throw new Error(err);
+    res.json(user);
+  });
 };

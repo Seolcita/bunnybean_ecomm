@@ -26,6 +26,14 @@ const Login = (props) => {
     if (user?.token) history.push("/");
   }, [user]);
 
+  const roleBasedRedirect = (res) => {
+    if (res.data.role === "admin") {
+      history.push("/admin/dashboard");
+    } else {
+      history.push("/user/history");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -53,10 +61,11 @@ const Login = (props) => {
               _id: res.data._id,
             },
           });
+          roleBasedRedirect(res);
         })
         .catch((err) => console.log(err));
 
-      history.push("/");
+      // history.push("/");
     } catch (err) {
       console.log(err.message);
       toast.error(err.message);
@@ -90,6 +99,7 @@ const Login = (props) => {
                 _id: res.data._id,
               },
             });
+            roleBasedRedirect(res);
           })
           .catch((err) => console.log(err));
         //history.push("/");
