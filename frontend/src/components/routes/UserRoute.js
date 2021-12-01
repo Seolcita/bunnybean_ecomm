@@ -1,9 +1,9 @@
 /** @format */
 
-import React from "react";
-import { Route, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import LoadingToRedirect from "./LoadingToRedirect";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import LoadingToRedirect from './LoadingToRedirect';
 
 const UserRoute = props => {
   const { children, ...rest } = props;

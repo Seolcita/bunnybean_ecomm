@@ -1,8 +1,8 @@
 /** @format */
 
-import axios from "axios";
+import axios from 'axios';
 
-export const createOrUpdateUser = async (authtoken) => {
+export const createOrUpdateUser = async authtoken => {
   console.log(authtoken);
   return await axios.post(
     `${process.env.REACT_APP_API}/create-or-update-user`,
@@ -15,7 +15,7 @@ export const createOrUpdateUser = async (authtoken) => {
   );
 };
 
-export const currentUser = async (authtoken) => {
+export const currentUser = async authtoken => {
   return await axios.post(
     `${process.env.REACT_APP_API}/current-user`,
     {},
@@ -24,5 +24,13 @@ export const currentUser = async (authtoken) => {
         authtoken,
       },
     }
+  );
+};
+
+export const currentAdmin = async authtoken => {
+  return await axios.post(
+    `${process.env.REACT_APP_API}/current-admin`,
+    {},
+    { headers: { authtoken } }
   );
 };

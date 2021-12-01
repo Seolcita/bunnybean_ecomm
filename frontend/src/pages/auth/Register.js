@@ -8,18 +8,18 @@ import { useSelector } from 'react-redux';
 // CSS
 import './register.scss';
 
-const Register = (props) => {
+const Register = props => {
   const { history } = props;
 
   const [email, setEmail] = useState('');
 
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector(state => ({ ...state }));
 
   useEffect(() => {
     if (user?.token) history.push('/');
-  }, [user]);
+  }, [user, history]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     // console.log('ENV', process.env.REACT_APP_REGISTER_REDIRECT_URL);
 
@@ -39,21 +39,21 @@ const Register = (props) => {
   };
 
   return (
-    <div className="register">
-      <div className="register__container">
-        <h1 className="register__title">Register</h1>
-        <div className="register__form">
+    <div className='register'>
+      <div className='register__container'>
+        <h1 className='register__title'>Register</h1>
+        <div className='register__form'>
           <input
-            className="register__input"
-            type="email"
-            placeholder="Email"
+            className='register__input'
+            type='email'
+            placeholder='Email'
             autoFocus
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
           <button
-            className="register__btn"
-            type="submit"
+            className='register__btn'
+            type='submit'
             onClick={handleSubmit}
           >
             Submit

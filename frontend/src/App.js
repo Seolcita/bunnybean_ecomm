@@ -19,6 +19,8 @@ import OrderHistory from './pages/user/OrderHistory';
 import UserRoute from './components/routes/UserRoute';
 import Account from './pages/user/Account';
 import Wishlist from './pages/user/Wishlist';
+import AdminRoute from './components/routes/AdminRoute';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -52,7 +54,7 @@ const App = () => {
     });
     // Cleanup - to prevent memory leak
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -67,6 +69,7 @@ const App = () => {
         <UserRoute exact path='/user/history' component={OrderHistory} />
         <UserRoute exact path='/user/account' component={Account} />
         <UserRoute exact path='/user/wishlist' component={Wishlist} />
+        <AdminRoute exact path='/admin/dashboard' component={AdminDashboard} />
       </Switch>
     </>
   );

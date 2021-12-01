@@ -1,7 +1,7 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function LoadingToRedirect() {
   const [count, setCount] = useState(3);
@@ -11,13 +11,13 @@ function LoadingToRedirect() {
     const interval = setInterval(() => {
       setCount(count => --count);
     }, 1000);
-    count === 0 && history.push("/");
+    count === 0 && history.push('/');
 
     return () => clearInterval(interval);
-  }, [count]);
+  }, [count, history]);
 
   return (
-    <div className="loadingToRedirect">
+    <div className='loadingToRedirect'>
       <p>Redirecting you in {count} seconds</p>
     </div>
   );

@@ -1,16 +1,16 @@
 /** @format */
 
-const user = require("../models/user");
-const User = require("../models/user");
+const user = require('../models/user');
+const User = require('../models/user');
 
 exports.createOrUpdateUser = async (req, res) => {
   //from authCheck we got user's info (req.user=firebaseUser)
-  // console.log("REQ.USER", req.user);
+  console.log('REQ.USER', req.user);
   const { name, picture, email } = req.user;
 
   const user = await User.findOneAndUpdate(
     { email }, //first argument: find one based on email
-    { name: email.split("@")[0], picture }, //second argument : once the email found, update name and picture
+    { name: email.split('@')[0], picture }, //second argument : once the email found, update name and picture
     { new: true } //third argument-optional: response with updated info
   );
 

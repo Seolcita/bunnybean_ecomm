@@ -7,16 +7,16 @@ import { useSelector } from 'react-redux';
 
 function ForgotPassword(props) {
   const { history } = props;
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector(state => ({ ...state }));
 
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (user?.token) history.push('/');
-  }, [user]);
+  }, [user, history]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
 
@@ -32,7 +32,7 @@ function ForgotPassword(props) {
         setLoading(false);
         toast.success(`Reset password link sent to ${email}`);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('ERR', err);
         toast.error(err.message);
         setLoading(false);
@@ -40,26 +40,26 @@ function ForgotPassword(props) {
   };
 
   return (
-    <div className="register">
-      <div className="register__container">
+    <div className='register'>
+      <div className='register__container'>
         {loading ? (
-          <h1 className="register__title">Loading...</h1>
+          <h1 className='register__title'>Loading...</h1>
         ) : (
-          <h1 className="register__title">Forgot Password</h1>
+          <h1 className='register__title'>Forgot Password</h1>
         )}
 
-        <div className="register__form">
+        <div className='register__form'>
           <input
-            className="register__input"
-            type="email"
-            placeholder="Email"
+            className='register__input'
+            type='email'
+            placeholder='Email'
             autoFocus
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
           <button
-            className="register__btn"
-            type="submit"
+            className='register__btn'
+            type='submit'
             disabled={!email}
             onClick={handleSubmit}
           >
