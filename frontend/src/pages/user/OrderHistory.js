@@ -6,7 +6,8 @@ import React from 'react';
 import UserSidebar from '../sidebar/UserSidebar';
 
 //CSS
-import './history.scss';
+
+import './orderHistory.scss';
 
 function OrderHistory() {
   return (

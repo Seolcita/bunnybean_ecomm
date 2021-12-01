@@ -1,0 +1,15 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.wishlist {
+  display: flex;
+  &__sidebar {
+    @include sidebar;
+  }
+
+  &__detail {
+    @include detail;
+  }
+}

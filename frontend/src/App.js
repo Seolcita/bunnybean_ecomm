@@ -17,6 +17,8 @@ import RegisterComplete from './pages/auth/RegisterComplete';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import OrderHistory from './pages/user/OrderHistory';
 import UserRoute from './components/routes/UserRoute';
+import Account from './pages/user/Account';
+import Wishlist from './pages/user/Wishlist';
 
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -63,6 +65,8 @@ const App = () => {
         <Route exact path='/register/complete' component={RegisterComplete} />
         <Route exact path='/forgot/password' component={ForgotPassword} />
         <UserRoute exact path='/user/history' component={OrderHistory} />
+        <UserRoute exact path='/user/account' component={Account} />
+        <UserRoute exact path='/user/wishlist' component={Wishlist} />
       </Switch>
     </>
   );

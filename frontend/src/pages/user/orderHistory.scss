@@ -1,7 +1,7 @@
 /** @format */
 
-@import "variables.scss";
-@import "mixin.scss";
+@import 'variables.scss';
+@import 'mixin.scss';
 
 .history {
   color: $color-blue-dark;
@@ -13,6 +13,7 @@
   &__sidebar {
     width: 20vw;
     background-color: pink;
+    font-size: 1.5rem;
   }
 
   &__detail {
