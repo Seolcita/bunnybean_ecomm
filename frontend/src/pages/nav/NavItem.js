@@ -7,19 +7,19 @@ import { Link } from 'react-router-dom';
 import './navItem.scss';
 
 function NavItem(props) {
-  const { icon, title, username, children } = props;
-  const address = title.toLowerCase();
+  const { icon, title, username, address, children } = props;
 
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="navItem" onClick={() => setOpen(!open)}>
-      <li className="navItem__list">
-        <Link to={`/${address}`} className="navItem__btn">
-          <span className="navItem__btn--icon">{icon}</span>
-          <span className="navItem__btn--title">
+    <div className='navItem' onClick={() => setOpen(!open)}>
+      <li className='navItem__list'>
+        <Link to={`/${address}`} className='navItem__btn'>
+          <span className='navItem__btn--icon'>{icon}</span>
+          <span className='navItem__btn--title'>
             {username ? username : title}
           </span>
+          {title === 'cart' && <span className='navItem__count'>3</span>}
         </Link>
         {open ? children : null}
       </li>

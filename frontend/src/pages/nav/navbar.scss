@@ -41,4 +41,27 @@
       color: $color-white;
     }
   }
+
+  &__logout {
+    font-size: 1.6rem;
+    margin-left: 1.5rem;
+    cursor: pointer;
+
+    @include center-column;
+
+    small {
+      margin-left: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    &:hover {
+      color: orange;
+    }
+  }
+
+  &__icon {
+    margin: 0.3rem 0 0 0;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
 }

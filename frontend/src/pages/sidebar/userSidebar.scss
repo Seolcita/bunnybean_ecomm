@@ -1,0 +1,33 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.userSidebar {
+  height: 100vh;
+
+  &__option {
+    padding: 1rem 3rem;
+    cursor: pointer;
+    // transition: background-color 2s ease;
+
+    display: flex;
+    align-items: center;
+
+    &--top {
+      margin-top: 3rem;
+      padding: 1rem 3rem;
+    }
+
+    &:hover {
+      background-color: lightcoral;
+    }
+  }
+
+  // MUI Icon Override
+  &__icon {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    margin-right: 1.5rem;
+  }
+}

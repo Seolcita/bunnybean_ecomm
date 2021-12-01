@@ -13,18 +13,34 @@
 
   &:hover {
     color: $color-orange;
+
+    .navItem__count {
+      background-color: $color-white;
+    }
   }
 
   &__btn {
-    @include center;
-
-    &--icon {
-      margin: 0.3rem 0 0 0;
-    }
+    @include center-column;
 
     &--title {
       padding-left: 0.8rem;
       padding-right: 0.4rem;
     }
+  }
+
+  &__count {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    background-color: $color-orange;
+    width: 1.7rem;
+    height: 1.7rem;
+    z-index: 3;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $color-blue-dark;
+
+    @include center;
   }
 }

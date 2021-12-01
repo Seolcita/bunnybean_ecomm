@@ -4,6 +4,19 @@
 @import "mixin.scss";
 
 .history {
-  color: $color-white;
+  color: $color-blue-dark;
   font-size: 2rem;
+  margin-top: 3rem;
+
+  display: flex;
+
+  &__sidebar {
+    width: 20vw;
+    background-color: pink;
+  }
+
+  &__detail {
+    flex: 1;
+    background-color: lightblue;
+  }
 }
