@@ -25,12 +25,14 @@
   width: 20vw;
   background-color: pink;
   font-size: 1.5rem;
+  height: 100vh;
 }
 
 @mixin detail {
   flex: 1;
   background-color: lightblue;
-  padding-top: 10rem;
+  padding-top: 5rem;
+  height: 100vh;
 
   display: flex;
   justify-content: center;

@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // CSS & MUI icons
-import './userSidebar.scss';
+import './sidebar.scss';
 import {
   ReceiptLong,
   ShoppingBasket,
@@ -14,28 +14,28 @@ import {
 
 function UserSidebar() {
   return (
-    <div className='userSidebar'>
+    <div className='sidebar'>
       <Link to='/user/history'>
-        <div className='userSidebar__option userSidebar__option--top'>
-          <ReceiptLong className='userSidebar__icon' />
+        <div className='sidebar__option sidebar__option--top'>
+          <ReceiptLong className='sidebar__icon' />
           Order History
         </div>
       </Link>
       <Link to='/user/cart'>
-        <div className='userSidebar__option'>
-          <ShoppingBasket className='userSidebar__icon' />
+        <div className='sidebar__option'>
+          <ShoppingBasket className='sidebar__icon' />
           Shopping Cart
         </div>
       </Link>
       <Link to='/user/wishlist'>
-        <div className='userSidebar__option'>
-          <Favorite className='userSidebar__icon' />
+        <div className='sidebar__option'>
+          <Favorite className='sidebar__icon' />
           Wishlist
         </div>
       </Link>
       <Link to='/user/account'>
-        <div className='userSidebar__option '>
-          <ManageAccounts className='userSidebar__icon' />
+        <div className='sidebar__option '>
+          <ManageAccounts className='sidebar__icon' />
           User Account
         </div>
       </Link>

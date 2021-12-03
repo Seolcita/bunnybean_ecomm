@@ -11,15 +11,11 @@
 
   &__detail {
     @include detail;
+    height: 100vh;
   }
 
   &__wrap {
     width: 40%;
-
-    h2 {
-      font-size: 3rem;
-      text-align: center;
-    }
   }
 
   &__form {

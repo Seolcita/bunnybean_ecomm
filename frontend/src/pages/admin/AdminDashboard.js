@@ -2,10 +2,13 @@
 
 import React from 'react';
 
+// Components
+import Account from '../user/Account';
+
 function AdminDashboard() {
   return (
     <div>
-      <h1>ADMIN DASHBOARD</h1>
+      <Account />
     </div>
   );
 }

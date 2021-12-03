@@ -1,0 +1,100 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.category {
+  display: flex;
+
+  &__sidebar {
+    @include sidebar;
+  }
+
+  &__detail {
+    @include detail;
+    // background-color: grey;
+    // @include center-column;
+  }
+
+  &__wrap {
+    width: 70%;
+  }
+
+  &__section {
+    width: 100%;
+    // margin: 10rem 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    // background-color: pink;
+  }
+
+  &__form {
+    width: 100%;
+
+    input {
+      padding: 0.7rem 2rem;
+      margin-top: 2.5rem;
+      margin-right: 2rem;
+      font-size: 1.7rem;
+      background-color: transparent;
+      border-bottom: 2px solid black;
+    }
+
+    button {
+      padding: 1rem 2rem;
+      border-radius: 5rem;
+    }
+  }
+
+  &__listContainer {
+    width: 100%;
+    margin-top: 3rem;
+  }
+
+  &__list {
+    width: 100%;
+    margin: 0.5rem 0 0;
+
+    padding-left: 3rem;
+    padding-right: 2rem;
+    font-size: 2rem;
+    background-color: white;
+    // border-bottom: 1px solid grey;
+
+    @include space-between;
+    display: flex;
+
+    &:hover {
+      background-color: $color-grey-light;
+    }
+  }
+
+  &__name {
+    flex: 1;
+  }
+
+  &__btn {
+    padding: 1rem;
+    margin-left: 0.5rem;
+    background-color: transparent;
+
+    &--edit,
+    &--delete {
+      width: 2rem !important;
+      height: 2rem !important;
+      &:hover {
+        color: $color-orange !important;
+      }
+    }
+
+    &--edit {
+      color: black;
+    }
+    &--delete {
+      color: red;
+    }
+  }
+}

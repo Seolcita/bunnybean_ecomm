@@ -45,13 +45,19 @@ function Navbar() {
         </Link>
         <ul className='navbar__ul'>
           {!user ? (
-            <NavItem icon={<Login className='navbar__icon' />} title='Login' />
+            <NavItem
+              icon={<Login className='navbar__icon' />}
+              title='Login'
+              address='login'
+            />
           ) : (
             <>
               <NavItem
                 icon={<Person className='navbar__icon' />}
                 title=''
-                address='user/history'
+                address={
+                  user?.role === 'admin' ? 'admin/dashboard' : 'user/history'
+                }
                 username={user.email?.split('@')[0]}
               >
                 {/* <Dropdown /> */}

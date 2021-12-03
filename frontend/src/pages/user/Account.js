@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 
 // Components
 import UserSidebar from '../sidebar/UserSidebar';
+import AdminSidebar from '../sidebar/AdminSidebar';
 
 //CSS
 import './account.scss';
@@ -38,13 +39,13 @@ function Account() {
   return (
     <div className='account'>
       <div className='account__sidebar'>
-        <UserSidebar />
+        {user?.role === 'admin' ? <AdminSidebar /> : <UserSidebar />}
       </div>
       <div className='account__detail'>
         <div className='account__wrap'>
-          <h2> Hello, {user.name}</h2>
+          <h2 className='dashboard__title--main'> Hello, {user.name}</h2>
           <form className='account__form' onSubmit={handleSubmit}>
-            <h3>User ID </h3>
+            {user?.role === 'admin' ? <h3>Admin ID </h3> : <h3>User ID </h3>}
             <h4>{user.email}</h4>
             <h3>Update Password </h3>
             <input

@@ -21,6 +21,7 @@ import Account from './pages/user/Account';
 import Wishlist from './pages/user/Wishlist';
 import AdminRoute from './components/routes/AdminRoute';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import Category from './pages/admin/category/Category';
 
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -70,6 +71,7 @@ const App = () => {
         <UserRoute exact path='/user/account' component={Account} />
         <UserRoute exact path='/user/wishlist' component={Wishlist} />
         <AdminRoute exact path='/admin/dashboard' component={AdminDashboard} />
+        <AdminRoute exact path='/admin/category' component={Category} />
       </Switch>
     </>
   );
