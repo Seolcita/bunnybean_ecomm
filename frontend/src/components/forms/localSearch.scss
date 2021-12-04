@@ -1,0 +1,11 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+#localSearch__input {
+  padding: 0.7rem 2rem;
+  margin-top: 2.5rem;
+  font-size: 1.7rem;
+  border-radius: 5rem;
+}

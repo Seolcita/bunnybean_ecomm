@@ -16,6 +16,7 @@ function CategoryForm(props) {
           value={name}
           placeholder="Enter category's name"
           autoFocus
+          className='category__form--input'
         />
         <button>Submit</button>
       </form>

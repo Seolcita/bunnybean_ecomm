@@ -13,6 +13,7 @@ import {
 // Components
 import AdminSidebar from '../../sidebar/AdminSidebar';
 import CategoryForm from '../../../components/forms/CategoryForm';
+import LocalSearch from '../../../components/forms/LocalSearch';
 
 // CSS
 import './category.scss';
@@ -38,14 +39,7 @@ function Category() {
   const displayCategories = () => (
     <div className='category__section'>
       <h3 className='dashboard__title--sub'>Manage Categories</h3>
-      <div className='category__search'>
-        <input
-          type='search'
-          placeholder='Enter search keyword'
-          value={keyword}
-          onChange={e => handleSearchChange(e)}
-        />
-      </div>
+      <LocalSearch keyword={keyword} setKeyword={setKeyword} />
       <div className='category__listContainer'>
         {categories.filter(searched(keyword)).map(category => (
           <div className='category__list' key={category.id}>
@@ -101,10 +95,6 @@ function Category() {
         if (err.response.status === 400) toast.error(err.response.data);
         setLoading(false);
       });
-  };
-
-  const handleSearchChange = e => {
-    setKeyword(e.target.value.toLowerCase());
   };
 
   const searched = keyword => c => c.name.toLowerCase().includes(keyword);

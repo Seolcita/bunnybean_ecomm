@@ -28,8 +28,10 @@
     align-items: start;
 
     // background-color: pink;
+  }
 
-    input {
+  &__form {
+    &--input {
       padding: 0.7rem 2rem;
       margin-top: 2.5rem;
       margin-right: 2rem;
@@ -57,7 +59,7 @@
     padding-right: 2rem;
     font-size: 2rem;
     background-color: white;
-    // border-bottom: 1px solid grey;
+    border-radius: 0.5rem;
 
     @include space-between;
     display: flex;
@@ -76,6 +78,7 @@
     margin-left: 0.5rem;
     background-color: transparent;
 
+    // MUI icon override
     &--edit,
     &--delete {
       width: 2rem !important;
