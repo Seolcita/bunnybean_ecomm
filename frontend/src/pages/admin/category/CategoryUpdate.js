@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { getCategory, updateCategory } from '../../../connections/category';
@@ -59,7 +58,7 @@ function CategoryUpdate(props) {
             name={name}
             setName={setName}
             handleSubmit={handleSubmit}
-            edit
+            title='Edit a Category'
           />
         </div>
       </div>

@@ -30,6 +30,18 @@
     // background-color: pink;
   }
 
+  &__select {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+
+    &--container {
+      min-width: 33rem;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+    }
+  }
+
   &__form {
     &--input {
       padding: 0.7rem 2rem;
