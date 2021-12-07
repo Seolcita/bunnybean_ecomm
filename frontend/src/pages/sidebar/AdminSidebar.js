@@ -8,6 +8,7 @@ import './sidebar.scss';
 import {
   Label,
   ViewList,
+  AddBox,
   ReceiptLong,
   ManageAccounts,
   LocalActivity,
@@ -17,10 +18,16 @@ import {
 function AdminSidebar() {
   return (
     <div className='sidebar'>
-      <Link to='/admin/products'>
+      <Link to='/admin/product/create'>
         <div className='sidebar__option sidebar__option--top'>
+          <AddBox className='sidebar__icon' />
+          Product
+        </div>
+      </Link>
+      <Link to='/admin/products'>
+        <div className='sidebar__option'>
           <ViewList className='sidebar__icon' />
-          Products
+          Products list
         </div>
       </Link>
       <Link to='/admin/category'>

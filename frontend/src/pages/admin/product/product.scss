@@ -1,0 +1,73 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.product {
+  display: flex;
+
+  &__sidebar {
+    @include sidebar;
+  }
+
+  &__detail {
+    @include detail;
+    @include center-column;
+  }
+
+  &__wrap {
+    width: 90%;
+    margin-top: 5rem;
+    @include center;
+    // background-color: white;
+  }
+
+  &__file {
+    width: 100%;
+    background-color: orange;
+    margin: 0 1rem;
+  }
+
+  &__container {
+    width: 100%;
+    margin: 0 1rem;
+    background-color: pink;
+
+    font-size: 1.7rem;
+  }
+
+  &__form {
+    margin-bottom: 3rem;
+
+    @include center-column;
+    align-items: start;
+
+    label {
+      font-weight: 600;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 1.2rem 2rem 0.2rem;
+    // margin-top: 2.5rem;
+
+    font-size: 1.8rem;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+  }
+
+  &__select {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 1.3rem 2rem;
+    border-radius: 0.5rem;
+  }
+}
