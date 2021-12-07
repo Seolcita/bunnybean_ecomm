@@ -1,6 +1,7 @@
 /** @format */
 
 const Category = require('../models/category');
+const SubCategory = require('../models/subCategory');
 const slugify = require('slugify');
 
 exports.create = async (req, res) => {
@@ -48,5 +49,18 @@ exports.remove = async (req, res) => {
   } catch (err) {
     console.log('Delete fail ', err);
     res.status(400).send('Delete failed');
+  }
+};
+
+exports.getSubsBelongToParent = async (req, res) => {
+  try {
+    const parentId = req.params._id;
+    const allSubCategories = await SubCategory.find({
+      parent: parentId,
+    }).exec();
+    res.json(allSubCategories);
+  } catch (err) {
+    console.log('Get Sub-Categories >>>>', err);
+    res.status(400).send('Getting Subs Failed');
   }
 };

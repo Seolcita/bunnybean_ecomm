@@ -7,7 +7,10 @@ import { useSelector } from 'react-redux';
 
 // Connection - Functions
 import { createProduct } from '../../../connections/product';
-import { getCategories } from '../../../connections/category';
+import {
+  getCategories,
+  getSubsBelongToParent,
+} from '../../../connections/category';
 
 // Components
 import AdminSidebar from '../../sidebar/AdminSidebar';
@@ -56,7 +59,8 @@ function Product() {
       })
       .catch(err => {
         console.log(err);
-        if (err.response.status === 400) toast.error(err.response.data);
+        // toast.error(err.response.data.err);
+        // if (err.response.status === 400) toast.error(err.response.data);
       });
   };
 
@@ -67,12 +71,12 @@ function Product() {
 
   const handleCatagoryChange = e => {
     e.preventDefault();
-    console.log('CLICKED CATEGORY', e.target.value);
+    //console.log('CLICKED CATEGORY', e.target.value);
     setValues({ ...values, subs: [], category: e.target.value });
-    // getCategorySubs(e.target.value).then(res => {
-    //   console.log('SUB OPTIONS ON CATGORY CLICK', res);
-    //   setSubOptions(res.data);
-    // });
+    getSubsBelongToParent(e.target.value).then(res => {
+      //console.log('SUB OPTIONS ON CATGORY CLICK', res);
+      setSubOptions(res.data);
+    });
     setShowSub(true);
   };
 
@@ -91,6 +95,7 @@ function Product() {
               setValues={setValues}
               setLoading={setLoading}
             /> */}
+            {JSON.stringify(values.subs)}
           </div>
 
           <ProductCreateForm

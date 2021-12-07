@@ -33,3 +33,7 @@ export const createCategory = async (category, authtoken) =>
       authtoken,
     },
   });
+
+// Get all sub-categories belong to parent category
+export const getSubsBelongToParent = async parentId =>
+  await axios.get(`${process.env.REACT_APP_API}/category/subs/${parentId}`);

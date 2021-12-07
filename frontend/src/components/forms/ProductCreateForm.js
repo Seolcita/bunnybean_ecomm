@@ -127,25 +127,23 @@ const ProductCreateForm = props => {
         </select>
       </div>
 
-      {/* {subOptions.length} */}
-
       {showSub && (
-        <div>
+        <div className='product__form'>
           <label>Sub Categories</label>
-          {/* <Select
-            mode='multiple'
-            style={{ width: '100%' }}
+          <select
             placeholder='Please select'
-            value={subs}
-            onChange={value => setValues({ ...values, subs: value })}
+            name='subs'
+            onChange={handleChange}
+            className='product__select'
           >
+            <option>Please select</option>
             {subOptions.length &&
               subOptions.map(s => (
-                <Option key={s._id} value={s._id}>
+                <option key={s._id} value={s._id}>
                   {s.name}
-                </Option>
+                </option>
               ))}
-          </Select> */}
+          </select>
         </div>
       )}
       <br />
