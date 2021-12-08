@@ -10,6 +10,8 @@
     padding: 1rem 2rem;
     background-color: white;
     cursor: pointer;
+    width: 20rem;
+    max-width: 20rem;
 
     @include center;
 
@@ -26,13 +28,13 @@
 
   &__images {
     display: flex;
-    padding: 3rem 0;
+    padding: 3rem 0 5rem;
   }
 
   &__preview {
     width: 10rem;
     height: 10rem;
-    margin: 2rem 3rem;
+    margin: 1rem 3rem;
 
     position: relative;
 
@@ -50,6 +52,7 @@
     &--delete {
       width: 2.5rem !important;
       height: 2.5rem !important;
+
       color: red;
       cursor: pointer;
 

@@ -21,7 +21,7 @@ function AdminSidebar() {
       <Link to='/admin/product/create'>
         <div className='sidebar__option sidebar__option--top'>
           <AddBox className='sidebar__icon' />
-          Product
+          Add Product
         </div>
       </Link>
       <Link to='/admin/products'>

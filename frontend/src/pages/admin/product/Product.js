@@ -89,18 +89,13 @@ function Product() {
         <AdminSidebar />
       </div>
       <div className='product__detail'>
-        <h3 className='dashboard__title--sub'>Add Product</h3>
+        {/* <h3 className='dashboard__title--main'>Add Product</h3> */}
         <div className='product__wrap'>
-          <div className='product__file'>
-            <h3 className='dashboard__title--sub'></h3>
-            <FileUpload
-              values={values}
-              setValues={setValues}
-              setLoading={setLoading}
-            />
-
-            {/* {JSON.stringify(values.images)} */}
-          </div>
+          <FileUpload
+            values={values}
+            setValues={setValues}
+            setLoading={setLoading}
+          />
 
           <ProductCreateForm
             handleSubmit={handleSubmit}

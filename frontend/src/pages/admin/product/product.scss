@@ -16,11 +16,14 @@
   }
 
   &__wrap {
-    width: 90%;
-    margin-top: 5rem;
+    width: 70%;
+    height: 100vh;
+    padding-top: 2rem;
+
     display: flex;
-    // @include center;
-    // background-color: white;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
   }
 
   &__file {
@@ -31,14 +34,13 @@
 
   &__container {
     width: 100%;
-    margin: 0 1rem;
-    background-color: pink;
-
+    // background-color: pink;
     font-size: 1.7rem;
+    padding-bottom: 10rem;
   }
 
   &__form {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
 
     @include center-column;
     align-items: start;
