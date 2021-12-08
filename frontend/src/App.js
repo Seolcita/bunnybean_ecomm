@@ -26,6 +26,7 @@ import CategoryUpdate from './pages/admin/category/CategoryUpdate';
 import SubCategory from './pages/admin/subcategory/SubCategory';
 import SubCategoryUpdate from './pages/admin/subcategory/SubCategoryUpdate';
 import Product from './pages/admin/product/Product';
+import ProductsList from './pages/admin/product/ProductsList';
 
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -88,6 +89,7 @@ const App = () => {
           component={SubCategoryUpdate}
         />
         <AdminRoute exact path='/admin/product/create' component={Product} />
+        <AdminRoute exact path='/admin/products' component={ProductsList} />
       </Switch>
     </>
   );
