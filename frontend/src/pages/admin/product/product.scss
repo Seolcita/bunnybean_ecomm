@@ -18,7 +18,8 @@
   &__wrap {
     width: 90%;
     margin-top: 5rem;
-    @include center;
+    display: flex;
+    // @include center;
     // background-color: white;
   }
 

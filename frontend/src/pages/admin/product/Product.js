@@ -15,10 +15,13 @@ import {
 // Components
 import AdminSidebar from '../../sidebar/AdminSidebar';
 import ProductCreateForm from '../../../components/forms/ProductCreateForm';
+import FileUpload from '../../../components/forms/FileUpload';
 
-// CSS
+// CSS & MUI Icons
 import './product.scss';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 
+// Set initial value for 'value' in useState
 const initialState = {
   title: '',
   description: '',
@@ -89,13 +92,14 @@ function Product() {
         <h3 className='dashboard__title--sub'>Add Product</h3>
         <div className='product__wrap'>
           <div className='product__file'>
-            <h3 className='dashboard__title--sub'>file</h3>
-            {/* <FileUpload
+            <h3 className='dashboard__title--sub'></h3>
+            <FileUpload
               values={values}
               setValues={setValues}
               setLoading={setLoading}
-            /> */}
-            {JSON.stringify(values.subs)}
+            />
+
+            {/* {JSON.stringify(values.images)} */}
           </div>
 
           <ProductCreateForm
