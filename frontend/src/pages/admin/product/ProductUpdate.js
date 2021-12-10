@@ -27,7 +27,7 @@ const initialState = {
   description: '',
   price: '',
   category: '',
-  subCategories: [],
+  subs: [],
   quantity: '',
   images: [],
   colors: ['Black', 'Brown', 'Silver', 'White', 'Blue'],
@@ -52,7 +52,7 @@ function ProductUpdate(props) {
     description,
     price,
     category,
-    subCategories,
+    subs,
     quantity,
     images,
     colors,
@@ -69,7 +69,7 @@ function ProductUpdate(props) {
   const loadSingleProduct = () => {
     getSingleProduct(slug)
       .then(res => {
-        // console.log('SINGLE PROD &&&', res.data.subs[0].name);
+        console.log('SINGLE PROD &&&', res.data.subs[0]._id);
         // Set product values
         setValues({ ...values, ...res.data });
 
@@ -78,7 +78,7 @@ function ProductUpdate(props) {
           .then(res => setSubOptions(res.data))
           .catch(err => console.log(err));
 
-        // Set sub-category name to display the name in select input
+        // Set sub-category id to display the name in select input
         setSubCategory(res.data.subs[0]._id);
       })
       .catch(err => console.log('Get Single Product Error: ***', err));
@@ -102,15 +102,20 @@ function ProductUpdate(props) {
     });
   };
 
+  const handleUpdateSubCategory = e => {
+    setValues({ ...values, subs: e.target.value });
+    setSubCategory(e.target.value);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     setLoading(true);
 
     console.log('subcategory', subCategory);
-    console.log('values.subCategories', values.subCategories);
+    console.log('values.subs', values.subs);
 
-    values.subCategories = subCategory ? subCategory : values.subCategories;
     values.category = category ? category : values.category;
+    values.subs = subCategory;
 
     updateProduct(slug, values, user.token)
       .then(res => {
@@ -153,7 +158,7 @@ function ProductUpdate(props) {
             values={values}
             categories={categories}
             subCategory={subCategory}
-            setSubCategory={setSubCategory}
+            handleUpdateSubCategory={handleUpdateSubCategory}
             handleCategoryChange={handleCategoryChange}
             subOptions={subOptions}
           />

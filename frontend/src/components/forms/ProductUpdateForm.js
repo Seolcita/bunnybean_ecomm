@@ -14,9 +14,8 @@ const ProductUpdateForm = props => {
     categories,
     subCategory,
     handleCategoryChange,
+    handleUpdateSubCategory,
     subOptions,
-    setSubCategory,
-    // showSub,
   } = props;
 
   const {
@@ -24,7 +23,7 @@ const ProductUpdateForm = props => {
     description,
     price,
     category,
-    subCategories,
+    subs,
     quantity,
     images,
     colors,
@@ -135,10 +134,9 @@ const ProductUpdateForm = props => {
         <select
           placeholder='Please select'
           name='subs'
-          // onChange={handleChange}
-          onChange={() => setSubCategory()}
+          onChange={handleUpdateSubCategory}
           className='product__select'
-          value={subCategory}
+          value={subCategory ? subCategory : subs}
         >
           <option>Please select</option>
           {subOptions.length &&
