@@ -12,6 +12,7 @@ const {
   listAll,
   remove,
   getOneProduct,
+  update,
 } = require('../controllers/product');
 
 // routes
@@ -20,5 +21,6 @@ router.get('/products/:count', listAll);
 // router.delete('/product/:slug', authCheck, adminCheck, remove);
 router.delete('/product/:slug', remove);
 router.get('/product/:slug', getOneProduct);
+router.put('/product/:slug', authCheck, adminCheck, update);
 
 module.exports = router;

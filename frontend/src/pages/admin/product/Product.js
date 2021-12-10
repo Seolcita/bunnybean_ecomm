@@ -19,7 +19,6 @@ import FileUpload from '../../../components/forms/FileUpload';
 
 // CSS & MUI Icons
 import './product.scss';
-import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 // Set initial value for 'value' in useState
 const initialState = {
@@ -72,12 +71,12 @@ function Product() {
     // console.log(e.target.name, " ----- ", e.target.value);
   };
 
-  const handleCatagoryChange = e => {
+  const handleCategoryChange = e => {
     e.preventDefault();
     //console.log('CLICKED CATEGORY', e.target.value);
     setValues({ ...values, subs: [], category: e.target.value });
     getSubsBelongToParent(e.target.value).then(res => {
-      //console.log('SUB OPTIONS ON CATGORY CLICK', res);
+      //console.log('SUB OPTIONS ON CATEGORY CLICK', res);
       setSubOptions(res.data);
     });
     setShowSub(true);
@@ -102,7 +101,7 @@ function Product() {
             handleChange={handleChange}
             setValues={setValues}
             values={values}
-            handleCatagoryChange={handleCatagoryChange}
+            handleCategoryChange={handleCategoryChange}
             subOptions={subOptions}
             showSub={showSub}
           />

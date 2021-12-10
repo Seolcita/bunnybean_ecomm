@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 
 // Connection - Functions
-import { getSingleProduct } from '../../../connections/product';
+import { getSingleProduct, updateProduct } from '../../../connections/product';
 import {
   getCategories,
   getSubsBelongToParent,
@@ -15,11 +15,12 @@ import {
 // Components
 import AdminSidebar from '../../sidebar/AdminSidebar';
 import ProductUpdateForm from '../../../components/forms/ProductUpdateForm';
-import ReplayIcon from '@mui/icons-material/Replay';
+import FileUpload from '../../../components/forms/FileUpload';
 
 // CSS & MUI Icons
 import './product.scss';
-import FileUploadIcon from '@mui/icons-material/FileUpload';
+import ReplayIcon from '@mui/icons-material/Replay';
+import { WindowRounded } from '@mui/icons-material';
 
 const initialState = {
   title: '',
@@ -35,15 +36,16 @@ const initialState = {
   brand: '',
 };
 
-function ProductUpdate() {
+function ProductUpdate(props) {
+  const { history } = props;
   let { slug } = useParams();
   const { user } = useSelector(state => ({ ...state }));
 
   const [values, setValues] = useState(initialState);
   const [categories, setCategories] = useState([]);
   const [subOptions, setSubOptions] = useState([]);
-  const [showSub, setShowSub] = useState(false);
   const [subCategory, setSubCategory] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const {
     title,
@@ -85,23 +87,43 @@ function ProductUpdate() {
   const loadCategories = () =>
     getCategories().then(res => setCategories(res.data));
 
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
-
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
     // console.log(e.target.name, " ----- ", e.target.value);
   };
 
-  const handleCatagoryChange = e => {
+  const handleCategoryChange = e => {
     e.preventDefault();
-    //console.log('CLICKED CATEGORY', e.target.value);
+
     setValues({ ...values, subs: [], category: e.target.value });
+
     getSubsBelongToParent(e.target.value).then(res => {
-      //console.log('SUB OPTIONS ON CATGORY CLICK', res);
       setSubOptions(res.data);
     });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setLoading(true);
+
+    console.log('subcategory', subCategory);
+    console.log('values.subCategories', values.subCategories);
+
+    values.subCategories = subCategory ? subCategory : values.subCategories;
+    values.category = category ? category : values.category;
+
+    updateProduct(slug, values, user.token)
+      .then(res => {
+        console.log('UPDATED PRODUCT DATA ***', res);
+        setLoading(false);
+
+        toast.success(`"${res.data.title}" is updated`);
+        history.push('/admin/products');
+      })
+      .catch(err => {
+        toast.error('Update product failed', err);
+        setLoading(false);
+      });
   };
 
   return (
@@ -117,8 +139,13 @@ function ProductUpdate() {
             onClick={() => loadSingleProduct()}
           />
         </h3>
-        {JSON.stringify(values)}
+        {/* {JSON.stringify(values)} */}
         <div className='product__wrap'>
+          <FileUpload
+            values={values}
+            setValues={setValues}
+            setLoading={setLoading}
+          />
           <ProductUpdateForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
@@ -127,7 +154,7 @@ function ProductUpdate() {
             categories={categories}
             subCategory={subCategory}
             setSubCategory={setSubCategory}
-            handleCatagoryChange={handleCatagoryChange}
+            handleCategoryChange={handleCategoryChange}
             subOptions={subOptions}
           />
         </div>

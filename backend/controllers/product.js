@@ -44,11 +44,33 @@ exports.remove = async (req, res) => {
 
 exports.getOneProduct = async (req, res) => {
   const slug = req.params.slug;
-  console.log('BACKEND - UPDATE : ', slug);
+  //console.log('BACKEND - UPDATE : ', slug);
   const oneProduct = await Product.findOne({ slug })
     .populate('category')
     .populate('subs')
     .exec();
-  console.log('BACKEND - UPDATE : ', oneProduct);
+  //console.log('BACKEND - UPDATE : ', oneProduct);
   return res.json(oneProduct);
+};
+
+exports.update = async (req, res) => {
+  const slug = req.params.slug;
+  console.log('Backend - Update Product - req.body', req.body);
+
+  try {
+    // When product name(title) changes, change the slug
+    if (req.body.title) {
+      req.body.slug = slugify(req.body.title);
+    }
+
+    const updated = await Product.findOneAndUpdate({ slug }, req.body, {
+      new: true,
+    });
+
+    console.log('BACKEND - UPDATED PRODUCT INFO >>>', updated);
+
+    res.json(updated);
+  } catch (err) {
+    console.log('Product Update Failed', err);
+  }
 };

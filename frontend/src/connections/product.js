@@ -30,3 +30,11 @@ export const removeProduct = async (slug, authtoken) => {
 
 export const getSingleProduct = async slug =>
   await axios.get(`${process.env.REACT_APP_API}/product/${slug}`);
+
+export const updateProduct = async (slug, product, authtoken) =>
+  //console.log('CONNECTION - UPDATE Product!!!!', slug, product, authtoken);
+  await axios.put(`${process.env.REACT_APP_API}/product/${slug}`, product, {
+    headers: {
+      authtoken,
+    },
+  });

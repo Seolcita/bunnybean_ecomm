@@ -13,7 +13,7 @@ const ProductUpdateForm = props => {
     values,
     categories,
     subCategory,
-    handleCatagoryChange,
+    handleCategoryChange,
     subOptions,
     setSubCategory,
     // showSub,
@@ -24,7 +24,7 @@ const ProductUpdateForm = props => {
     description,
     price,
     category,
-    subs,
+    subCategories,
     quantity,
     images,
     colors,
@@ -34,8 +34,7 @@ const ProductUpdateForm = props => {
   } = values;
 
   return (
-    // <form onSubmit={handleSubmit} className='product__container'>
-    <form className='product__container'>
+    <form onSubmit={handleSubmit} className='product__container'>
       <div className='product__form'>
         <label>Title</label>
         <input
@@ -119,7 +118,7 @@ const ProductUpdateForm = props => {
         <select
           name='category'
           className='product__select'
-          onChange={handleCatagoryChange}
+          onChange={handleCategoryChange}
           value={category._id}
         >
           {categories.length > 0 &&

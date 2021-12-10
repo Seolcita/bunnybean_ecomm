@@ -11,7 +11,7 @@ const ProductCreateForm = props => {
     handleChange,
     setValues,
     values,
-    handleCatagoryChange,
+    handleCategoryChange,
     subOptions,
     showSub,
   } = props;
@@ -115,7 +115,7 @@ const ProductCreateForm = props => {
         <select
           name='category'
           className='product__select'
-          onChange={handleCatagoryChange}
+          onChange={handleCategoryChange}
         >
           <option>Please select</option>
           {categories.length > 0 &&
