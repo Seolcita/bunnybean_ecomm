@@ -72,5 +72,31 @@
     width: 100%;
     padding: 1.3rem 2rem;
     border-radius: 0.5rem;
+
+    &:hover {
+      background-color: $color-grey-medium;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__icon {
+    width: 2.7rem !important;
+    height: 2.7rem !important;
+    background-color: $color-white;
+    border-radius: 50%;
+    padding: 0.3rem;
+    margin-left: 5rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-grey-light;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 }

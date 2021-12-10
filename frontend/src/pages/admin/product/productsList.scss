@@ -50,7 +50,14 @@
   }
 
   &__idx {
+    margin-right: 2rem;
+  }
+
+  &__img {
+    width: 10rem;
+    height: 5rem;
     margin-right: 3rem;
+    padding: 0.5rem;
   }
 
   &__name {

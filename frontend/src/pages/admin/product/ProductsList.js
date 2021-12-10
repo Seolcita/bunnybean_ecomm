@@ -3,23 +3,30 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 // Connections - Functions
-import { getProductsByCount } from '../../../connections/product';
+import {
+  getProductsByCount,
+  removeProduct,
+} from '../../../connections/product';
 
 // Components
 import AdminSidebar from '../../sidebar/AdminSidebar';
 import LocalSearch from '../../../components/forms/LocalSearch';
 
-// CSS & MUI Icons
+// CSS & MUI Icons & Images
 import './productsList.scss';
 import {
   DeleteForever,
   ModeEditOutline,
   TonalitySharp,
 } from '@mui/icons-material';
+import ProductDefaultImage from '../../../images/productDefault.png';
 
 function ProductsList() {
+  const { user } = useSelector(state => ({ ...state }));
+
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [total, setTotal] = useState(0);
@@ -44,6 +51,25 @@ function ProductsList() {
       });
   };
 
+  const deleteProduct = (slug, title) => {
+    const answer = window.confirm(
+      `Do you really want to delete product, '${title}'?`
+    );
+
+    if (answer) {
+      //console.log('Delete?', slug, user.token);
+      removeProduct(slug, user.token)
+        .then(res => {
+          loadAllProducts();
+          toast.success(`${title} is deleted`);
+        })
+        .catch(err => {
+          console.log('Delete Product Error', err);
+          toast.error('Delete Product Error');
+        });
+    }
+  };
+
   const searched = keyword => product =>
     product.title.toLowerCase().includes(keyword);
 
@@ -61,18 +87,26 @@ function ProductsList() {
             {products.filter(searched(keyword)).map((prod, idx) => (
               <div className='productsList__list' key={prod._id}>
                 <span className='productsList__idx'>{idx + 1}.</span>
+                <img
+                  src={
+                    prod?.images.length
+                      ? prod.images[0].url
+                      : ProductDefaultImage
+                  }
+                  className='productsList__img'
+                />
                 <small className='productsList__name'>{prod.title}</small>
-                {/* <small className='productsList__name'>
-                  {prod.category.name}
-                </small> */}
-                <Link to={`/admin/productsList/${prod.slug}`}>
+                {/* <span className='productsList__name'>
+                  {prod?.category ? prod.category.name : null}
+                </span> */}
+                <Link to={`/admin/product/${prod.slug}`}>
                   <button className='productsList__btn'>
                     <ModeEditOutline className='productsList__btn--edit' />
                   </button>
                 </Link>
                 <button
                   className='productsList__btn'
-                  // onClick={() => deleteProduct(prod.slug, prod.name)}
+                  onClick={() => deleteProduct(prod.slug, prod.title)}
                 >
                   <DeleteForever className='productsList__btn--delete' />
                 </button>
