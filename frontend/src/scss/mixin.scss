@@ -20,6 +20,12 @@
   align-items: center;
 }
 
+@mixin space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 // User Pages
 @mixin sidebar {
   width: 16vw;

@@ -74,3 +74,22 @@ exports.update = async (req, res) => {
     console.log('Product Update Failed', err);
   }
 };
+
+exports.listBySortOrderLimit = async (req, res) => {
+  // sort: createdAt/updatedAt
+  // order: desc/asc
+  // limit: ex) 3
+  try {
+    const { sort, order, limit } = req.body;
+    const products = await Product.find({})
+      .populate('category')
+      .populate('subs')
+      .sort([[sort, order]])
+      .limit(limit)
+      .exec();
+
+    res.json(products);
+  } catch (err) {
+    console.log(err);
+  }
+};

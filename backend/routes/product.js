@@ -13,6 +13,7 @@ const {
   remove,
   getOneProduct,
   update,
+  listBySortOrderLimit,
 } = require('../controllers/product');
 
 // routes
@@ -22,5 +23,6 @@ router.get('/products/:count', listAll);
 router.delete('/product/:slug', remove);
 router.get('/product/:slug', getOneProduct);
 router.put('/product/:slug', authCheck, adminCheck, update);
+router.post('/products', listBySortOrderLimit);
 
 module.exports = router;
