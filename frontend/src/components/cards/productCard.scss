@@ -1,0 +1,73 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.productCard {
+  width: 100%;
+  height: 90vh;
+
+  @include center;
+  align-items: start;
+
+  &__left {
+    // background-color: pink;
+    width: 60%;
+
+    @include center;
+
+    // display: flex;
+    // flex: 1;
+  }
+
+  &__carousel {
+    // width: 80%;
+    padding-right: 10%;
+  }
+
+  &__right {
+    // background-color: skyblue;
+    width: 40%;
+    height: 100%;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    // justify-content: start;
+    // align-items: start;
+  }
+
+  &__btns {
+    width: 100%;
+    margin: 3rem 0;
+  }
+
+  &__btn {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+
+    @include center;
+
+    &.cart {
+      background-color: $color-grey-medium;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  // MUI Icon override
+  &__icon {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-right: 1rem;
+
+    &.self {
+      margin-bottom: -0.5rem;
+    }
+  }
+}

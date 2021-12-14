@@ -2,12 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+// import { Pagination } from 'antd';
 
 // Connections - Functions
-import { getProductsBySortOrderLimit } from '../../connections/product';
+import {
+  getProductsBySortOrderLimit,
+  getProductsCount,
+} from '../../connections/product';
 
 // Components
-import Card from '../../components/Card.js';
+import Card from '../cards/Card.js';
 
 // CSS
 import '../../pages/home.scss';
@@ -15,6 +19,8 @@ import '../../pages/home.scss';
 const NewProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [productsCount, setProductsCount] = useState(0);
 
   const count = 100;
   const sort = 'createdAt';
@@ -23,6 +29,10 @@ const NewProducts = () => {
 
   useEffect(() => {
     loadAllProducts();
+  }, [page]);
+
+  useEffect(() => {
+    getProductsCount().then(res => setProductsCount(res.data));
   }, []);
 
   const loadAllProducts = () => {
@@ -43,6 +53,12 @@ const NewProducts = () => {
       {products.map(prod => (
         <Card product={prod} />
       ))}
+      {/* <Pagination
+        defaultCurrent={page}
+        total={(productsCount / 3) * 10}
+        onChange={value => setPage(value)}
+        className='home__pagination'
+      /> */}
     </>
   );
 };

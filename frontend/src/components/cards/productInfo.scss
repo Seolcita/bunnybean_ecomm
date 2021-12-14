@@ -1,0 +1,23 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.productInfo {
+  &__detail {
+    margin: 3rem 1rem;
+  }
+  &__list {
+    padding: 0.5rem;
+    border-bottom: 1px solid grey;
+
+    @include space-between;
+
+    &:hover {
+      background-color: $color-grey-medium;
+    }
+  }
+
+  &__title {
+  }
+}

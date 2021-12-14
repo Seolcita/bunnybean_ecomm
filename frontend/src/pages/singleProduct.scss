@@ -1,0 +1,22 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.singleProduct {
+  width: 100%;
+  // background-color: yellow;
+
+  &__container {
+    width: 100%;
+    padding: 5rem;
+  }
+
+  &__main {
+    // background-color: orange;
+  }
+
+  &__sub {
+    background-color: red;
+  }
+}

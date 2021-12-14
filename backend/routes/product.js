@@ -14,10 +14,12 @@ const {
   getOneProduct,
   update,
   listBySortOrderLimit,
+  productsCount,
 } = require('../controllers/product');
 
 // routes
 router.post('/product', authCheck, adminCheck, create);
+router.get('/products/total', productsCount);
 router.get('/products/:count', listAll);
 // router.delete('/product/:slug', authCheck, adminCheck, remove);
 router.delete('/product/:slug', remove);

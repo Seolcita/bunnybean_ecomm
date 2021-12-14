@@ -75,6 +75,7 @@ exports.update = async (req, res) => {
   }
 };
 
+/* WITHOUT PAGENATION 
 exports.listBySortOrderLimit = async (req, res) => {
   // sort: createdAt/updatedAt
   // order: desc/asc
@@ -92,4 +93,35 @@ exports.listBySortOrderLimit = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+};
+*/
+
+// WITH PAGENATION
+exports.listBySortOrderLimit = async (req, res) => {
+  console.table(req.body);
+  // sort: createdAt/updatedAt
+  // order: desc/asc
+  // limit: ex) 3
+  try {
+    const { sort, order, page } = req.body;
+    const currentPage = page || 1;
+    const perPage = 3;
+
+    const products = await Product.find({})
+      .skip((currentPage - 1) * perPage)
+      .populate('category')
+      .populate('subs')
+      .sort([[sort, order]])
+      .limit(perPage)
+      .exec();
+
+    res.json(products);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.productsCount = async (req, res) => {
+  let total = await Product.find({}).estimatedDocumentCount().exec();
+  res.json(total);
 };

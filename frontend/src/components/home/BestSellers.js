@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { getProductsBySortOrderLimit } from '../../connections/product';
 
 // Components
-import Card from '../../components/Card.js';
+import Card from '../cards/Card.js';
 
 // CSS
 import '../../pages/home.scss';

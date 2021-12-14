@@ -14,7 +14,7 @@ export const createProduct = async (product, authtoken) =>
 export const getProductsByCount = async count =>
   await axios.get(`${process.env.REACT_APP_API}/products/${count}`);
 
-// Get products by sort, order and limit
+// Get products by sort, order and limit (without pagination)
 // The reason why I use 'post' not 'get' is using 'post' is easy to add header in req.body
 export const getProductsBySortOrderLimit = async (sort, order, limit) =>
   await axios.post(`${process.env.REACT_APP_API}/products`, {
@@ -22,6 +22,14 @@ export const getProductsBySortOrderLimit = async (sort, order, limit) =>
     order,
     limit,
   });
+
+// Get products by sort, order and limit (with Pagination)
+// export const getProductsBySortOrderLimit = async (sort, order, page) =>
+//   await axios.post(`${process.env.REACT_APP_API}/products`, {
+//     sort,
+//     order,
+//     page,
+//   });
 
 // Delete a product
 export const removeProduct = async (slug, authtoken) => {
@@ -47,3 +55,6 @@ export const updateProduct = async (slug, product, authtoken) =>
       authtoken,
     },
   });
+
+export const getProductsCount = async () =>
+  await axios.get(`${process.env.REACT_APP_API}/products/total`);

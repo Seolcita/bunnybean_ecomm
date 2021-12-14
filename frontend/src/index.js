@@ -14,6 +14,7 @@ import rootReducer from './reducers';
 
 // CSS
 import './scss/base.scss';
+import 'antd/dist/antd.css';
 
 // For Redux
 const store = createStore(rootReducer, composeWithDevTools());
