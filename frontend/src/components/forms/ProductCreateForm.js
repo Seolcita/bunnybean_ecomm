@@ -30,6 +30,9 @@ const ProductCreateForm = props => {
     brands,
     color,
     brand,
+    width,
+    height,
+    depth,
   } = values;
 
   return (
@@ -74,6 +77,36 @@ const ProductCreateForm = props => {
           name='quantity'
           className='product__input'
           value={quantity}
+          onChange={handleChange}
+        />
+      </div>
+      <div className='product__form'>
+        <label>Width</label>
+        <input
+          type='number'
+          name='width'
+          className='product__input'
+          value={width}
+          onChange={handleChange}
+        />
+      </div>
+      <div className='product__form'>
+        <label>Height</label>
+        <input
+          type='number'
+          name='height'
+          className='product__input'
+          value={height}
+          onChange={handleChange}
+        />
+      </div>
+      <div className='product__form'>
+        <label>Depth</label>
+        <input
+          type='number'
+          name='depth'
+          className='product__input'
+          value={depth}
           onChange={handleChange}
         />
       </div>
@@ -147,6 +180,7 @@ const ProductCreateForm = props => {
         </div>
       )}
       <br />
+
       <button className='product__btn'>Save</button>
     </form>
   );

@@ -30,10 +30,23 @@ const initialState = {
   subCategories: [],
   quantity: '',
   images: [],
-  colors: ['Black', 'Brown', 'Silver', 'White', 'Blue'],
-  brands: ['Apple', 'Samsung', 'Microsoft', 'Lenovo', 'ASUS'],
+  colors: ['White', 'Grey', 'Silver', 'Black'],
+  brands: [
+    'Apple',
+    'Samsung',
+    'Microsoft',
+    'Lenovo',
+    'ASUS',
+    'GE',
+    'LG',
+    'Nikon',
+    'Canon',
+  ],
   color: '',
   brand: '',
+  width: '',
+  height: '',
+  depth: '',
 };
 
 function Product() {

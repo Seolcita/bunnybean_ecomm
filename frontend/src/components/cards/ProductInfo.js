@@ -8,7 +8,7 @@ import './productInfo.scss';
 
 function ProductInfo(props) {
   const { product, child, show, setShow } = props;
-  const { price, description, category, subs, color, brand, quantity, sold } =
+  const { category, subs, color, brand, quantity, sold, width, height, depth } =
     product;
 
   const display = show ? 'block' : 'none';
@@ -47,6 +47,15 @@ function ProductInfo(props) {
           <div className='productInfo__title'>Color</div>
           {color && <div className='productInfo__info'>{color}</div>}
         </div>
+        <div className='productInfo__list'>
+          <div className='productInfo__title'>Dimensions(W x H x D)</div>
+          {width && height && depth && (
+            <div className='productInfo__info'>
+              {width}″ x {height}″ x {depth}″
+            </div>
+          )}
+        </div>
+
         <div className='productInfo__list'>
           <div className='productInfo__title'>Quantity</div>
           {quantity && <div className='productInfo__info'>{quantity}</div>}

@@ -40,6 +40,18 @@ const productSchema = new mongoose.Schema(
         ref: 'SubCategory',
       },
     ],
+    width: {
+      type: Number,
+      default: 0,
+    },
+    height: {
+      type: Number,
+      default: 0,
+    },
+    depth: {
+      type: Number,
+      default: 0,
+    },
     quantity: Number,
     sold: {
       type: Number,
@@ -50,11 +62,21 @@ const productSchema = new mongoose.Schema(
     },
     color: {
       type: String,
-      enum: ['Black', 'Brown', 'Silver', 'White', 'Blue'],
+      enum: ['White', 'Grey', 'Silver', 'Black'],
     },
     brand: {
       type: String,
-      enum: ['Apple', 'Samsung', 'Microsoft', 'Lenovo', 'ASUS'],
+      enum: [
+        'Apple',
+        'Samsung',
+        'Microsoft',
+        'Lenovo',
+        'ASUS',
+        'LG',
+        'GE',
+        'Nikon',
+        'Canon',
+      ],
     },
     // ratings: [
     //   {
