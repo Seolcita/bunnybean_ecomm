@@ -6,10 +6,13 @@
 .singleProduct {
   width: 100%;
   // background-color: yellow;
+  @include center;
 
   &__container {
-    width: 100%;
+    width: 75%;
     padding: 5rem;
+    // background-color: yellow;
+    @include center-column;
   }
 
   &__main {
@@ -17,6 +20,8 @@
   }
 
   &__sub {
+    width: 100%;
     background-color: red;
+    // margin: 6rem 0;
   }
 }

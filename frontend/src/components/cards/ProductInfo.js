@@ -11,56 +11,50 @@ function ProductInfo(props) {
   const { price, description, category, subs, color, brand, quantity, sold } =
     product;
 
-  const display = show ? 'none' : 'block';
+  const display = show ? 'block' : 'none';
 
   return (
     <div className='productInfo' style={{ display: `${display}` }}>
       {/* {JSON.stringify(product)} */}
 
       <div className='productInfo__detail'>
-        {category && (
-          <div className='productInfo__list'>
-            <div className='productInfo__title'>Category</div>
+        <div className='productInfo__list'>
+          <div className='productInfo__title'>Category</div>
+          {category && (
             <Link
               to={`/category/${category.slug}`}
               className='productInfo__info'
             >
               {category.name}
             </Link>
-          </div>
-        )}
-        {subs && (
-          <div className='productInfo__list'>
-            <div className='productInfo__title'>Sub Category</div>
-            <div className='productInfo__info'>
+          )}
+        </div>
+
+        <div className='productInfo__list'>
+          <div className='productInfo__title'>Sub Category</div>
+          <div className='productInfo__info'>
+            {subs && (
               <Link to={`/subcategory/${subs.slug}`}>{subs[0].name}</Link>
-            </div>
+            )}
           </div>
-        )}
-        {brand && (
-          <div className='productInfo__list'>
-            <div className='productInfo__title'>Brand</div>
-            <div className='productInfo__info'>{brand}</div>
-          </div>
-        )}
-        {color && (
-          <div className='productInfo__list'>
-            <div className='productInfo__title'>Color</div>
-            <div className='productInfo__info'>{color}</div>
-          </div>
-        )}
-        {quantity && (
-          <div className='productInfo__list'>
-            <div className='productInfo__title'>Quantity</div>
-            <div className='productInfo__info'>{quantity}</div>
-          </div>
-        )}
-        {sold && (
-          <div className='productInfo__list'>
-            <div className='productInfo__title'>Sold</div>
-            <div className='productInfo__info'>{sold}</div>
-          </div>
-        )}
+        </div>
+
+        <div className='productInfo__list'>
+          <div className='productInfo__title'>Brand</div>
+          {brand && <div className='productInfo__info'>{brand}</div>}
+        </div>
+        <div className='productInfo__list'>
+          <div className='productInfo__title'>Color</div>
+          {color && <div className='productInfo__info'>{color}</div>}
+        </div>
+        <div className='productInfo__list'>
+          <div className='productInfo__title'>Quantity</div>
+          {quantity && <div className='productInfo__info'>{quantity}</div>}
+        </div>
+        <div className='productInfo__list'>
+          <div className='productInfo__title'>Sold</div>
+          {sold && <div className='productInfo__info'>{sold}</div>}
+        </div>
       </div>
     </div>
   );

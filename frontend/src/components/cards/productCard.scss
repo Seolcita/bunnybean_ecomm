@@ -29,12 +29,25 @@
     // background-color: skyblue;
     width: 40%;
     height: 100%;
-    padding: 2rem;
 
     display: flex;
     flex-direction: column;
-    // justify-content: start;
-    // align-items: start;
+
+    h3 {
+      margin-top: 2rem;
+    }
+
+    p {
+      font-size: 1.7rem;
+      margin-top: 3rem;
+    }
+  }
+
+  &__show {
+    small {
+      color: red;
+      font-size: 2rem;
+    }
   }
 
   &__btns {
