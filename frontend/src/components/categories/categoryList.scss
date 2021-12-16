@@ -1,0 +1,120 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100rem;
+  margin: 5rem 0;
+
+  &__section {
+    padding: 0.5rem;
+    height: 25rem;
+    margin-bottom: 2rem;
+    position: relative;
+
+    &--category {
+      margin: 1rem;
+    }
+  }
+
+  &__header {
+    width: 32rem;
+    height: 20rem;
+    // background-color: pink;
+    cursor: pointer;
+
+    &--category {
+      width: 23rem;
+      height: 22rem;
+      background-color: white;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    top: 12%;
+    left: 7%;
+    width: 86%;
+    height: 76%;
+    background-color: rgba(255, 255, 255, 0.742);
+
+    @include center-column;
+
+    h1 {
+      line-height: 2.5rem;
+      font-size: 3rem;
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  &__footer {
+    width: 32rem;
+    height: 5rem;
+    background-color: skyblue;
+  }
+
+  &__item {
+    background-color: goldenrod;
+    width: 32rem;
+    height: 24rem;
+    background-size: cover;
+
+    position: relative;
+
+    &.allproducts {
+      background-image: url('../../images/allproducts.png');
+    }
+
+    &.newArrivals {
+      background-image: url('../../images/newArrivals.png');
+    }
+
+    &.bestSellers {
+      background-image: url('../../images/bestsellers.png');
+    }
+
+    &.tv {
+      background-image: url('../../images/tv.png');
+      background-position: center;
+    }
+
+    &.camera {
+      background-image: url('../../images/camera.png');
+    }
+
+    &.computer {
+      background-image: url('../../images/computer.png');
+    }
+
+    &.appliance {
+      background-image: url('../../images/appliance.png');
+    }
+
+    &.tv,
+    &.computer,
+    &.appliance {
+      width: 100%;
+      height: 18rem;
+      background-size: cover;
+      background-position: center;
+      background-color: white;
+    }
+
+    &.camera {
+      width: 100%;
+      height: 18rem;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: white;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 2rem;
+  }
+}

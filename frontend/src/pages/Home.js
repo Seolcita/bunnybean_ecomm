@@ -1,11 +1,12 @@
 /** @format */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
 // Components
 import NewProducts from '../components/home/NewProducts';
 import BestSellers from '../components/home/BestSellers';
+import CategoryList from '../components/categories/CategoryList';
 
 // CSS & Images
 import './home.scss';
@@ -41,14 +42,19 @@ const Home = () => {
             </Carousel>
           </div>
         </div>
-        <div className='home__newProduct'>
+        {/* <div className='home__newProduct'>
           <h1>New Products</h1>
         </div>
         <NewProducts />
         <div className='home__newProduct'>
           <h1>Most Popular Products</h1>
         </div>
-        <BestSellers />
+        <BestSellers /> 
+        <div className='home__newProduct'>
+          <h1>Categories</h1>
+        </div>
+        */}
+        <CategoryList />
       </div>
     </div>
   );
