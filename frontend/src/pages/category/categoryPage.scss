@@ -1,0 +1,22 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.categoryPage {
+  background-color: $color-grey-light;
+  @include center-column;
+
+  &__title {
+    margin: 3rem 0 2rem;
+    padding: 3rem 0;
+    font-size: 4rem;
+  }
+
+  &__container {
+    @include center;
+    justify-content: start;
+    flex-wrap: wrap;
+    max-width: 100rem;
+  }
+}

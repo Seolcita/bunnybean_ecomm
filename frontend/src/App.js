@@ -29,6 +29,9 @@ import Product from './pages/admin/product/Product';
 import ProductsList from './pages/admin/product/ProductsList';
 import ProductUpdate from './pages/admin/product/ProductUpdate';
 import SingleProduct from './pages/SingleProduct';
+import NewArrivals from './pages/category/NewArrivals';
+import BestSellers from './pages/category/BestSellers';
+import CategoryProducts from './pages/category/CategoryProducts';
 
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -74,6 +77,9 @@ const App = () => {
         <Route exact path='/register' component={Register} />
         <Route exact path='/register/complete' component={RegisterComplete} />
         <Route exact path='/forgot/password' component={ForgotPassword} />
+        <Route exact path='/category/newarrivals' component={NewArrivals} />
+        <Route exact path='/category/bestsellers' component={BestSellers} />
+        <Route exact path='/category/:slug' component={CategoryProducts} />
         <Route exact path='/product/:slug' component={SingleProduct} />
         <UserRoute exact path='/user/history' component={OrderHistory} />
         <UserRoute exact path='/user/account' component={Account} />

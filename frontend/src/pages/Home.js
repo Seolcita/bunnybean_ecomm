@@ -4,8 +4,8 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
 // Components
-import NewProducts from '../components/home/NewProducts';
-import BestSellers from '../components/home/BestSellers';
+// import NewProducts from '../components/home/NewProducts';
+// import BestSellers from '../components/home/BestSellers';
 import CategoryList from '../components/categories/CategoryList';
 
 // CSS & Images
@@ -27,7 +27,6 @@ const Home = () => {
               infiniteLoop
               stopOnHover
               width={1000}
-              // transitionTime={5}
               showThumbs={false}
             >
               <div>

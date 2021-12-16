@@ -7,7 +7,8 @@
   background-color: $color-white;
   width: 32rem;
   height: 33rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  margin-right: 1rem;
   overflow: hidden;
   z-index: 3;
 
@@ -63,7 +64,7 @@
 
   &__body {
     width: 100%;
-    padding: 2rem 1.5rem;
+    padding: 2rem 2rem;
     // background-color: skyblue;
     // z-index: 3;
     display: flex;

@@ -62,7 +62,7 @@ const CategoryList = () => {
       </div>
 
       {categories?.map(category => (
-        <div className='categoryList__section--category'>
+        <div className='categoryList__section--category' key={category._id}>
           <div className='categoryList__header--category'>
             <Link to={`/category/${category.slug}`}>
               <div className={`categoryList__item ${category.slug}`}></div>

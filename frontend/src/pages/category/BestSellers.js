@@ -7,10 +7,10 @@ import { toast } from 'react-toastify';
 import { getProductsBySortOrderLimit } from '../../connections/product';
 
 // Components
-import Card from '../cards/Card.js';
+import Card from '../../components/cards/Card.js';
 
 // CSS
-import '../../pages/home.scss';
+import '../../pages/category/categoryPage.scss';
 
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
@@ -19,7 +19,7 @@ const BestSellers = () => {
   const count = 100;
   const sort = 'createdAt';
   const order = 'desc';
-  const limit = 3;
+  const limit = 12;
   const sold = 'sold';
 
   useEffect(() => {
@@ -40,11 +40,14 @@ const BestSellers = () => {
   };
 
   return (
-    <>
-      {products.map(prod => (
-        <Card product={prod} />
-      ))}
-    </>
+    <div className='categoryPage'>
+      <h1 className='categoryPage__title'>Top Selling Products</h1>
+      <div className='categoryPage__container'>
+        {products.map(prod => (
+          <Card product={prod} />
+        ))}
+      </div>
+    </div>
   );
 };
 
