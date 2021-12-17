@@ -4,7 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Connections - Functions
-import { getProductsByCount } from '../connections/product';
+import {
+  getProductsByCount,
+  fetchProductsByFilter,
+} from '../connections/product';
 
 // Components
 import Card from '../components/cards/Card';
@@ -13,6 +16,9 @@ import Card from '../components/cards/Card';
 import './shop.scss';
 
 function Shop() {
+  let { search } = useSelector(state => ({ ...state }));
+  const { text } = search;
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState([]);
 
@@ -20,6 +26,12 @@ function Shop() {
     loadAllProducts();
   }, []);
 
+  // Search/Filter the product with argument
+  const fetchProducts = arg => {
+    fetchProductsByFilter(arg).then(res => setProducts(res.data));
+  };
+
+  // 1. Load all products by default
   const loadAllProducts = () => {
     setLoading(true);
     getProductsByCount(100)
@@ -29,6 +41,17 @@ function Shop() {
       })
       .catch(err => console.log(err));
   };
+
+  // 2. Search by >> Keyword
+  useEffect(() => {
+    const delayed = setTimeout(() => {
+      fetchProducts({ query: text });
+      if (!text) {
+        loadAllProducts();
+      }
+    }, 300);
+    return () => clearTimeout(delayed);
+  }, [text]);
 
   return (
     <div className='shop'>
