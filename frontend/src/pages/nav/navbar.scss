@@ -8,30 +8,61 @@
   width: 100%;
   height: auto;
   color: white;
-  padding: 1rem 0 0.5rem;
+  // padding: 1rem 0 0.5rem;
 
-  display: flex;
-  align-items: center;
+  @include center;
 
   &__nav {
-    width: 100%;
-    padding: 0 5rem;
+    width: 70%;
+    padding: 0 1rem;
+    // background-color: red;
 
     @include space-between;
   }
 
+  &__section {
+    &.left {
+      // background-color: aqua;
+      margin-right: 3rem;
+      // width: 25%;
+
+      flex: 0 0 25%;
+      // min-width: 30rem;
+
+      @include center;
+      justify-content: start;
+    }
+
+    &.middle {
+      flex: 1 0 55%;
+      color: black;
+      // background-color: orange;
+    }
+
+    &.right {
+      // background-color: pink;
+      flex: 0 0 20%;
+      // min-width: 30rem;
+    }
+  }
+
   &__ul {
     @include center;
+    margin: 0;
+    padding: 0;
+    height: 7rem;
   }
 
   &__logo {
     @include center;
+    flex: 0 0 12rem;
+    // background-color: red;
 
     &--img {
       width: 3.5rem;
       height: 3.5rem;
       object-fit: cover;
-      margin-right: 2rem;
+      margin-right: 0.5rem;
       border: 3px solid white;
       border-radius: 50rem;
     }
@@ -39,19 +70,40 @@
     &--title {
       font-size: 2rem;
       color: $color-white;
+      margin-bottom: 0;
+    }
+  }
+
+  &__shop {
+    margin: 0 1rem 0 4rem;
+    color: white;
+    font-size: 2rem;
+
+    @include center;
+
+    &--icon {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      margin-right: 0.3rem;
+    }
+
+    &:hover {
+      color: orange;
     }
   }
 
   &__logout {
     font-size: 1.6rem;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
+    margin-top: -0.3rem;
     cursor: pointer;
 
     @include center-column;
 
     small {
       margin-left: 0.5rem;
-      margin-top: 0.3rem;
+      margin-top: 0.6rem;
+      font-size: 1.2rem;
     }
 
     &:hover {
@@ -60,8 +112,14 @@
   }
 
   &__icon {
-    margin: 0.3rem 0 0 0;
+    margin: 0.3rem 0 -0.3rem 0;
     width: 2.5rem !important;
     height: 2.5rem !important;
+
+    &.logout {
+      width: 2.3rem !important;
+      height: 2.3rem !important;
+      margin-bottom: -0.3rem;
+    }
   }
 }

@@ -23,15 +23,17 @@
     @include center-column;
 
     &--title {
-      padding-left: 0.8rem;
-      padding-right: 0.4rem;
+      padding-left: 0.4rem;
+      padding-right: 0.2rem;
+      margin-top: -0.3rem;
+      font-size: 1.2rem;
     }
   }
 
   &__count {
     position: absolute;
     top: 1rem;
-    right: 0;
+    right: -0.5rem;
     background-color: $color-orange;
     width: 1.7rem;
     height: 1.7rem;

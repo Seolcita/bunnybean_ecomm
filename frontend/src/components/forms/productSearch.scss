@@ -1,0 +1,38 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.productSearch {
+  width: 100%;
+
+  &__form {
+    width: 100%;
+
+    @include center;
+  }
+
+  &__wrap {
+    width: 75%;
+    position: relative;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem 2rem;
+    border-radius: 50rem;
+  }
+
+  &__btn {
+    @include center;
+    padding: 0.7rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.3rem;
+
+    &--icon {
+      color: black !important;
+    }
+  }
+}

@@ -19,7 +19,7 @@ function NavItem(props) {
           <span className='navItem__btn--title'>
             {username ? username : title}
           </span>
-          {title === 'cart' && <span className='navItem__count'>3</span>}
+          {title === 'Cart' && <span className='navItem__count'>3</span>}
         </Link>
         {open ? children : null}
       </li>

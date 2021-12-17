@@ -15,6 +15,7 @@ const {
   update,
   listBySortOrderLimit,
   productsCount,
+  searchFilters,
 } = require('../controllers/product');
 
 // routes
@@ -26,5 +27,8 @@ router.delete('/product/:slug', remove);
 router.get('/product/:slug', getOneProduct);
 router.put('/product/:slug', authCheck, adminCheck, update);
 router.post('/products', listBySortOrderLimit);
+
+// Search
+router.post('/search/filters', searchFilters);
 
 module.exports = router;
