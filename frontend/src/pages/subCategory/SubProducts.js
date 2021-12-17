@@ -6,19 +6,19 @@ import React, { useState, useEffect } from 'react';
 import Card from '../../components/cards/Card';
 
 // Connections - Functions
-import { getCategory } from '../../connections/category';
+import { getSubCategory } from '../../connections/subCategory';
 
-function CategoryProducts(props) {
+function SubProducts(props) {
   const { slug } = props.match.params;
-  const [category, setCategory] = useState({});
+  const [subCategory, setSubCategory] = useState({});
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    getCategory(slug).then(res => {
+    getSubCategory(slug).then(res => {
       //console.log(res.data);
-      setCategory(res.data.category);
+      setSubCategory(res.data.subCategory);
       setProducts(res.data.products);
       setLoading(false);
     });
@@ -27,7 +27,7 @@ function CategoryProducts(props) {
   return (
     <div className='categoryPage'>
       <h1 className='categoryPage__title'>
-        {products.length} Products in "{category.name}" Category
+        {products.length} Products in "{subCategory.name}" Sub-Category
       </h1>
       <div className='categoryPage__container'>
         {products.map(prod => (
@@ -38,4 +38,4 @@ function CategoryProducts(props) {
   );
 }
 
-export default CategoryProducts;
+export default SubProducts;
