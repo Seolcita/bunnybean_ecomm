@@ -9,7 +9,7 @@ import './card.scss';
 function Card(props) {
   const { _id, images, title, price, slug } = props.product;
 
-  console.log('IMAGE', images);
+  //console.log('IMAGE', images);
   return (
     <div className='card' key={_id}>
       <div className='card__header'>

@@ -69,6 +69,24 @@
     &--checkbox {
       margin: 0.2rem 0 !important;
     }
+
+    &--subCategory {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0.32rem;
+      padding: 1.2rem;
+      background-color: rgb(213, 213, 213);
+      border-radius: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
   }
 }
 

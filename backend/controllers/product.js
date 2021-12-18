@@ -171,10 +171,30 @@ const handleCategory = async (req, res, category) => {
   }
 };
 
+// Search By >> Sub-Category
+const handleSub = async (req, res, sub) => {
+  const products = await Product.find({ subs: sub })
+    .populate('category', '_id name')
+    .populate('subs', '_id name')
+    .exec();
+
+  res.json(products);
+};
+
+// Search By >> Brand
+const handleBrand = async (req, res, brand) => {
+  const products = await Product.find({ brand })
+    .populate('category', '_id name')
+    .populate('subs', '_id name')
+    .exec();
+
+  res.json(products);
+};
+
 // *** End - HELPER FUNCTIONS ***
 
 exports.searchFilters = async (req, res) => {
-  const { query, price, category } = req.body;
+  const { query, price, category, sub, brand } = req.body;
 
   // Keyword
   if (query) {
@@ -191,7 +211,19 @@ exports.searchFilters = async (req, res) => {
 
   // Category
   if (category) {
-    console.log('Category =====> ', category);
+    console.log('CATEGORY =====> ', category);
     await handleCategory(req, res, category);
+  }
+
+  // Sub-Category
+  if (sub) {
+    console.log('SUB-CATEGORY =====> ', sub);
+    await handleSub(req, res, sub);
+  }
+
+  // Brand
+  if (brand) {
+    console.log('Brand =====> ', brand);
+    await handleBrand(req, res, brand);
   }
 };
