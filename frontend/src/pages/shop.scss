@@ -4,6 +4,8 @@
 @import 'mixin.scss';
 
 .shop {
+  color: black;
+
   &__container {
     @include center;
     align-items: start;
@@ -11,15 +13,72 @@
 
   &__left {
     width: 20%;
-    background-color: pink;
+    padding: 0 2rem;
+    // background-color: pink;
   }
 
   &__right {
+    // background-color: skyblue;
+
     display: flex;
     flex: 1 1 60%;
-    flex-wrap: wrap;
-    max-width: 100rem;
-
-    background-color: skyblue;
+    @include center-column;
   }
+
+  &__title {
+    &.left {
+      font-size: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    &.right {
+      font-size: 3.7rem;
+      margin: 3rem 0;
+    }
+  }
+
+  &__products {
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100rem;
+    // background-color: red;
+    @include center;
+    justify-content: start;
+  }
+
+  &__submenu {
+    &--title {
+      font-size: 1.7rem;
+
+      @include center;
+      justify-content: start;
+    }
+
+    // MUI Icon Override
+    &--icon {
+      width: 2rem !important;
+      height: 2rem !important;
+      margin-right: 1rem;
+    }
+
+    &--item {
+      margin: 0 0.5rem;
+    }
+
+    // Ant Design Icon Override
+    &--checkbox {
+      margin: 0.2rem 0 !important;
+    }
+  }
+}
+
+// Ant Design Override
+
+.ant-menu-submenu-title {
+  padding: 0 !important;
+}
+
+.ant-menu-sub.ant-menu-inline {
+  background-color: transparent !important;
+  padding-right: 1rem !important;
 }

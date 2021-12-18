@@ -125,8 +125,9 @@ exports.productsCount = async (req, res) => {
   res.json(total);
 };
 
-// Search & Filter -----------------------------------------------------------------------------
+// ------------------------------- Search & Filter --------------------------------
 
+// *** Start - HELPER FUNCTIONS  ***
 // Search By >> Keyword
 const handleQuery = async (req, res, query) => {
   const products = await Product.find({ $text: { $search: query } })
@@ -137,11 +138,60 @@ const handleQuery = async (req, res, query) => {
   res.json(products);
 };
 
-exports.searchFilters = async (req, res) => {
-  const { query } = req.body;
+// Search By >> Price
+const handlePrice = async (req, res, price) => {
+  try {
+    let products = await Product.find({
+      price: {
+        $gte: price[0],
+        $lte: price[1],
+      },
+    })
+      .populate('category', '_id name')
+      .populate('subs', '_id name')
+      .exec();
 
+    res.json(products);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// Search By >> Category
+const handleCategory = async (req, res, category) => {
+  try {
+    let products = await Product.find({ category })
+      .populate('category', '_id name')
+      .populate('subs', '_id name')
+      .exec();
+
+    res.json(products);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// *** End - HELPER FUNCTIONS ***
+
+exports.searchFilters = async (req, res) => {
+  const { query, price, category } = req.body;
+
+  // Keyword
   if (query) {
-    console.log('QUERY', query);
+    console.log('QUERY =====> ', query);
     await handleQuery(req, res, query);
+  }
+
+  // Price
+  // price [20, 200] << Price range $20 ~ $200 >> [20, 200]
+  if (price !== undefined) {
+    console.log('PRICE =====> ', price);
+    await handlePrice(req, res, price);
+  }
+
+  // Category
+  if (category) {
+    console.log('Category =====> ', category);
+    await handleCategory(req, res, category);
   }
 };
