@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // CSS
 import './navItem.scss';
 
 function NavItem(props) {
   const { icon, title, username, address, children } = props;
-
+  const { cart } = useSelector(state => ({ ...state }));
   const [open, setOpen] = useState(false);
 
   return (
@@ -19,7 +20,9 @@ function NavItem(props) {
           <span className='navItem__btn--title'>
             {username ? username : title}
           </span>
-          {title === 'Cart' && <span className='navItem__count'>3</span>}
+          {title === 'Cart' && (
+            <span className='navItem__count'>{cart.length}</span>
+          )}
         </Link>
         {open ? children : null}
       </li>

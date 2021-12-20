@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
+import { useSelector, useDispatch } from 'react-redux';
+import _ from 'lodash';
 
 // Components
 import ProductInfo from './ProductInfo';
@@ -22,7 +24,39 @@ function ProductCard(props) {
   const { title, description, price, category, subs, slug, images } = product;
   const [show, setShow] = useState(false);
   const priceDecimal = Number(price).toFixed(2);
-  const marginBottom = show ? 8 : -11;
+  const marginBottom = show ? 8 : -11; // CSS Purpose
+
+  const { user, cart } = useSelector(state => ({ ...state }));
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    // Create Cart Array
+    let cart = [];
+
+    if (typeof window !== 'undefined') {
+      // *** LOCAL STORAGE ***
+      // 1. Get cart items from LS
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'));
+      }
+
+      // 2. Add item to 'cart' array
+      cart.push({ ...product, count: 1 });
+
+      // 3. Remove duplicates (if any)
+      let unique = _.uniqWith(cart, _.isEqual);
+      console.log('unique', unique);
+
+      // Save the cart to LS
+      localStorage.setItem('cart', JSON.stringify(unique));
+
+      // *** REDUX ***
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: unique,
+      });
+    }
+  };
 
   return (
     <div className='productCard' style={{ margin: `0 0 ${marginBottom}rem` }}>
@@ -48,7 +82,10 @@ function ProductCard(props) {
           <ProductInfo product={product} show={show} setShow={setShow} />
         </div>
         <div className='productCard__btns'>
-          <button className='productCard__btn cart'>
+          <button
+            className='productCard__btn cart'
+            onClick={() => handleAddToCart()}
+          >
             <ShoppingBasket className='productCard__icon' />
             Add to Cart
           </button>

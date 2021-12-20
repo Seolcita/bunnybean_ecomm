@@ -22,6 +22,7 @@ import {
   AttachMoney,
   LibraryAddCheck,
   RadioButtonChecked,
+  FilterList,
 } from '@mui/icons-material';
 
 const { SubMenu, ItemGroup } = Menu;
@@ -217,8 +218,12 @@ function Shop() {
       {/* {JSON.stringify(subCategory)} */}
       <div className='shop__container'>
         <div className='shop__left'>
-          <h4 className='shop__title left'> Search / Filter</h4>
-          <Menu defaultOpenKey={['1', '2', '3']} mode='inline'>
+          {/* <h4 className='shop__title left'>
+            {' '}
+            <FilterList className='shop__submenu--icon' /> 
+            Filters
+          </h4> */}
+          <Menu defaultOpenKeys={['1', '2', '3', '4']} mode='inline'>
             {/* PRICE */}
             <SubMenu
               key='1'

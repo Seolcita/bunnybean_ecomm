@@ -28,7 +28,7 @@ function SingleProduct(props) {
         <div className='singleProduct__main'>
           <ProductCard product={product} />
         </div>
-        <div className='singleProduct__sub'>SUB</div>
+        {/* <div className='singleProduct__sub'>SUB</div> */}
       </div>
     </div>
   );

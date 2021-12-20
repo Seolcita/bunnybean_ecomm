@@ -34,7 +34,7 @@ import BestSellers from './pages/category/BestSellers';
 import CategoryProducts from './pages/category/CategoryProducts';
 import SubProducts from './pages/subCategory/SubProducts';
 import Shop from './pages/Shop';
-
+import Cart from './pages/Cart';
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -85,6 +85,7 @@ const App = () => {
         <Route exact path='/category/:slug' component={CategoryProducts} />
         <Route exact path='/product/:slug' component={SingleProduct} />
         <Route exact path='/shop' component={Shop} />
+        <Route exact path='/cart' component={Cart} />
         <UserRoute exact path='/user/history' component={OrderHistory} />
         <UserRoute exact path='/user/account' component={Account} />
         <UserRoute exact path='/user/wishlist' component={Wishlist} />

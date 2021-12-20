@@ -13,7 +13,7 @@
 
   &__left {
     width: 20%;
-    padding: 0 2rem;
+    padding: 3rem 2rem;
     // background-color: pink;
   }
 
@@ -27,8 +27,9 @@
 
   &__title {
     &.left {
-      font-size: 2.5rem;
-      margin-top: 2rem;
+      font-size: 2rem;
+      margin-top: 5rem;
+      // background-color: rgb(213, 213, 213);
     }
 
     &.right {
@@ -87,13 +88,18 @@
         transform: scale(0.95);
       }
     }
+
+    &--brands {
+      width: 46%;
+      // margin-right: 2rem !important;
+    }
   }
 }
 
-// Ant Design Override
-
+// Ant Design Override -----------------------
 .ant-menu-submenu-title {
   padding: 0 !important;
+  margin-top: 2rem !important;
 }
 
 .ant-menu-sub.ant-menu-inline {

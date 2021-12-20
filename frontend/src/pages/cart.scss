@@ -1,0 +1,81 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.cart {
+  width: 100%;
+  padding-top: 3rem;
+  @include center;
+
+  &__container {
+    width: 80%;
+    @include center;
+    align-items: start;
+  }
+
+  &__left {
+    flex: 1 1 70%;
+    padding: 3rem;
+    background-color: pink;
+  }
+
+  &__right {
+    flex: 1 1 30%;
+    padding: 3rem;
+    background-color: skyblue;
+  }
+
+  // Left Section -----
+  &__table {
+    &--th {
+      border: 1px solid red;
+      padding: 0.5rem 2rem;
+    }
+
+    &--td {
+      border: 1px solid orange;
+      padding: 0.5rem 2rem;
+
+      &.count {
+        text-align: center;
+      }
+
+      &.removeIcon {
+        // @include center;
+        text-align: center;
+      }
+    }
+
+    &--tbody {
+      &:hover {
+        background-color: rgb(238, 238, 238);
+      }
+    }
+  }
+
+  //MUI Icon override
+  &__icon {
+    margin-top: 0.7rem !important;
+    width: 1.8rem !important;
+    height: 1.8rem !important;
+    cursor: pointer;
+  }
+
+  // Right Section -----
+
+  &__hr {
+    margin: 1.5rem 0;
+  }
+
+  &__btn {
+    &--checkout {
+      width: 100%;
+      padding: 0.8rem;
+    }
+
+    &--login {
+      width: 100%;
+    }
+  }
+}

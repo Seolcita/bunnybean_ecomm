@@ -24,7 +24,7 @@ const CategoryList = () => {
       {/* {JSON.stringify(categories)} */}
       <div className='categoryList__section'>
         <div className='categoryList__header'>
-          <Link to={`/category/allproducts`}>
+          <Link to={`/shop`}>
             <div className={`categoryList__item allproducts`}>
               <div className='categoryList__text'>
                 <h1>All</h1>

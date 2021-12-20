@@ -57,6 +57,11 @@ function Navbar() {
         </div>
         <div className='navbar__section right'>
           <ul className='navbar__ul'>
+            <NavItem
+              icon={<ShoppingBasket className='navbar__icon' />}
+              title='Cart'
+              address='cart'
+            ></NavItem>
             {!user ? (
               <NavItem
                 icon={<Login className='navbar__icon' />}
@@ -75,11 +80,11 @@ function Navbar() {
                 >
                   {/* <Dropdown /> */}
                 </NavItem>
-                <NavItem
+                {/* <NavItem
                   icon={<ShoppingBasket className='navbar__icon' />}
                   title='Cart'
                   address='cart'
-                ></NavItem>
+                ></NavItem> */}
                 <div className='navbar__logout' onClick={() => logout()}>
                   <Logout className='navbar__icon logout' />{' '}
                   <small>Logout</small>
