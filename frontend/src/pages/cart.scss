@@ -52,6 +52,12 @@
         background-color: rgb(238, 238, 238);
       }
     }
+
+    &--select {
+      border: none;
+      background-color: white;
+      padding: 0.3rem 1rem;
+    }
   }
 
   //MUI Icon override
@@ -60,6 +66,7 @@
     width: 1.8rem !important;
     height: 1.8rem !important;
     cursor: pointer;
+    color: red;
   }
 
   // Right Section -----
