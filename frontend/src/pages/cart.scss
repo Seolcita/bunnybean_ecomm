@@ -17,24 +17,36 @@
   &__left {
     flex: 1 1 70%;
     padding: 3rem;
-    background-color: pink;
   }
 
   &__right {
     flex: 1 1 30%;
     padding: 3rem;
-    background-color: skyblue;
+    border-radius: 0.5rem;
+    background-color: rgb(188, 211, 220);
   }
 
   // Left Section -----
+
+  &__title {
+    font-size: 2.7rem;
+    margin-bottom: 3rem;
+  }
+
   &__table {
+    border: 1px solid rgb(191, 191, 191);
+
     &--th {
-      border: 1px solid red;
-      padding: 0.5rem 2rem;
+      border: 1px solid rgb(191, 191, 191);
+      padding: 1rem 2rem;
+      background-color: rgb(228, 228, 228);
+      &.prodName {
+        width: 200%;
+      }
     }
 
     &--td {
-      border: 1px solid orange;
+      border: 1px solid rgb(191, 191, 191);
       padding: 0.5rem 2rem;
 
       &.count {
@@ -55,8 +67,16 @@
 
     &--select {
       border: none;
-      background-color: white;
-      padding: 0.3rem 1rem;
+      background-color: transparent;
+      padding: 0.3rem 1rem 0.3rem 0;
+      border-bottom: 1px solid rgb(194, 194, 194);
+    }
+
+    &--input {
+      width: 100%;
+      padding-left: 0.3rem;
+      border-bottom: 1px solid rgb(194, 194, 194);
+      background-color: transparent;
     }
   }
 
@@ -75,14 +95,23 @@
     margin: 1.5rem 0;
   }
 
-  &__btn {
-    &--checkout {
-      width: 100%;
-      padding: 0.8rem;
-    }
+  &__info {
+    font-size: 1.7rem;
+    margin: 0;
+    padding: 0.2rem 0;
+  }
 
+  &__total {
+    font-size: 1.8rem;
+  }
+
+  &__btn {
+    &--checkout,
     &--login {
       width: 100%;
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      margin-top: 2rem;
     }
   }
 }

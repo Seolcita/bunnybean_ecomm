@@ -1,0 +1,72 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.drawer {
+  &__container {
+    position: relative;
+  }
+
+  &__item {
+    margin-bottom: 3rem;
+
+    @include center;
+    justify-content: start;
+
+    &:hover h4 {
+      // border-bottom: 1px solid rgb(206, 206, 206);
+      color: orange;
+    }
+  }
+
+  &__img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: contain;
+  }
+
+  &__detail {
+    padding-left: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  &__title,
+  &__h5 {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__btn {
+    &--del {
+      padding: 0.2rem 1rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    &--toCart {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      // position: absolute;
+      // bottom: 2%;
+      // right: 5%;
+      background-color: rgb(198, 198, 198);
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+// Ant Design Drawer Override
+.ant-drawer-content-wrapper {
+  width: 30rem !important;
+}

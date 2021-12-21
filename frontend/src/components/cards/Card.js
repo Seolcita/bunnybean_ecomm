@@ -37,9 +37,16 @@ function Card(props) {
       localStorage.setItem('cart', JSON.stringify(unique));
 
       // *** REDUX ***
+      // Add item in Redux
       dispatch({
         type: 'ADD_TO_CART',
         payload: unique,
+      });
+
+      // Set side drawer visible
+      dispatch({
+        type: 'SET_VISIBLE',
+        payload: true,
       });
     }
   };

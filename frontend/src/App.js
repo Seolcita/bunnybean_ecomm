@@ -10,6 +10,7 @@ import { currentUser } from './connections/auth';
 
 // Pages
 import Navbar from './pages/nav/Navbar';
+import SideDrawer from './pages/drawer/SideDrawer';
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
@@ -35,6 +36,7 @@ import CategoryProducts from './pages/category/CategoryProducts';
 import SubProducts from './pages/subCategory/SubProducts';
 import Shop from './pages/Shop';
 import Cart from './pages/Cart';
+
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -72,6 +74,7 @@ const App = () => {
   return (
     <>
       <Navbar />
+      <SideDrawer />
       <ToastContainer />
       <Switch>
         <Route exact path='/' component={Home} />
