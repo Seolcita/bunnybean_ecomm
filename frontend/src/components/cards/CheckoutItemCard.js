@@ -101,7 +101,7 @@ function CheckoutItemCard(props) {
           </div>
         </td>
         <td className='cart__table--td'>{item.title}</td>
-        <td className='cart__table--td'>$${priceDecimal}</td>
+        <td className='cart__table--td'>${priceDecimal}</td>
         <td className='cart__table--td'>{item.brand}</td>
         <td className='cart__table--td'>
           <select

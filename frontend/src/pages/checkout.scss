@@ -1,0 +1,33 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.checkout {
+  width: 100%;
+  @include center;
+
+  &__container {
+    width: 75%;
+    padding-top: 5rem;
+    @include center;
+    align-items: start;
+  }
+
+  &__left {
+    padding: 0 3rem;
+    flex: 1 1 50%;
+    background-color: pink;
+  }
+
+  &__right {
+    padding: 0 3rem;
+    flex: 1 1 50%;
+
+    background-color: skyblue;
+  }
+
+  &__title {
+    font-size: 2rem;
+  }
+}

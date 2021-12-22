@@ -3,8 +3,15 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/user', (req, res) => {
-  res.json({ data: 'It is from backend - USER' });
-});
+// Middlewares
+const { authCheck } = require('../middlewares/auth');
+
+// Controller
+const { userCart, getUserCart, emptyCart } = require('../controllers/user');
+
+// Routes
+router.post('/user/cart', authCheck, userCart);
+router.get('/user/cart', authCheck, getUserCart);
+router.delete('/user/cart', authCheck, emptyCart);
 
 module.exports = router;

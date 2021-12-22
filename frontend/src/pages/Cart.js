@@ -3,6 +3,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
+// Connections - Functions
+import { emptyUserCart, userCart } from '../connections/user';
 
 // Components
 import CheckoutItemCard from '../components/cards/CheckoutItemCard';
@@ -22,22 +26,54 @@ function Cart(props) {
     }, 0);
   };
 
-  // const saveOrderToDb = () => {
-  //   console.log("cart", JSON.stringify(cart, null, 4));
-  //   userCart(cart, user.token)
-  //     .then(res => {
-  //       console.log('CART POST RES', res);
-  //       if (res.data.ok) history.push('/checkout');
-  //     })
-  //     .catch(err => console.log('cart save err', err));
-  // };
+  const saveOrderToDb = () => {
+    // console.log('cart', JSON.stringify(cart, null, 4));
+
+    userCart(cart, user.token)
+      .then(res => {
+        console.log('CART RES', res);
+        if (res.data.ok) history.push('/checkout');
+      })
+      .catch(err => console.log('cart save err', err));
+  };
+
+  const emptyCart = () => {
+    // Remove from local storage
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('cart');
+    }
+
+    // Remove from redux
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: [],
+    });
+
+    // Remove from backend
+    emptyUserCart(user.token).then(res =>
+      toast.success('Cart is empty. Continue shopping.')
+    );
+  };
 
   const showCartItems = () => (
     <>
       {cart.length > 1 ? (
-        <h3 className='cart__title'>{cart.length} Products in your cart</h3>
+        <div className='cart__header'>
+          <h3 className='cart__title'>{cart.length} Products in your cart</h3>
+          <button
+            className='cart__header--btn'
+            onClick={() => emptyUserCart(user.token)}
+          >
+            Empty Your Cart
+          </button>
+        </div>
       ) : (
-        <h3 className='cart__title'>{cart.length} Product in your cart</h3>
+        <div className='cart__header'>
+          <h3 className='cart__title'>{cart.length} Product in your cart</h3>
+          <button className='cart__header--btn' onClick={() => emptyCart()}>
+            Empty Your Cart
+          </button>
+        </div>
       )}
       <table className='cart__table'>
         <thead className='cart__table--header'>
@@ -87,7 +123,7 @@ function Cart(props) {
 
           {user ? (
             <button
-              // onClick={saveOrderToDb}
+              onClick={() => saveOrderToDb()}
               className='cart__btn--checkout'
               disabled={!cart.length}
             >
