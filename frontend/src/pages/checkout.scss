@@ -9,19 +9,20 @@
 
   &__container {
     width: 75%;
-    padding-top: 5rem;
+    padding-top: 3rem;
     @include center;
     align-items: start;
   }
 
   &__left {
-    padding: 0 3rem 3rem;
+    margin-right: 2rem;
+    padding: 2rem 3rem 3rem;
     flex: 1 1 65%;
-    background-color: pink;
+    background-color: rgb(225, 225, 225);
   }
 
   &__right {
-    padding: 0 5rem;
+    padding: 2rem 5rem 1rem;
     flex: 1 1 35%;
     font-size: 1.7rem;
 
@@ -37,6 +38,14 @@
       margin-top: 2rem;
       padding: 0.5rem 2rem;
       border-radius: 0.5rem;
+    }
+
+    &--order {
+      margin: 1rem 0;
+      padding: 0.5rem 2rem;
+      border-radius: 0.5rem;
+      font-size: 1.5rem;
+      width: 100%;
     }
   }
 

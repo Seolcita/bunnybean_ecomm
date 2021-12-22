@@ -218,11 +218,6 @@ function Shop() {
       {/* {JSON.stringify(subCategory)} */}
       <div className='shop__container'>
         <div className='shop__left'>
-          {/* <h4 className='shop__title left'>
-            {' '}
-            <FilterList className='shop__submenu--icon' /> 
-            Filters
-          </h4> */}
           <Menu defaultOpenKeys={['1', '2', '3', '4']} mode='inline'>
             {/* PRICE */}
             <SubMenu
@@ -299,7 +294,7 @@ function Shop() {
             {products.length < 1 && <h1>No Product Found</h1>}
             {/* {JSON.stringify(products)} */}
             {products.map(prod => (
-              <Card product={prod} />
+              <Card product={prod} key={prod._id} />
             ))}
           </div>
         </div>

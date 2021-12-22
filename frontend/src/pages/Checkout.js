@@ -2,10 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import { toast } from 'react-toastify';
 
 // Connection - Functions
 import { getUserCart, saveAddress } from '../connections/user';
@@ -15,6 +12,7 @@ import Address from '../components/forms/Address';
 
 // CSS & MUI Icons
 import './checkout.scss';
+import { TonalitySharp } from '@mui/icons-material';
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -25,6 +23,7 @@ function Checkout() {
   const [tax, setTax] = useState(0);
   const [totalWithTax, setTotalWithTax] = useState(0);
   const [address, setAddress] = useState('');
+  const [addressSaved, setAddressSaved] = useState(false);
 
   useEffect(() => {
     getUserCart(user.token).then(res => {
@@ -36,13 +35,28 @@ function Checkout() {
     });
   }, []);
 
+  const saveAddressToDb = () => {
+    saveAddress(user.token, address).then(res => {
+      if (res.data.ok) {
+        setAddressSaved(true);
+        toast.success('Address saved');
+      }
+    });
+  };
+
   return (
     <div className='checkout'>
       <div className='checkout__container'>
         <div className='checkout__left'>
           <h3 className='checkout__title'>Shipping Address</h3>
           <Address address={address} setAddress={setAddress} />
-          <button className='checkout__btn--address'>Save Address</button>
+          <button
+            className='checkout__btn--address'
+            disabled={addressSaved}
+            onClick={() => saveAddressToDb()}
+          >
+            Save Address
+          </button>
         </div>
         <div className='checkout__right'>
           <div className='checkout__summary'>
@@ -60,6 +74,15 @@ function Checkout() {
                 <b>Sub Total: ${totalWithTax.toFixed(2)}</b>
               </h4>
             </div>
+            <button></button>
+            <button
+              disabled={
+                !addressSaved || address === '' || products.length === 0
+              }
+              className='checkout__btn--order'
+            >
+              Place Order
+            </button>
           </div>
         </div>
       </div>
