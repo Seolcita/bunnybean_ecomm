@@ -3,8 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+
+// Connections - Functions
+import { createOrder, emptyUserCart } from '../connections/user';
+
+// Stripe
 import { createPaymentIntent } from '../connections/stripe';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 function StripeCheckout(props) {
   const { history } = props;
@@ -27,7 +32,7 @@ function StripeCheckout(props) {
     createPaymentIntent(user.token).then(res => {
       console.log('create payment intent', res.data);
       setClientSecret(res.data.clientSecret);
-      setCartTotalWithTax(res.data.totalWithTax);
+      setTotalWithTax(res.data.totalWithTax);
     });
   }, []);
 
@@ -67,8 +72,23 @@ function StripeCheckout(props) {
       setError(`Payment failed ${payload.error.message}`);
       setProcessing(false);
     } else {
-      //
-      console.log(JSON.stringify('Payment Success____', payload, null, 4));
+      // After successful payment
+      // console.log(JSON.stringify('Payment Success____', payload, null, 4));
+      createOrder(payload, user.token).then(res => {
+        if (res.data.ok) {
+          // empty cart from local storage
+          if (typeof window !== 'undefined') localStorage.removeItem('cart');
+
+          // empty cart from redux
+          dispatch({
+            type: 'ADD_TO_CART',
+            payload: [],
+          });
+
+          // empty cart from database
+          emptyUserCart(user.token);
+        }
+      });
     }
     console.log(JSON.stringify(payload, null, 4));
     setError(null);

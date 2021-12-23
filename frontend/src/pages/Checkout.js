@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -80,7 +81,7 @@ function Checkout() {
               }
               className='checkout__btn--order'
             >
-              Place Order
+              <Link to='/payment'>Place Order</Link>
             </button>
           </div>
         </div>

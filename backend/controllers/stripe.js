@@ -10,16 +10,18 @@ exports.createPaymentIntent = async (req, res) => {
   const user = await User.findOne({ email: req.user.email }).exec();
 
   // 2. Get user cart total(with tax)
-  const { totalWithTax } = await Cart.findOne({ orderedBy: user._id }).exec();
-  const finalTotalFixed = totalWithTax.toFixed(2);
+  // const { totalWithTax } = await Cart.findOne({ orderedBy: user._id }).exec();
+  const cart = await Cart.findOne({ orderedBy: user._id }).exec();
+
+  const finalTotalFixed = cart.totalWithTax.toFixed(2);
   const finalTotal = Number(finalTotalFixed);
 
-  console.log('CART TOTAL WITH TAX', totalWithTax);
+  // console.log('CART TOTAL WITH TAX', totalWithTax);
   console.log('finalTotal', finalTotal);
 
   // 3. Create Payment Intent with amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: finalTotal * 100,
+    amount: Math.round(finalTotal * 100),
     currency: 'cad',
   });
 

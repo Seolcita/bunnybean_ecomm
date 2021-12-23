@@ -1,6 +1,8 @@
 /** @format */
 import axios from 'axios';
 
+// ************************* Cart *************************
+
 export const userCart = async (cart, authtoken) =>
   await axios.post(
     `${process.env.REACT_APP_API}/user/cart`,
@@ -30,5 +32,13 @@ export const saveAddress = async (authtoken, address) =>
   await axios.post(
     `${process.env.REACT_APP_API}/user/address`,
     { address },
+    { headers: { authtoken } }
+  );
+
+// ************************* ORDER *************************
+export const createOrder = async (stripeResponse, authtoken) =>
+  await axios.post(
+    `${process.env.REACT_APP_API}/user/order`,
+    { stripeResponse },
     { headers: { authtoken } }
   );
