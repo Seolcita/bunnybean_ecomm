@@ -15,6 +15,8 @@ function Card(props) {
   const { user, cart } = useSelector(state => ({ ...state }));
   const dispatch = useDispatch();
 
+  const outOfStock = product.quantity < 1;
+
   const handleAddToCart = () => {
     // Create Cart Array
     let cart = [];
@@ -59,7 +61,13 @@ function Card(props) {
           <div
             className='card__header--img'
             style={{ backgroundImage: `url(${images[0].url})` }}
-          ></div>
+          >
+            {outOfStock ? (
+              <div className='card__OOS'>
+                <h3 className='card__OOS--title'>Out Of Stock</h3>
+              </div>
+            ) : null}
+          </div>
         </Link>
       </div>
       <div className='card__body'>
@@ -68,7 +76,11 @@ function Card(props) {
           <h5 className='card__price'>${price.toFixed(2)}</h5>
         </div>
         <div className='card__btns'>
-          <button className='card__btn' onClick={() => handleAddToCart()}>
+          <button
+            className='card__btn'
+            onClick={() => handleAddToCart()}
+            disabled={outOfStock}
+          >
             Add to cart
           </button>
         </div>
