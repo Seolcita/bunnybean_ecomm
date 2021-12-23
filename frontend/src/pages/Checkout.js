@@ -74,7 +74,6 @@ function Checkout() {
                 <b>Sub Total: ${totalWithTax.toFixed(2)}</b>
               </h4>
             </div>
-            <button></button>
             <button
               disabled={
                 !addressSaved || address === '' || products.length === 0

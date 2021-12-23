@@ -37,6 +37,7 @@ import SubProducts from './pages/subCategory/SubProducts';
 import Shop from './pages/Shop';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import Payment from './pages/Payment';
 
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -95,6 +96,7 @@ const App = () => {
         <UserRoute exact path='/user/account' component={Account} />
         <UserRoute exact path='/user/wishlist' component={Wishlist} />
         <UserRoute exact path='/checkout' component={Checkout} />
+        <UserRoute exact path='/payment' component={Payment} />
 
         <AdminRoute exact path='/admin/dashboard' component={AdminDashboard} />
         <AdminRoute exact path='/admin/category' component={Category} />
