@@ -34,16 +34,21 @@ exports.userCart = async (req, res) => {
   console.log('CART - Products', products);
 
   // Cart Total - without Tax
-  let cartTotal = 0;
+  let total = 0;
   for (let i = 0; i < products.length; i++) {
-    cartTotal = cartTotal + products[i].price * products[i].count;
+    total = total + products[i].price * products[i].count;
   }
+
+  const cartTotalFixed = total.toFixed(2);
+  const cartTotal = Number(total);
+  console.log('CART - totalFixed', cartTotalFixed);
   console.log('CART - cartTotal', cartTotal);
 
   // Cart Total - WITH Tax
   let taxRate = 0.05;
-  const tax = (cartTotal * taxRate).toFixed(2);
-  const totalWithTax = (cartTotal * taxRate + cartTotal).toFixed(2);
+  const tax = cartTotal * taxRate;
+  const withTax = (cartTotal * taxRate + cartTotal).toFixed(2);
+  const totalWithTax = Number(withTax);
 
   // Create a Cart
   let newCart = await new Cart({

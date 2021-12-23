@@ -21,15 +21,13 @@ function StripeCheckout(props) {
   const [clientSecret, setClientSecret] = useState('');
 
   // Setting total price for payment
-  const [cartTotal, setCartTotal] = useState(0);
-  const [payable, setPayable] = useState(0);
+  const [totalWithTax, setTotalWithTax] = useState(0);
 
   useEffect(() => {
     createPaymentIntent(user.token).then(res => {
       console.log('create payment intent', res.data);
       setClientSecret(res.data.clientSecret);
-      // setCartTotal(res.data.cartTotal);
-      // setPayable(res.data.payable);
+      setCartTotalWithTax(res.data.totalWithTax);
     });
   }, []);
 
