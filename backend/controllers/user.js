@@ -102,11 +102,16 @@ exports.createOrder = async (req, res) => {
 
   const user = await User.findOne({ email: req.user.email }).exec();
 
-  let { products } = await Cart.findOne({ orderedBy: user._id }).exec();
+  // let { products } = await Cart.findOne({ orderedBy: user._id }).exec();
+  let cart = await Cart.findOne({ orderedBy: user._id }).exec();
+  let products = cart.products;
+  let taxDecimal = cart.tax.toFixed(2);
+  let tax = Number(taxDecimal);
 
   let newOrder = await new Order({
     products,
     paymentIntent,
+    tax,
     orderedBy: user._id,
   }).save();
 

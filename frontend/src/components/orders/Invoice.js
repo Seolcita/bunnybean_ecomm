@@ -17,7 +17,7 @@ function Invoice(props) {
     <Document>
       <Page style={styles.body}>
         <Text style={styles.header} fixed>
-          ~ {new Date().toLocaleString()} ~
+          {new Date().toLocaleString()}
         </Text>
         <Text style={styles.title}>Order Invoice</Text>
         <Text style={styles.author}>The Buy</Text>
@@ -25,7 +25,7 @@ function Invoice(props) {
 
         <Table>
           <TableHeader>
-            <TableCell>Title</TableCell>
+            <TableCell>Product</TableCell>
             <TableCell>Price</TableCell>
             <TableCell>Quantity</TableCell>
             <TableCell>Brand</TableCell>
@@ -40,9 +40,7 @@ function Invoice(props) {
             />
             <DataTableCell
               getContent={x =>
-                x.product
-                  ? `$${x.product.price.toLocaleString('en-US')}`
-                  : 'no price'
+                x.product ? `$${x.product.price.toFixed(2)}` : 'no price'
               }
             />
             <DataTableCell getContent={x => (x ? x.count : 'no count')} />
@@ -72,8 +70,12 @@ function Invoice(props) {
           </Text>
           {'\n'}
           <Text>
+            Tax: {'       '} $ {order.tax.toFixed(2)}
+          </Text>
+          {'\n'}
+          <Text>
             Total Paid: {'       '} ${' '}
-            {order.paymentIntent.amount.toLocaleString('en-US')}
+            {(order.paymentIntent.amount / 100).toLocaleString('en-US')}
           </Text>
         </Text>
 
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 12,
     marginBottom: 20,
-    textAlign: 'center',
+    textAlign: 'right',
     color: 'grey',
   },
   footer: {

@@ -21,7 +21,7 @@
 
     &--container {
       width: 100%;
-      padding: 2rem;
+      padding: 5rem;
     }
 
     &--title {
@@ -45,6 +45,11 @@
 
       @include center;
       justify-content: space-between;
+
+      &--right {
+        text-align: center;
+        @include center;
+      }
     }
 
     &--prodInfo {
@@ -53,9 +58,12 @@
     }
 
     &--pdf {
-      padding: 0.7rem;
+      width: 100%;
+      padding: 1rem;
+      margin-left: 2rem;
       font-size: 1.5rem;
-      border: 1px solid red;
+      background-color: rgb(210, 210, 210);
+      border-radius: 0.5rem;
     }
   }
 
@@ -84,10 +92,16 @@
       height: 8rem;
       object-fit: contain;
     }
-
-    &--orderStatus {
+  }
+  &__orderStatus {
+    width: 130%;
+    padding: 0.8rem;
+    // background-color: rgb(227, 226, 226);
+    border-radius: 0.5rem;
+    small {
       background-color: rgb(216, 216, 216);
       padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
     }
   }
 }

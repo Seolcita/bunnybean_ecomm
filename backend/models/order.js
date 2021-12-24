@@ -28,6 +28,7 @@ const orderSchema = new mongoose.Schema(
         'Completed',
       ],
     },
+    tax: Number,
     orderedBy: { type: ObjectId, ref: 'User' },
   },
   { timestamps: true }

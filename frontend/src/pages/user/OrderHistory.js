@@ -4,15 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import ModalImage from 'react-modal-image';
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  PDFDownloadLink,
-  PDFViewer,
-} from '@react-pdf/renderer';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 // Connections - Functions
 import { getUserOrders } from '../../connections/user';
@@ -43,16 +35,24 @@ function OrderHistory() {
     orders.map((order, i) => (
       <div key={i} className='history__each'>
         <div className='history__each--orderInfo'>
-          <h3 className='history__h3'>Order# {order._id}</h3>
-          <h3 className='history__h3'>
-            Order Date:
-            {new Date(order.createdAt).toLocaleString()}
-          </h3>
+          <div className='history__each--orderInfo--left'>
+            <h3 className='history__h3'>
+              Order Date:
+              {new Date(order.createdAt).toLocaleString()}
+            </h3>
+            <h3 className='history__h3'>Order# {order._id}</h3>
+          </div>
+          <div className='history__each--orderInfo--right'>
+            <div className='history__orderStatus'>
+              <h3 className='history__h3'>
+                <b>Order Status</b>
+              </h3>
+              <small>{order.orderStatus}</small>
+            </div>
+            {showDownloadLink(order)}
+          </div>
         </div>
         <div className='history__each--prodInfo'>{showOrderInTable(order)}</div>
-        <div className='row'>
-          <div className='col'>{showDownloadLink(order)}</div>
-        </div>
       </div>
     ));
 
@@ -61,9 +61,9 @@ function OrderHistory() {
       <PDFDownloadLink
         document={<Invoice order={order} />}
         fileName='invoice.pdf'
-        className='invoice__pdf'
+        className='invoice'
       >
-        Download PDF
+        <b>Download Invoice</b>
       </PDFDownloadLink>
     </div>
   );
@@ -79,51 +79,43 @@ function OrderHistory() {
           <th className='history__table--th'>Color</th>
           <th className='history__table--th'>Count</th>
           <th className='history__table--th'>Total</th>
-          <th className='history__table--th'>Order Status</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr key={order.i}>
-          {order.products.map((p, i) => (
-            <>
-              <td className='history__table--td'>
-                {p.product?.images[0].url ? (
-                  <ModalImage
-                    small={p.product.images[0].url}
-                    large={p.product.images[0].url}
-                    className='history__table--img'
-                  />
-                ) : (
-                  <ModalImage small={defaultImage} large={defaultImage} />
-                )}
-              </td>
-              <td className='history__table--td'>
-                {p.product ? p.product.title : 'No Product'}
-              </td>
-              <td className='history__table--td'>
-                {p.product ? `$${p.product.price.toFixed(2)}` : 'No price'}
-              </td>
-              <td className='history__table--td'>
-                {p.product ? p.product.brand : 'No brand'}
-              </td>
-              <td className='history__table--td'>
-                {p.product ? p.color : 'No color'}
-              </td>
-              <td className='history__table--td'>
-                {p.product ? p.count : 'No count'}
-              </td>
-            </>
-          ))}
-          <td className='history__table--td'>
-            ${(order.paymentIntent.amount /= 100).toLocaleString('en-US')}
-          </td>
-          <td className='history__table--td'>
-            <small className='history__table--orderStatus'>
-              {order.orderStatus}
-            </small>
-          </td>
-        </tr>
+        {order.products.map((p, i) => (
+          <tr key={order.i}>
+            <td className='history__table--td'>
+              {p.product?.images[0].url ? (
+                <ModalImage
+                  small={p.product.images[0].url}
+                  large={p.product.images[0].url}
+                  className='history__table--img'
+                />
+              ) : (
+                <ModalImage small={defaultImage} large={defaultImage} />
+              )}
+            </td>
+            <td className='history__table--td'>
+              {p.product ? p.product.title : 'No Product'}
+            </td>
+            <td className='history__table--td'>
+              {p.product ? `$${p.product.price.toFixed(2)}` : 'No price'}
+            </td>
+            <td className='history__table--td'>
+              {p.product ? p.product.brand : 'No brand'}
+            </td>
+            <td className='history__table--td'>
+              {p.product ? p.color : 'No color'}
+            </td>
+            <td className='history__table--td'>
+              {p.product ? p.count : 'No count'}
+            </td>
+            <td className='history__table--td'>
+              ${(order.paymentIntent.amount / 100).toLocaleString('en-US')}
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
