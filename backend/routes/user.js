@@ -13,6 +13,7 @@ const {
   emptyCart,
   saveAddress,
   createOrder,
+  orders,
 } = require('../controllers/user');
 
 // Routes - Cart
@@ -23,5 +24,6 @@ router.post('/user/address', authCheck, saveAddress);
 
 // Routes - Order
 router.post('/user/order', authCheck, createOrder);
+router.get('/user/orders', authCheck, orders);
 
 module.exports = router;
