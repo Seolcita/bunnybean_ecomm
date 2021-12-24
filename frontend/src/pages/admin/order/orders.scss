@@ -1,0 +1,32 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixin.scss';
+
+.orders {
+  display: flex;
+
+  &__sidebar {
+    @include sidebar;
+  }
+
+  &__detail {
+    @include detail;
+    // background-color: grey;
+    // @include center-column;
+  }
+
+  &__wrap {
+    width: 70%;
+  }
+
+  &__section {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    // background-color: pink;
+  }
+}

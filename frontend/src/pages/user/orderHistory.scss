@@ -33,6 +33,7 @@
 
   &__each {
     width: 100%;
+    margin-bottom: 2rem;
     // background-color: red;
     border: 1px solid grey;
 
@@ -49,6 +50,18 @@
       &--right {
         text-align: center;
         @include center;
+      }
+
+      &--total {
+        margin-right: 2rem;
+
+        small {
+          padding: 0.3rem;
+          font-size: 1.5rem;
+          font-weight: 600;
+          border-radius: 0.5rem;
+          background-color: rgb(218, 217, 217);
+        }
       }
     }
 

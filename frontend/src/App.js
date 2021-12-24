@@ -38,6 +38,7 @@ import Shop from './pages/Shop';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Payment from './pages/Payment';
+import Orders from './pages/admin/order/Orders';
 
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -118,6 +119,7 @@ const App = () => {
           path='/admin/product/:slug'
           component={ProductUpdate}
         />
+        <AdminRoute exact path='/admin/orders' component={Orders} />
       </Switch>
     </>
   );
