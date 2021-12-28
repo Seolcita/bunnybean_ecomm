@@ -31,6 +31,13 @@
     }
   }
 
+  &__select {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
   &__each {
     width: 100%;
     margin-bottom: 2rem;

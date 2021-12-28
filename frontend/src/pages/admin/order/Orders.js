@@ -46,7 +46,7 @@ function Orders() {
           <div className='history__each--orderInfo--right'>
             <div className='history__each--orderInfo--total'>
               <h3 className='history__h3'>
-                <b>Total</b>
+                <b>Sub Total</b>
               </h3>
               <small>
                 ${(order.paymentIntent.amount / 100).toLocaleString('en-US')}
@@ -56,7 +56,20 @@ function Orders() {
               <h3 className='history__h3'>
                 <b>Order Status</b>
               </h3>
-              <small>{order.orderStatus}</small>
+              {/* <small>{order.orderStatus}</small> */}
+
+              <select
+                onChange={e => handleStatusChange(order._id, e.target.value)}
+                defaultValue={order.orderStatus}
+                name='status'
+                className='history__select'
+              >
+                <option value='Not Processed'>Not Processed</option>
+                <option value='Processing'>Processing</option>
+                <option value='Dispatched'>Dispatched</option>
+                <option value='Cancelled'>Cancelled</option>
+                <option value='Completed'>Completed</option>
+              </select>
             </div>
           </div>
         </div>
@@ -71,10 +84,11 @@ function Orders() {
         <tr>
           <th className='history__table--th'>Image</th>
           <th className='history__table--th'>Product</th>
-          <th className='history__table--th'>Price</th>
           <th className='history__table--th'>Brand</th>
           <th className='history__table--th'>Color</th>
           <th className='history__table--th'>Count</th>
+          <th className='history__table--th'>Price</th>
+          <th className='history__table--th'>Tax</th>
           <th className='history__table--th'>Total</th>
         </tr>
       </thead>
@@ -97,9 +111,6 @@ function Orders() {
               {p.product ? p.product.title : 'No Product'}
             </td>
             <td className='history__table--td'>
-              {p.product ? `$${p.product.price.toFixed(2)}` : 'No price'}
-            </td>
-            <td className='history__table--td'>
               {p.product ? p.product.brand : 'No brand'}
             </td>
             <td className='history__table--td'>
@@ -108,11 +119,27 @@ function Orders() {
             <td className='history__table--td'>
               {p.product ? p.count : 'No count'}
             </td>
+            <td className='history__table--td'>
+              {p.product ? `$${p.product.price.toFixed(2)}` : 'No price'}
+            </td>
+            <td className='history__table--td'>
+              ${(p.product.price * 0.05).toFixed(2)}
+            </td>
+            <td className='history__table--td'>
+              ${(p.product.price * 0.05 + p.product.price).toFixed(2)}
+            </td>
           </tr>
         ))}
       </tbody>
     </table>
   );
+
+  const handleStatusChange = (orderId, orderStatus) => {
+    changeStatus(orderId, orderStatus, user.token).then(res => {
+      toast.success('Status updated');
+      loadOrders();
+    });
+  };
 
   return (
     <div className='orders'>

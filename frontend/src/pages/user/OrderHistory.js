@@ -49,6 +49,14 @@ function OrderHistory() {
               </h3>
               <small>{order.orderStatus}</small>
             </div>
+            <div className='history__orderStatus'>
+              <h3 className='history__h3'>
+                <b>Sub Total</b>
+              </h3>
+              <small>
+                ${(order.paymentIntent.amount / 100).toLocaleString('en-US')}
+              </small>
+            </div>
             {showDownloadLink(order)}
           </div>
         </div>
@@ -74,10 +82,11 @@ function OrderHistory() {
         <tr>
           <th className='history__table--th'>Image</th>
           <th className='history__table--th'>Product</th>
-          <th className='history__table--th'>Price</th>
           <th className='history__table--th'>Brand</th>
           <th className='history__table--th'>Color</th>
           <th className='history__table--th'>Count</th>
+          <th className='history__table--th'>Price</th>
+          <th className='history__table--th'>Tax</th>
           <th className='history__table--th'>Total</th>
         </tr>
       </thead>
@@ -100,9 +109,6 @@ function OrderHistory() {
               {p.product ? p.product.title : 'No Product'}
             </td>
             <td className='history__table--td'>
-              {p.product ? `$${p.product.price.toFixed(2)}` : 'No price'}
-            </td>
-            <td className='history__table--td'>
               {p.product ? p.product.brand : 'No brand'}
             </td>
             <td className='history__table--td'>
@@ -112,7 +118,13 @@ function OrderHistory() {
               {p.product ? p.count : 'No count'}
             </td>
             <td className='history__table--td'>
-              ${(order.paymentIntent.amount / 100).toLocaleString('en-US')}
+              {p.product ? `$${p.product.price.toFixed(2)}` : 'No price'}
+            </td>
+            <td className='history__table--td'>
+              ${(p.product.price * 0.05).toFixed(2)}
+            </td>
+            <td className='history__table--td'>
+              ${(p.product.price * 0.05 + p.product.price).toFixed(2)}
             </td>
           </tr>
         ))}
