@@ -52,7 +52,7 @@ const Register = props => {
             onChange={e => setEmail(e.target.value)}
           />
           <button
-            className='register__btn'
+            className='register__btn submit'
             type='submit'
             onClick={handleSubmit}
           >

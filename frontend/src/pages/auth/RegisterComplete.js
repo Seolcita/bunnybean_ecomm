@@ -103,7 +103,7 @@ const RegisterComplete = props => {
             onChange={e => setPassword(e.target.value)}
           />
           <button
-            className='register__btn'
+            className='register__btn submit'
             type='submit'
             onClick={handleSubmit}
           >

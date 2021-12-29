@@ -35,6 +35,10 @@ a {
   &:link {
     color: inherit;
   }
+
+  &:hover {
+    color: orange;
+  }
 }
 
 input {

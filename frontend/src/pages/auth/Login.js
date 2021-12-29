@@ -15,8 +15,8 @@ import './register.scss';
 const Login = props => {
   const { history } = props;
 
-  const [email, setEmail] = useState('sseori30@gmail.com');
-  const [password, setPassword] = useState('seol1111');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   let dispatch = useDispatch();
@@ -141,21 +141,21 @@ const Login = props => {
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
+          <Link to='/forgot/password' className='register__forgotPW'>
+            Forgot password?
+          </Link>
           <br />
           <button
-            className='register__btn'
+            className='register__btn emailPW'
             type='submit'
             onClick={handleSubmit}
             disabled={!email || password.length < 6}
           >
             Login with Email &amp; Password
           </button>
-          <div>
-            <Link to='/forgot/password'>Forgot password?</Link>
-          </div>
-          <br />
+
           <button
-            className='register__btn'
+            className='register__btn google'
             type='submit'
             onClick={googleLogin}
             disabled={!email || password.length < 6}
@@ -165,7 +165,7 @@ const Login = props => {
           <div className='register__link'>
             <p>
               New customer?
-              <a href='/register'>Start here</a>
+              <Link to='/register'> Start here</Link>
             </p>
           </div>
         </div>
