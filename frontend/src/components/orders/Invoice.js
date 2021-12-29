@@ -70,7 +70,7 @@ function Invoice(props) {
           </Text>
           {'\n'}
           <Text>
-            Tax: {'       '} $ {order.tax.toFixed(2)}
+            Tax: {'       '} $ {order.tax}
           </Text>
           {'\n'}
           <Text>
