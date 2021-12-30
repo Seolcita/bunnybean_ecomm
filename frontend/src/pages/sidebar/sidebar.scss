@@ -7,9 +7,10 @@
   height: 100vh;
 
   &__option {
+    font-size: 1.8rem;
+    font-weight: 500;
     padding: 1rem 3rem;
     cursor: pointer;
-    // transition: background-color 2s ease;
 
     display: flex;
     align-items: center;
@@ -20,7 +21,8 @@
     }
 
     &:hover {
-      background-color: lightcoral;
+      background-color: $color-orange;
+      color: $color-blue-dark;
     }
   }
 
@@ -29,5 +31,6 @@
     width: 2.5rem !important;
     height: 2.5rem !important;
     margin-right: 1.5rem;
+    color: $color-blue-dark;
   }
 }

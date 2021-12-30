@@ -21,18 +21,18 @@ function UserSidebar() {
           Order History
         </div>
       </Link>
-      <Link to='/user/cart'>
+      <Link to='/cart'>
         <div className='sidebar__option'>
           <ShoppingBasket className='sidebar__icon' />
           Shopping Cart
         </div>
       </Link>
-      <Link to='/user/wishlist'>
+      {/* <Link to='/user/wishlist'>
         <div className='sidebar__option'>
           <Favorite className='sidebar__icon' />
           Wishlist
         </div>
-      </Link>
+      </Link> */}
       <Link to='/user/account'>
         <div className='sidebar__option '>
           <ManageAccounts className='sidebar__icon' />

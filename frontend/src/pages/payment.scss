@@ -2,3 +2,33 @@
 
 @import 'variables.scss';
 @import 'mixin.scss';
+
+.payment {
+  @include center;
+
+  &__container {
+    width: 70%;
+    padding-top: 5rem;
+
+    h4 {
+      font-family: 'Pushster', cursive;
+      text-align: center;
+      font-size: 4rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__pay {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+// RESPONSIVE
+@media (max-width: 600px) {
+  .payment {
+    &__pay {
+      margin-left: -3rem;
+    }
+  }
+}

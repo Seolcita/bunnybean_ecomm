@@ -10,24 +10,28 @@
   display: flex;
 
   &__sidebar {
-    width: 20vw;
-    background-color: pink;
+    width: 15vw;
+    min-width: 25rem;
+    // background-color: $color-grey-medium;
+    background-color: $color-orange-dark;
     font-size: 1.5rem;
   }
 
   &__detail {
     flex: 1;
-    background-color: lightblue;
+    background-color: $color-grey-light;
 
     &--container {
       width: 100%;
-      padding: 5rem;
+      padding: 2rem 5rem 5rem;
     }
 
     &--title {
       font-size: 2.7rem;
       padding: 1rem;
       text-align: center;
+      font-size: 4rem;
+      font-family: 'Pushster', cursive;
     }
   }
 
@@ -40,23 +44,31 @@
 
   &__each {
     width: 100%;
-    margin-bottom: 2rem;
-    // background-color: red;
-    border: 1px solid grey;
+    max-width: 124rem;
+    margin: 0 auto 2rem;
+    box-shadow: 0.2rem 0.2rem 0.4rem $color-grey-medium;
 
     @include center-column;
 
     &--orderInfo {
       width: 100%;
       padding: 0.7rem 1rem;
-      background-color: white;
+      background-color: $color-blue-dark;
 
       @include center;
       justify-content: space-between;
 
+      &--left {
+        flex: 1;
+        min-width: 31rem;
+        // background-color: pink;
+      }
+
       &--right {
+        min-width: 39rem;
         text-align: center;
         @include center;
+        // background-color: orange;
       }
 
       &--total {
@@ -78,33 +90,42 @@
     }
 
     &--pdf {
-      width: 100%;
-      padding: 1rem;
+      padding: 1.2rem;
       margin-left: 2rem;
       font-size: 1.5rem;
-      background-color: rgb(210, 210, 210);
+      background-color: white;
       border-radius: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 
   &__h3 {
     font-size: 1.5rem;
     margin: 0;
+    color: white;
   }
 
   &__table {
     width: 100%;
+    max-width: 124rem;
     background-color: white;
     text-align: center;
 
     &--th {
-      padding: 2rem 1rem 0;
-      font-size: 1.5rem;
-      border-top: 1px solid grey;
+      padding: 2rem 1rem 1rem;
+      font-size: 1.7rem;
+      // border-bottom: 1px solid grey;
+      // background-color: $color-blue-dark;
     }
 
     &--td {
       padding: 0.5rem 1rem;
+      border: none;
+      // border-bottom: 1px solid grey;
     }
 
     &--img {
@@ -114,14 +135,25 @@
     }
   }
   &__orderStatus {
-    width: 130%;
     padding: 0.8rem;
-    // background-color: rgb(227, 226, 226);
+    min-width: 15rem;
     border-radius: 0.5rem;
+
     small {
-      background-color: rgb(216, 216, 216);
-      padding: 0.4rem 0.8rem;
+      background-color: orange;
+      padding: 0.6rem 1rem;
       border-radius: 0.5rem;
+      color: $color-blue-dark;
+      font-weight: 600;
+      min-width: 13rem;
+    }
+  }
+
+  &__subTotal {
+    padding: 0.8rem 1rem 0.8rem 1.4rem;
+    small {
+      color: orange;
+      font-size: 2rem;
     }
   }
 }

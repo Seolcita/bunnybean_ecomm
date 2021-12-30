@@ -49,7 +49,7 @@ function OrderHistory() {
               </h3>
               <small>{order.orderStatus}</small>
             </div>
-            <div className='history__orderStatus'>
+            <div className='history__subTotal'>
               <h3 className='history__h3'>
                 <b>Sub Total</b>
               </h3>
@@ -140,7 +140,7 @@ function OrderHistory() {
       <div className='history__detail'>
         <div className='history__detail--container'>
           {orders.length > 0 ? (
-            <h3 className='history__detail--title'>User Purchase orders</h3>
+            <h3 className='history__detail--title'>Your Orders</h3>
           ) : (
             <h3 className='history__detail--title'>No Purchase Orders</h3>
           )}

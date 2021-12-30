@@ -16,13 +16,14 @@ const promise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 function Payment() {
   return (
     <div className='payment'>
-      <h1>PAYMENT</h1>
-      <h4>Complete your purchase</h4>
-      <Elements stripe={promise}>
-        <div className='payment__pay'>
-          <StripeCheckout />
-        </div>
-      </Elements>
+      <div className='payment__container'>
+        <h4>Complete your purchase</h4>
+        <Elements stripe={promise}>
+          <div className='payment__pay'>
+            <StripeCheckout />
+          </div>
+        </Elements>
+      </div>
     </div>
   );
 }
