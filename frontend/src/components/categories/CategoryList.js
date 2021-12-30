@@ -65,8 +65,9 @@ const CategoryList = () => {
         <div className='categoryList__section--category' key={category._id}>
           <div className='categoryList__header--category'>
             <Link to={`/category/${category.slug}`}>
-              <div className={`categoryList__item ${category.slug}`}></div>
-              <div className='categoryList__title'>{category.name}</div>
+              <div className={`categoryList__item ${category.slug}`}>
+                <h3 className='categoryList__title'>{category.name}</h3>
+              </div>
             </Link>
           </div>
         </div>

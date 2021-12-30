@@ -43,6 +43,9 @@ const Home = () => {
         </div>
 
         <CategoryList />
+
+        <hr className='home__hr' />
+        <h3 className='home__title'>Sub Categories</h3>
         <SubCategoryList />
       </div>
     </div>

@@ -28,8 +28,9 @@ const SubCategoryList = () => {
         <div className='subCategoryList__section' key={sub._id}>
           <div className='subCategoryList__header'>
             <Link to={`/subcategory/${sub.slug}`}>
-              <div className={`subCategoryList__item ${sub.slug}`}></div>
-              <div className='categoryList__title'>{sub.name}</div>
+              <div className={`subCategoryList__item ${sub.slug}`}>
+                <h3 className='categoryList__title'>{sub.name}</h3>
+              </div>
             </Link>
           </div>
         </div>

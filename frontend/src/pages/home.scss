@@ -6,13 +6,14 @@
 .home {
   background-color: $color-white;
 
-  @include center;
+  @include center-column;
 
   &__container {
     // background-color: orange;
     width: 1000rem;
     // padding-top: 5rem;
 
+    @include center-column;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -40,6 +41,20 @@
     }
   }
 
+  &__title {
+    font-family: 'Pushster', cursive;
+    font-size: 3.5rem;
+    margin-top: 4rem;
+    z-index: 1;
+    background-color: $color-white;
+    width: 30rem;
+    text-align: center;
+  }
+
+  &__hr {
+    width: 100%;
+    transform: translateY(7rem);
+  }
   // &__pagination {
   //   width: 100%;
   //   margin: 2rem;
