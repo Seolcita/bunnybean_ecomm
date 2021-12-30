@@ -100,9 +100,9 @@ function Cart(props) {
       <div className='cart__container'>
         <div className='cart__left'>
           {!cart.length ? (
-            <h4>
+            <h1>
               No products in cart. <Link to='/shop'>Continue Shopping</Link>
-            </h4>
+            </h1>
           ) : (
             showCartItems()
           )}

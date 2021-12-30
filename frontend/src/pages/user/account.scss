@@ -19,6 +19,8 @@
   }
 
   &__form {
+    max-width: 65rem;
+    min-width: 21rem;
     margin-top: 5rem;
 
     h3 {
@@ -28,7 +30,7 @@
 
     h4 {
       margin-top: 1rem;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 400;
     }
 
@@ -45,5 +47,16 @@
     padding: 0.8rem 1rem;
     display: block;
     border-radius: 0.5rem;
+    background-color: $color-blue-dark;
+    color: white;
+
+    &:hover {
+      // opacity: 0.85;
+      color: orange;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
   }
 }

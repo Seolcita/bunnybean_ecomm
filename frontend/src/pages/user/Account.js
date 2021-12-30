@@ -46,7 +46,9 @@ function Account() {
           <h2 className='dashboard__title--main'> Hello, {user.name}</h2>
           <form className='account__form' onSubmit={handleSubmit}>
             {user?.role === 'admin' ? <h3>Admin ID </h3> : <h3>User ID </h3>}
-            <h4>{user.email}</h4>
+            <h4>
+              <i>{user.email}</i>
+            </h4>
             <h3>Update Password </h3>
             <input
               type='password'

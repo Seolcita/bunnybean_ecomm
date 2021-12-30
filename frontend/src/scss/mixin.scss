@@ -28,15 +28,16 @@
 
 // User Pages
 @mixin sidebar {
-  width: 16vw;
-  background-color: pink;
+  width: 15vw;
+  min-width: 25rem;
+  max-width: 28rem;
+  background-color: $color-orange-dark;
   font-size: 1.5rem;
-  height: auto;
 }
 
 @mixin detail {
   flex: 1;
-  background-color: lightblue;
+  background-color: $color-grey-light;
   padding-top: 5rem;
   height: auto;
 
