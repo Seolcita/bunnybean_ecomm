@@ -49,11 +49,11 @@ function Checkout() {
     <div className='checkout'>
       <div className='checkout__container'>
         <div className='checkout__left'>
-          <h3 className='checkout__title'>Shipping Address</h3>
+          <h3 className='checkout__title shippingAddress'>Shipping Address</h3>
           <Address address={address} setAddress={setAddress} />
           <button
             className='checkout__btn--address'
-            disabled={addressSaved}
+            disabled={addressSaved || !address}
             onClick={() => saveAddressToDb()}
           >
             Save Address
@@ -75,14 +75,16 @@ function Checkout() {
                 <b>Sub Total: ${totalWithTax.toFixed(2)}</b>
               </h4>
             </div>
-            <button
-              disabled={
-                !addressSaved || address === '' || products.length === 0
-              }
-              className='checkout__btn--order'
-            >
-              <Link to='/payment'>Place Order</Link>
-            </button>
+            <Link to='/payment'>
+              <button
+                disabled={
+                  !addressSaved || address === '' || products.length === 0
+                }
+                className='checkout__btn--order'
+              >
+                Place Order
+              </button>
+            </Link>
           </div>
         </div>
       </div>
