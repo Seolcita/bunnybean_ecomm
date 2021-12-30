@@ -9,19 +9,17 @@
 
   @include center;
   align-items: start;
+  flex-wrap: wrap;
+
+  justify-content: center;
 
   &__left {
     // background-color: pink;
     width: 60%;
-
     @include center;
-
-    // display: flex;
-    // flex: 1;
   }
 
   &__carousel {
-    // width: 80%;
     padding-right: 10%;
   }
 
@@ -33,20 +31,19 @@
     display: flex;
     flex-direction: column;
 
+    h1 {
+      font-size: 4rem;
+      color: $color-blue-dark;
+    }
+
     h3 {
       margin-top: 2rem;
+      font-size: 2.2rem;
     }
 
     p {
       font-size: 1.7rem;
-      margin-top: 3rem;
-    }
-  }
-
-  &__show {
-    small {
-      color: red;
-      font-size: 2rem;
+      margin: 3rem 0;
     }
   }
 
@@ -57,19 +54,24 @@
 
   &__btn {
     width: 100%;
-    margin-bottom: 1rem;
-    padding: 0.8rem;
+    margin: 1rem 0;
+    padding: 1rem;
     border-radius: 0.5rem;
     font-size: 1.6rem;
+    font-weight: 600;
 
     @include center;
 
     &.cart {
-      background-color: $color-grey-medium;
+      background-color: $color-orange;
     }
 
     &:hover {
-      opacity: 0.8;
+      background-color: $color-orange-dark;
+    }
+
+    &:active {
+      transform: scale(0.98);
     }
   }
 
@@ -81,6 +83,44 @@
 
     &.self {
       margin-bottom: -0.5rem;
+    }
+  }
+}
+
+@media (min-width: 620px) and (max-width: 899px) {
+  .productCard {
+    min-width: 89rem;
+
+    &__carousel {
+      padding-right: 0%;
+    }
+
+    &__left {
+      width: 75%;
+    }
+
+    &__right {
+      width: 65%;
+      margin-top: 5rem;
+    }
+  }
+}
+
+@media (max-width: 618px) {
+  .productCard {
+    min-width: 60rem;
+
+    &__carousel {
+      padding-right: 0%;
+    }
+
+    &__left {
+      width: 60%;
+    }
+
+    &__right {
+      width: 60%;
+      margin-top: 5rem;
     }
   }
 }

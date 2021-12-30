@@ -23,7 +23,7 @@ function ProductInfo(props) {
           {category && (
             <Link
               to={`/category/${category.slug}`}
-              className='productInfo__info'
+              className='productInfo__info link'
             >
               {category.name}
             </Link>
@@ -32,7 +32,7 @@ function ProductInfo(props) {
 
         <div className='productInfo__list'>
           <div className='productInfo__title'>Sub Category</div>
-          <div className='productInfo__info'>
+          <div className='productInfo__info link'>
             {subs && (
               <Link to={`/subcategory/${subs[0].slug}`}>{subs[0].name}</Link>
             )}

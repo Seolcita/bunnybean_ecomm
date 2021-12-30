@@ -10,15 +10,16 @@
 
   &__list {
     padding: 0.5rem;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid $color-grey-medium;
 
     @include space-between;
 
     &:hover {
-      background-color: $color-grey-medium;
+      background-color: $color-grey-light;
     }
   }
 
-  &__title {
+  &__info.link {
+    color: #1990ff;
   }
 }

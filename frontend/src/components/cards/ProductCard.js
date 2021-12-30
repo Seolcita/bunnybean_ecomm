@@ -96,12 +96,12 @@ function ProductCard(props) {
             <ShoppingBasket className='productCard__icon' />
             Add to Cart
           </button>
-          <button className='productCard__btn wish'>
+          {/* <button className='productCard__btn wish'>
             <Link to='/'>
               <Favorite className='productCard__icon self' />
               Add To Wish List
             </Link>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
