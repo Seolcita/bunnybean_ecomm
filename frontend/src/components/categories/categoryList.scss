@@ -18,8 +18,17 @@
     margin-bottom: 2rem;
     position: relative;
 
+    h1 {
+      // color: orange;
+      color: $color-blue-dark;
+    }
+
     &--category {
       margin: 8rem 1rem 1rem;
+
+      &:hover h3 {
+        color: orange;
+      }
     }
   }
 

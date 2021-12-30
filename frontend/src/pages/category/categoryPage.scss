@@ -2,21 +2,31 @@
 
 @import 'variables.scss';
 @import 'mixin.scss';
+@import url('https://fonts.googleapis.com/css2?family=Pushster&display=swap');
 
 .categoryPage {
+  padding-bottom: 5rem;
   background-color: $color-grey-light;
   @include center-column;
 
+  &.cover {
+    padding-bottom: 20rem;
+  }
+
   &__title {
     margin: 3rem 0 2rem;
-    padding: 3rem 0;
-    font-size: 4rem;
+    padding: 3rem;
+    font-size: 5rem;
+    font-family: 'Pushster', cursive;
+    text-align: center;
   }
 
   &__container {
-    @include center;
-    justify-content: start;
+    display: flex;
+    justify-content: center;
+    align-content: start;
     flex-wrap: wrap;
     max-width: 100rem;
+    // background-color: skyblue;
   }
 }

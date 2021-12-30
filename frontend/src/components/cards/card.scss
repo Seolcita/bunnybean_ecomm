@@ -5,19 +5,22 @@
 
 .card {
   background-color: $color-white;
-  width: 32rem;
-  height: 33rem;
+  width: 32%;
+  height: 28rem;
+  min-width: 32rem;
   margin-bottom: 3rem;
   margin-right: 1rem;
+  margin: 0 0.5rem 3rem 0.5rem;
   overflow: hidden;
   z-index: 3;
 
   &__header {
     width: 32rem;
-    height: 25rem;
-    background-color: pink;
+    height: 20rem;
+    background-color: $color-white;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
 
     &--img {
       width: 100%;
@@ -25,41 +28,12 @@
       background-position: center;
       background-size: cover;
       transition: transform 1s ease;
-
-      // span {
-      //   color: orange;
-      //   font-size: 2rem;
-      //   position: absolute;
-      //   top: 50%;
-      //   left: 50%;
-      //   transform: translate(-50%, -50%);
-
-      //   display: none;
-      // }
-
-      // &::before {
-      //   content: '';
-      //   display: none;
-      //   height: 100%;
-      //   width: 100%;
-      //   position: absolute;
-      //   top: 0;
-      //   left: 0;
-      //   background-color: rgba(95, 113, 131, 0.3);
-      // }
+      transform: scale(0.8);
     }
 
     &:hover &--img {
-      transform: scale(1.2);
+      transform: scale(0.9);
     }
-
-    // &:hover &--img:before {
-    //   display: block;
-    // }
-
-    // &:hover span {
-    //   display: block;
-    // }
   }
 
   &__body {
@@ -78,7 +52,7 @@
 
   &__title {
     font-size: 1.8rem;
-    font-weight: 400;
+    font-weight: 500;
     // background-color: white;
     margin: 0;
   }
@@ -89,15 +63,23 @@
   }
 
   &__btns {
-    // width: 50%;
-    // background-color: rgb(162, 197, 211);
-
-    // @include space-around;
   }
 
   &__btn {
     padding: 1rem 1.5rem;
     height: 100%;
+    font-weight: 600;
+    color: $color-blue-dark;
+    background-color: orange;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: $color-orange-dark;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 
   &__OOS {

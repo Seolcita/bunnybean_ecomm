@@ -16,8 +16,13 @@
     height: 15rem;
     margin-bottom: 5rem;
     position: relative;
+
     &:hover {
       box-shadow: 0.2rem 0.4rem 1rem rgb(227, 226, 226);
+
+      h3 {
+        color: orange;
+      }
     }
   }
 

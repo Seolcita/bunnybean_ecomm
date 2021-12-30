@@ -25,7 +25,7 @@ function CategoryProducts(props) {
   }, []);
 
   return (
-    <div className='categoryPage'>
+    <div className='categoryPage cover'>
       <h1 className='categoryPage__title'>
         {products.length} Products in "{category.name}" Category
       </h1>

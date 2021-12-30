@@ -8,6 +8,9 @@ import Card from '../../components/cards/Card';
 // Connections - Functions
 import { getSubCategory } from '../../connections/subCategory';
 
+// CSS
+import '../category/categoryPage.scss';
+
 function SubProducts(props) {
   const { slug } = props.match.params;
   const [subCategory, setSubCategory] = useState({});
@@ -25,7 +28,7 @@ function SubProducts(props) {
   }, []);
 
   return (
-    <div className='categoryPage'>
+    <div className='categoryPage cover'>
       <h1 className='categoryPage__title'>
         {products.length} Products in "{subCategory.name}" Sub-Category
       </h1>
