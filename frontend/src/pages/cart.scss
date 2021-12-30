@@ -9,7 +9,7 @@
   @include center;
 
   &__container {
-    width: 80%;
+    width: 85%;
     @include center;
     align-items: start;
   }
@@ -17,13 +17,17 @@
   &__left {
     flex: 1 1 70%;
     padding: 3rem;
+    min-width: 72rem;
+    margin-right: 3rem;
+    // background-color: pink;
   }
 
   &__right {
-    flex: 1 1 30%;
+    flex: 0 1 30%;
     padding: 3rem;
     border-radius: 0.5rem;
     background-color: rgb(188, 211, 220);
+    min-width: 25.5rem;
   }
 
   // Left Section -----
@@ -38,29 +42,42 @@
       padding: 0.8rem 2rem;
       font-size: 1rem;
       border-radius: 0.5rem;
+
+      &:hover {
+        background-color: #e8e8e8;
+      }
+
+      &:active {
+        transform: scale(0.97);
+      }
     }
   }
 
   &__title {
-    font-size: 2.7rem;
+    font-size: 3rem;
     margin-bottom: 3rem;
+    font-family: 'Pushster', cursive;
   }
 
   &__table {
-    border: 1px solid rgb(191, 191, 191);
-
     &--th {
-      border: 1px solid rgb(191, 191, 191);
       padding: 1rem 2rem;
-      background-color: rgb(228, 228, 228);
+      background-color: $color-blue-dark;
+      color: white;
       &.prodName {
         width: 200%;
       }
     }
 
     &--td {
-      border: 1px solid rgb(191, 191, 191);
+      border-bottom: 1px solid $color-grey-medium;
       padding: 0.5rem 2rem;
+
+      &.title {
+        font-weight: 600;
+        font-size: 1.6rem;
+        color: $color-blue-dark;
+      }
 
       &.count {
         text-align: center;
@@ -74,7 +91,8 @@
 
     &--tbody {
       &:hover {
-        background-color: rgb(238, 238, 238);
+        background-color: $color-grey-light;
+        // color: orange;
       }
     }
 
@@ -99,7 +117,7 @@
     width: 1.8rem !important;
     height: 1.8rem !important;
     cursor: pointer;
-    color: red;
+    color: $color-red-dark;
   }
 
   // Right Section -----
@@ -125,6 +143,31 @@
       padding: 0.8rem;
       border-radius: 0.5rem;
       margin-top: 2rem;
+      // background-color: $color-orange;
+      background-color: $color-blue-dark;
+      color: orange;
+      font-size: 1.7rem;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+// RESPONSIVE
+
+@media (max-width: 995px) {
+  .cart {
+    padding-bottom: 5rem;
+
+    &__container {
+      @include center-column;
+    }
+
+    &__right {
+      margin: 3rem 0rem 0 0;
+      align-self: end;
     }
   }
 }
