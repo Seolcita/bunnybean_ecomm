@@ -8,16 +8,16 @@
 
   &__sidebar {
     @include sidebar;
+    height: 350rem;
   }
 
   &__detail {
     @include detail;
-    // background-color: grey;
-    // @include center-column;
   }
 
   &__wrap {
     width: 70%;
+    min-width: 72rem;
   }
 
   &__section {

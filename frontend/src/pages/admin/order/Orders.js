@@ -147,10 +147,7 @@ function Orders() {
         <AdminSidebar />
       </div>
       <div className='orders__detail'>
-        <div className='orders__wrap'>
-          ORDERS
-          {showEachOrders()}
-        </div>
+        <div className='orders__wrap'>{showEachOrders()}</div>
       </div>
     </div>
   );

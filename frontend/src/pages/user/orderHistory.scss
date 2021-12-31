@@ -64,7 +64,7 @@
         min-width: 39rem;
         text-align: center;
         @include center;
-        // background-color: orange;
+        justify-content: end; ////
       }
 
       &--total {
@@ -72,10 +72,11 @@
 
         small {
           padding: 0.3rem;
-          font-size: 1.5rem;
+          font-size: 1.9rem;
           font-weight: 600;
           border-radius: 0.5rem;
-          background-color: rgb(218, 217, 217);
+          // background-color: rgb(218, 217, 217);
+          color: orange;
         }
       }
     }
