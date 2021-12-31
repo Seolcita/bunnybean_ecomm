@@ -149,7 +149,7 @@ const Login = props => {
             className='register__btn emailPW'
             type='submit'
             onClick={handleSubmit}
-            disabled={!email || password.length < 6}
+            // disabled={!email || password.length < 6}
           >
             Login with Email &amp; Password
           </button>
@@ -158,7 +158,6 @@ const Login = props => {
             className='register__btn google'
             type='submit'
             onClick={googleLogin}
-            disabled={!email || password.length < 6}
           >
             Google Login
           </button>

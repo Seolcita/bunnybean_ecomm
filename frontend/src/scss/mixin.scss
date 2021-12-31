@@ -31,6 +31,7 @@
   width: 15vw;
   min-width: 25rem;
   max-width: 28rem;
+  height: 100%;
   background-color: $color-orange-dark;
   font-size: 1.5rem;
 }
@@ -39,7 +40,6 @@
   flex: 1;
   background-color: $color-grey-light;
   padding-top: 5rem;
-  height: auto;
 
   display: flex;
   justify-content: center;

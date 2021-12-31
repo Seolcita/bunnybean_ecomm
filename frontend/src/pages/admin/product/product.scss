@@ -5,19 +5,25 @@
 
 .product {
   display: flex;
+  font-family: 'Work Sans', sans-serif;
 
   &__sidebar {
     @include sidebar;
+    height: 170rem;
   }
 
   &__detail {
+    height: 170rem;
+
     @include detail;
     @include center-column;
+    justify-content: start;
   }
 
   &__wrap {
     width: 70%;
     height: 100vh;
+    max-width: 110rem;
     padding-top: 2rem;
 
     display: flex;
@@ -47,6 +53,7 @@
 
     label {
       font-weight: 600;
+      font-size: 1.9rem;
     }
   }
 
@@ -57,7 +64,7 @@
 
     font-size: 1.8rem;
     background-color: transparent;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid $color-blue-dark;
   }
 
   &__select {
@@ -70,15 +77,23 @@
 
   &__btn {
     width: 100%;
-    padding: 1.3rem 2rem;
+    padding: 1rem 2rem;
     border-radius: 0.5rem;
+    background-color: $color-blue-dark;
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
+    font-weight: 600;
+    background-color: $color-orange;
+    color: $color-blue-dark;
 
     &:hover {
-      background-color: $color-grey-medium;
+      background-color: $color-blue-dark;
+      color: white;
     }
 
     &:active {
-      transform: scale(0.95);
+      transform: scale(0.99);
     }
   }
 

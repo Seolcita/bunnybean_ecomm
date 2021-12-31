@@ -42,12 +42,12 @@ function AdminSidebar() {
           Sub Category
         </div>
       </Link>
-      <Link to='/admin/coupon'>
+      {/* <Link to='/admin/coupon'>
         <div className='sidebar__option '>
           <LocalActivity className='sidebar__icon' />
           Coupon
         </div>
-      </Link>
+      </Link> */}
       <Link to='/admin/orders'>
         <div className='sidebar__option'>
           <ReceiptLong className='sidebar__icon' />

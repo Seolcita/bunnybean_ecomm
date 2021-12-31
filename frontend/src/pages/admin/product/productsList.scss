@@ -5,20 +5,24 @@
 
 .productsList {
   display: flex;
+  font-family: 'Work Sans', sans-serif;
+  min-height: 140rem;
 
   &__sidebar {
     @include sidebar;
+    height: 160rem;
   }
 
   &__detail {
     @include detail;
     @include center-column;
+    justify-content: start;
   }
 
   &__wrap {
     width: 70%;
-    height: 100vh;
-    padding-top: 2rem;
+    min-width: 41rem;
+    max-width: 100rem;
 
     display: flex;
     flex-direction: column;
@@ -45,7 +49,7 @@
     display: flex;
 
     &:hover {
-      background-color: $color-grey-light;
+      background-color: rgba(128, 128, 128, 0.05);
     }
   }
 
@@ -54,7 +58,7 @@
   }
 
   &__img {
-    width: 10rem;
+    width: 5rem;
     height: 5rem;
     margin-right: 3rem;
     padding: 0.5rem;
@@ -75,15 +79,15 @@
       width: 2rem !important;
       height: 2rem !important;
       &:hover {
-        color: $color-orange !important;
+        color: $color-orange;
       }
     }
 
     &--edit {
-      color: black;
+      color: #1c6dd0;
     }
     &--delete {
-      color: red;
+      color: $color-red-dark;
     }
   }
 }

@@ -8,15 +8,21 @@
     font-size: 1.7rem;
     font-weight: 600;
     padding: 1rem 2rem;
-    background-color: white;
     cursor: pointer;
     width: 20rem;
     max-width: 20rem;
+    background-color: $color-orange;
+    border-radius: 0.5rem;
 
     @include center;
 
     &:hover {
-      background-color: $color-grey-light;
+      background-color: $color-blue-dark;
+      color: $color-orange;
+    }
+
+    &:active {
+      transform: scale(0.98);
     }
   }
 
