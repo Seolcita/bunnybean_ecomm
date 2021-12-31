@@ -108,7 +108,6 @@ function Category() {
       </div>
       <div className='category__detail'>
         <div className='category__wrap'>
-          {/* <h2 className='dashboard__title--main'>Category</h2> */}
           <CategoryForm
             handleSubmit={handleSubmit}
             name={name}

@@ -5,6 +5,7 @@
 
 .category {
   display: flex;
+  font-family: 'Work Sans', sans-serif;
 
   &__sidebar {
     @include sidebar;
@@ -12,8 +13,6 @@
 
   &__detail {
     @include detail;
-    // background-color: grey;
-    // @include center-column;
   }
 
   &__wrap {
@@ -43,18 +42,28 @@
   }
 
   &__form {
+    min-width: 34rem;
+
     &--input {
       padding: 0.7rem 2rem;
       margin-top: 2.5rem;
       margin-right: 2rem;
       font-size: 1.7rem;
       background-color: transparent;
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid $color-blue-dark;
     }
 
     button {
       padding: 1rem 2rem;
-      border-radius: 5rem;
+      border-radius: 0.55rem;
+      background-color: $color-blue-dark;
+      font-weight: 600;
+      color: white;
+
+      &:hover {
+        background-color: $color-orange;
+        color: $color-blue-dark;
+      }
     }
   }
 
@@ -65,6 +74,8 @@
 
   &__list {
     width: 100%;
+    max-width: 82.5rem;
+    min-width: 30rem;
     margin: 0.5rem 0 0;
 
     padding-left: 3rem;
@@ -77,7 +88,7 @@
     display: flex;
 
     &:hover {
-      background-color: $color-grey-light;
+      background-color: rgba(128, 128, 128, 0.05);
     }
   }
 
@@ -96,15 +107,15 @@
       width: 2rem !important;
       height: 2rem !important;
       &:hover {
-        color: $color-orange !important;
+        color: $color-orange;
       }
     }
 
     &--edit {
-      color: black;
+      color: $color-blue-medium;
     }
     &--delete {
-      color: red;
+      color: $color-red-dark;
     }
   }
 }
