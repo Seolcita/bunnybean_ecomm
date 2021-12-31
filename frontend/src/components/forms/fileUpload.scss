@@ -4,6 +4,9 @@
 @import 'mixin.scss';
 
 .fileUpload {
+  max-width: 80rem;
+  min-width: 40rem;
+
   &__label {
     font-size: 1.7rem;
     font-weight: 600;

@@ -32,7 +32,7 @@ function SubProducts(props) {
       <h1 className='categoryPage__title'>
         {products.length} Products in "{subCategory.name}" Sub-Category
       </h1>
-      <div className='categoryPage__container'>
+      <div className='categoryPage__container admin'>
         {products.map(prod => (
           <Card product={prod} />
         ))}
