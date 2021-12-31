@@ -6,6 +6,7 @@ import { getCategories } from '../../connections/category';
 
 // CSS
 import './categoryList.scss';
+import '../../pages/home.scss';
 
 const CategoryList = () => {
   const [categories, setCategories] = useState();

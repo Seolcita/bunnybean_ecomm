@@ -218,7 +218,11 @@ function Shop() {
       {/* {JSON.stringify(subCategory)} */}
       <div className='shop__container'>
         <div className='shop__left'>
-          <Menu defaultOpenKeys={['1', '2', '3', '4']} mode='inline'>
+          <Menu
+            defaultOpenKeys={['1', '2', '3', '4']}
+            mode='inline'
+            className='shop__menu'
+          >
             {/* PRICE */}
             <SubMenu
               key='1'

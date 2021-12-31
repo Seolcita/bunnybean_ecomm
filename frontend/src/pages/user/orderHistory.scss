@@ -4,6 +4,7 @@
 @import 'mixin.scss';
 
 .history {
+  font-family: 'Work Sans', sans-serif;
   color: $color-blue-dark;
   font-size: 1.8rem;
 
@@ -11,6 +12,7 @@
 
   &__sidebar {
     @include sidebar;
+    height: 300rem;
   }
 
   &__detail {

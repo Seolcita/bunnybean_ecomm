@@ -4,7 +4,9 @@
 @import 'mixin.scss';
 
 .account {
+  font-family: 'Work Sans', sans-serif;
   display: flex;
+
   &__sidebar {
     @include sidebar;
   }

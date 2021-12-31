@@ -11,7 +11,7 @@
   &__container {
     // background-color: orange;
     width: 1000rem;
-    // padding-top: 5rem;
+    font-family: 'Work Sans', sans-serif;
 
     @include center-column;
     display: flex;

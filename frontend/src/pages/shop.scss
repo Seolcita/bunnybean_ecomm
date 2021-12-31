@@ -4,7 +4,8 @@
 @import 'mixin.scss';
 
 .shop {
-  color: black;
+  color: $color-blue-dark;
+  font-family: 'Work Sans', sans-serif;
 
   &__container {
     @include center;
@@ -14,11 +15,10 @@
   &__left {
     width: 20%;
     padding: 3rem 2rem;
-    // background-color: pink;
   }
 
   &__right {
-    // background-color: skyblue;
+    background-color: $color-grey-light;
 
     display: flex;
     flex: 1 1 60%;
@@ -26,14 +26,9 @@
   }
 
   &__title {
-    &.left {
-      font-size: 2rem;
-      margin-top: 5rem;
-      // background-color: rgb(213, 213, 213);
-    }
-
     &.right {
-      font-size: 3.7rem;
+      font-family: 'Pushster', cursive;
+      font-size: 5rem;
       margin: 3rem 0;
     }
   }
@@ -44,7 +39,6 @@
     max-width: 100rem;
     // background-color: red;
     @include center;
-    justify-content: start;
   }
 
   &__submenu {

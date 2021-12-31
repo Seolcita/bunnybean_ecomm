@@ -4,6 +4,8 @@
 @import 'mixin.scss';
 
 .drawer {
+  font-family: 'Work Sans', sans-serif;
+
   &__container {
     position: relative;
   }
@@ -57,11 +59,18 @@
     &--toCart {
       width: 100%;
       padding: 0.7rem 1rem;
-      // position: absolute;
-      // bottom: 2%;
-      // right: 5%;
-      background-color: rgb(198, 198, 198);
+      background-color: $color-orange;
       border-radius: 0.5rem;
+      font-weight: 700;
+
+      &:hover {
+        color: $color-blue-dark;
+        background-color: $color-orange-dark;
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
     }
   }
 }

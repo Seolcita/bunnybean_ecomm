@@ -8,6 +8,9 @@ import Card from '../../components/cards/Card';
 // Connections - Functions
 import { getCategory } from '../../connections/category';
 
+// CSS
+import './categoryPage.scss';
+
 function CategoryProducts(props) {
   const { slug } = props.match.params;
   const [category, setCategory] = useState({});
