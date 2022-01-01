@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createOrUpdateUser } from '../../connections/auth';
 
 //CSS
-import '../../app.scss';
 import './login.scss';
 import './register.scss';
 
