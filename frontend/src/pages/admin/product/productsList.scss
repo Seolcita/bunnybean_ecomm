@@ -11,6 +11,7 @@
   &__sidebar {
     @include sidebar;
     height: 160rem;
+    position: relative;
   }
 
   &__detail {
@@ -90,4 +91,8 @@
       color: $color-red-dark;
     }
   }
+}
+
+#ToggleSidebar {
+  @include sidebarToggle;
 }

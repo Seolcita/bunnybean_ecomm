@@ -26,7 +26,7 @@
   align-items: center;
 }
 
-// User Pages
+// User & Admin Pages
 @mixin sidebar {
   width: 15vw;
   min-width: 25rem;
@@ -43,4 +43,32 @@
 
   display: flex;
   justify-content: center;
+}
+
+@mixin sidebarToggle {
+  background-color: $color-orange-dark;
+  color: $color-blue-dark;
+  position: absolute;
+  top: 1rem;
+  left: 24.9rem;
+  width: 3.5rem;
+  height: 3rem;
+  z-index: 210000;
+  border-radius: 0 0.5rem 0.5rem 0;
+
+  @include center;
+
+  &--icon {
+    width: 2rem !important;
+    height: 2.5rem !important;
+    margin-left: -1rem;
+  }
+
+  &--input {
+    visibility: hidden;
+  }
+
+  &:hover {
+    color: $color-white;
+  }
 }

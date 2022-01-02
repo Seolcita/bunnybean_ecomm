@@ -19,6 +19,7 @@ import FileUpload from '../../../components/forms/FileUpload';
 
 // CSS & MUI Icons
 import './product.scss';
+import { Menu } from '@mui/icons-material';
 
 // Set initial value for 'value' in useState
 const initialState = {
@@ -56,6 +57,24 @@ function Product() {
   const [subOptions, setSubOptions] = useState([]);
   const [showSub, setShowSub] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // CSS Responsive Purpose
+  const [mobile, setMobile] = useState('0rem');
+  const [filterToggle, setFilterToggle] = useState(false);
+
+  const handleFilterToggle = () => {
+    console.log('CLICKED TOGGLE');
+    setFilterToggle(!filterToggle);
+    console.log('TOGGLE', filterToggle);
+
+    if (filterToggle) {
+      setMobile('0rem');
+      console.log('current toggle', filterToggle);
+    } else if (!filterToggle) {
+      setMobile('-24rem');
+      console.log('current toggle', filterToggle);
+    }
+  };
 
   useEffect(() => {
     loadCategories();
@@ -97,7 +116,15 @@ function Product() {
 
   return (
     <div className='product'>
-      <div className='product__sidebar'>
+      <div className='product__sidebar' style={{ marginLeft: mobile }}>
+        <label id='ToggleSidebar'>
+          <input
+            type='checkbox'
+            id='ToggleSidebar--input'
+            for='ToggleSidebar'
+          />
+          <Menu id='ToggleSidebar--icon' onClick={() => handleFilterToggle()} />
+        </label>
         <AdminSidebar />
       </div>
       <div className='product__detail'>

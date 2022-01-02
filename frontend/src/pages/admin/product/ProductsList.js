@@ -21,6 +21,7 @@ import {
   DeleteForever,
   ModeEditOutline,
   TonalitySharp,
+  Menu,
 } from '@mui/icons-material';
 import ProductDefaultImage from '../../../images/productDefault.png';
 
@@ -33,6 +34,24 @@ function ProductsList() {
   const [loading, setLoading] = useState(false);
 
   const count = 100;
+
+  // CSS Responsive Purpose
+  const [mobile, setMobile] = useState('0rem');
+  const [filterToggle, setFilterToggle] = useState(false);
+
+  const handleFilterToggle = () => {
+    console.log('CLICKED TOGGLE');
+    setFilterToggle(!filterToggle);
+    console.log('TOGGLE', filterToggle);
+
+    if (filterToggle) {
+      setMobile('0rem');
+      console.log('current toggle', filterToggle);
+    } else if (!filterToggle) {
+      setMobile('-24rem');
+      console.log('current toggle', filterToggle);
+    }
+  };
 
   useEffect(() => {
     loadAllProducts();
@@ -75,7 +94,15 @@ function ProductsList() {
 
   return (
     <div className='productsList'>
-      <div className='productsList__sidebar'>
+      <div className='productsList__sidebar' style={{ marginLeft: mobile }}>
+        <label id='ToggleSidebar'>
+          <input
+            type='checkbox'
+            id='ToggleSidebar--input'
+            for='ToggleSidebar'
+          />
+          <Menu id='ToggleSidebar--icon' onClick={() => handleFilterToggle()} />
+        </label>
         <AdminSidebar />
       </div>
       <div className='productsList__detail'>

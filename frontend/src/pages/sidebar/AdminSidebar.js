@@ -13,6 +13,7 @@ import {
   ManageAccounts,
   LocalActivity,
   LabelImportant,
+  Menu,
 } from '@mui/icons-material';
 
 function AdminSidebar() {

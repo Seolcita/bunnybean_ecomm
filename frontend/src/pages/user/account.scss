@@ -9,11 +9,13 @@
 
   &__sidebar {
     @include sidebar;
+    position: relative;
+    height: 70rem;
   }
 
   &__detail {
     @include detail;
-    height: 100vh;
+    height: 70rem;
   }
 
   &__wrap {
@@ -61,4 +63,8 @@
       transform: scale(0.98);
     }
   }
+}
+
+#ToggleSidebar {
+  @include sidebarToggle;
 }

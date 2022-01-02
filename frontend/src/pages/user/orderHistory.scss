@@ -13,6 +13,7 @@
   &__sidebar {
     @include sidebar;
     height: 300rem;
+    position: relative;
   }
 
   &__detail {
@@ -155,4 +156,8 @@
       font-size: 2rem;
     }
   }
+}
+
+#ToggleSidebar {
+  @include sidebarToggle;
 }

@@ -11,6 +11,7 @@ import AdminSidebar from '../sidebar/AdminSidebar';
 
 //CSS
 import './account.scss';
+import { Menu } from '@mui/icons-material';
 
 function Account() {
   const [password, setPassword] = useState();
@@ -18,6 +19,24 @@ function Account() {
   const [loading, setLoading] = useState(false);
 
   let { user } = useSelector(state => ({ ...state }));
+
+  // CSS Responsive Purpose
+  const [mobile, setMobile] = useState('0rem');
+  const [filterToggle, setFilterToggle] = useState(false);
+
+  const handleFilterToggle = () => {
+    console.log('CLICKED TOGGLE');
+    setFilterToggle(!filterToggle);
+    console.log('TOGGLE', filterToggle);
+
+    if (filterToggle) {
+      setMobile('0rem');
+      console.log('current toggle', filterToggle);
+    } else if (!filterToggle) {
+      setMobile('-24rem');
+      console.log('current toggle', filterToggle);
+    }
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -38,7 +57,15 @@ function Account() {
 
   return (
     <div className='account'>
-      <div className='account__sidebar'>
+      <div className='account__sidebar' style={{ marginLeft: mobile }}>
+        <label id='ToggleSidebar'>
+          <input
+            type='checkbox'
+            id='ToggleSidebar--input'
+            for='ToggleSidebar'
+          />
+          <Menu id='ToggleSidebar--icon' onClick={() => handleFilterToggle()} />
+        </label>
         {user?.role === 'admin' ? <AdminSidebar /> : <UserSidebar />}
       </div>
       <div className='account__detail'>

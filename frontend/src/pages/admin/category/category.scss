@@ -8,7 +8,9 @@
   font-family: 'Work Sans', sans-serif;
 
   &__sidebar {
+    position: relative;
     @include sidebar;
+    height: 120rem;
   }
 
   &__detail {
@@ -119,4 +121,8 @@
       color: $color-red-dark;
     }
   }
+}
+
+#ToggleSidebar {
+  @include sidebarToggle;
 }

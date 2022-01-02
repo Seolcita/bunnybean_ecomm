@@ -9,6 +9,7 @@
   &__sidebar {
     @include sidebar;
     height: 350rem;
+    position: relative;
   }
 
   &__detail {
@@ -26,7 +27,9 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-
-    // background-color: pink;
   }
+}
+
+#ToggleSidebar {
+  @include sidebarToggle;
 }

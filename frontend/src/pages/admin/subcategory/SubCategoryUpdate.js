@@ -16,6 +16,7 @@ import CategoryForm from '../../../components/forms/CategoryForm';
 
 // CSS
 import '../category/category.scss';
+import { Menu } from '@mui/icons-material';
 
 function SubCategoryUpdate(props) {
   const { history, match } = props;
@@ -27,6 +28,24 @@ function SubCategoryUpdate(props) {
   const [parent, setParent] = useState('');
 
   const slug = match.params.slug;
+
+  // CSS Responsive Purpose
+  const [mobile, setMobile] = useState('0rem');
+  const [filterToggle, setFilterToggle] = useState(false);
+
+  const handleFilterToggle = () => {
+    console.log('CLICKED TOGGLE');
+    setFilterToggle(!filterToggle);
+    console.log('TOGGLE', filterToggle);
+
+    if (filterToggle) {
+      setMobile('0rem');
+      console.log('current toggle', filterToggle);
+    } else if (!filterToggle) {
+      setMobile('-24rem');
+      console.log('current toggle', filterToggle);
+    }
+  };
 
   useEffect(() => {
     loadCategories();
@@ -63,7 +82,15 @@ function SubCategoryUpdate(props) {
 
   return (
     <div className='category'>
-      <div className='category__sidebar'>
+      <div className='category__sidebar' style={{ marginLeft: mobile }}>
+        <label id='ToggleSidebar'>
+          <input
+            type='checkbox'
+            id='ToggleSidebar--input'
+            for='ToggleSidebar'
+          />
+          <Menu id='ToggleSidebar--icon' onClick={() => handleFilterToggle()} />
+        </label>
         <AdminSidebar />
       </div>
       <div className='category__detail'>

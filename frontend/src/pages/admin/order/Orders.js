@@ -16,10 +16,29 @@ import AdminSidebar from '../../sidebar/AdminSidebar';
 import './orders.scss';
 import '../../user/orderHistory.scss';
 import defaultImage from '../../../images/productDefault.png';
+import { Menu } from '@mui/icons-material';
 
 function Orders() {
   const { user } = useSelector(state => ({ ...state }));
   const [orders, setOrders] = useState([]);
+
+  // CSS Responsive Purpose
+  const [mobile, setMobile] = useState('0rem');
+  const [filterToggle, setFilterToggle] = useState(false);
+
+  const handleFilterToggle = () => {
+    console.log('CLICKED TOGGLE');
+    setFilterToggle(!filterToggle);
+    console.log('TOGGLE', filterToggle);
+
+    if (filterToggle) {
+      setMobile('0rem');
+      console.log('current toggle', filterToggle);
+    } else if (!filterToggle) {
+      setMobile('-24rem');
+      console.log('current toggle', filterToggle);
+    }
+  };
 
   useEffect(() => {
     loadOrders();
@@ -143,7 +162,15 @@ function Orders() {
 
   return (
     <div className='orders'>
-      <div className='orders__sidebar'>
+      <div className='orders__sidebar' style={{ marginLeft: mobile }}>
+        <label id='ToggleSidebar'>
+          <input
+            type='checkbox'
+            id='ToggleSidebar--input'
+            for='ToggleSidebar'
+          />
+          <Menu id='ToggleSidebar--icon' onClick={() => handleFilterToggle()} />
+        </label>
         <AdminSidebar />
       </div>
       <div className='orders__detail'>

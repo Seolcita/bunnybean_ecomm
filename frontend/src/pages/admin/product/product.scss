@@ -10,6 +10,7 @@
   &__sidebar {
     @include sidebar;
     height: 170rem;
+    position: relative;
   }
 
   &__detail {
@@ -114,4 +115,8 @@
       transform: scale(0.9);
     }
   }
+}
+
+#ToggleSidebar {
+  @include sidebarToggle;
 }

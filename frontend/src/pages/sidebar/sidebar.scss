@@ -6,6 +6,7 @@
 .sidebar {
   height: 100vh;
   font-family: 'Work Sans', sans-serif;
+  position: relative;
 
   &__option {
     font-size: 1.8rem;
@@ -33,5 +34,34 @@
     height: 2.5rem !important;
     margin-right: 1.5rem;
     color: $color-blue-dark;
+  }
+}
+
+// Filter
+#filter {
+  background-color: $color-blue-dark;
+  color: $color-orange;
+  position: absolute;
+  top: -2rem;
+  left: 25rem;
+  width: 3.5rem;
+  height: 3rem;
+  z-index: 2;
+  border-radius: 0 0.5rem 0.5rem 0;
+
+  @include center;
+
+  &--icon {
+    width: 2rem !important;
+    height: 2.5rem !important;
+    margin-left: -1rem;
+  }
+
+  &--input {
+    visibility: hidden;
+  }
+
+  &:hover {
+    color: $color-white;
   }
 }

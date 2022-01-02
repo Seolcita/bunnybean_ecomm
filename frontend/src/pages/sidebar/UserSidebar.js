@@ -21,12 +21,7 @@ function UserSidebar() {
           Order History
         </div>
       </Link>
-      <Link to='/cart'>
-        <div className='sidebar__option'>
-          <ShoppingBasket className='sidebar__icon' />
-          Shopping Cart
-        </div>
-      </Link>
+
       {/* <Link to='/user/wishlist'>
         <div className='sidebar__option'>
           <Favorite className='sidebar__icon' />
@@ -37,6 +32,12 @@ function UserSidebar() {
         <div className='sidebar__option '>
           <ManageAccounts className='sidebar__icon' />
           User Account
+        </div>
+      </Link>
+      <Link to='/cart'>
+        <div className='sidebar__option'>
+          <ShoppingBasket className='sidebar__icon' />
+          Shopping Cart
         </div>
       </Link>
     </div>

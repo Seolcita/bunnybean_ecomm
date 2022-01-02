@@ -13,13 +13,32 @@ import { getUserOrders } from '../../connections/user';
 import UserSidebar from '../sidebar/UserSidebar';
 import Invoice from '../../components/orders/Invoice';
 
-//CSS & Images
+//CSS & MUI Icons & Images
 import './orderHistory.scss';
+import { Menu } from '@mui/icons-material';
 import defaultImage from '../../images/productDefault.png';
 
 function OrderHistory() {
   const [orders, setOrders] = useState([]);
   const { user } = useSelector(state => ({ ...state }));
+
+  // CSS Responsive Purpose
+  const [mobile, setMobile] = useState('0rem');
+  const [filterToggle, setFilterToggle] = useState(false);
+
+  const handleFilterToggle = () => {
+    console.log('CLICKED TOGGLE');
+    setFilterToggle(!filterToggle);
+    console.log('TOGGLE', filterToggle);
+
+    if (filterToggle) {
+      setMobile('0rem');
+      console.log('current toggle', filterToggle);
+    } else if (!filterToggle) {
+      setMobile('-24rem');
+      console.log('current toggle', filterToggle);
+    }
+  };
 
   useEffect(() => {
     loadUserOrders();
@@ -134,7 +153,15 @@ function OrderHistory() {
 
   return (
     <div className='history'>
-      <div className='history__sidebar'>
+      <div className='history__sidebar' style={{ marginLeft: mobile }}>
+        <label id='ToggleSidebar'>
+          <input
+            type='checkbox'
+            id='ToggleSidebar--input'
+            for='ToggleSidebar'
+          />
+          <Menu id='ToggleSidebar--icon' onClick={() => handleFilterToggle()} />
+        </label>
         <UserSidebar />
       </div>
       <div className='history__detail'>
