@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 
 // Components
 import NavItem from './NavItem';
-import Dropdown from './Dropdown';
 import ProductSearch from '../../components/forms/ProductSearch';
 
 //CSS & MUI
@@ -95,6 +94,7 @@ function Navbar() {
                 icon={<ShoppingBasket className='navbar__icon' />}
                 title='Cart'
                 address='cart'
+                badge
               ></NavItem>
               {!user ? (
                 <NavItem
@@ -148,6 +148,7 @@ function Navbar() {
                 icon={<ShoppingBasket className='navbar__icon' />}
                 title=''
                 address='cart'
+                badge
               ></NavItem>
               {!user ? (
                 <NavItem

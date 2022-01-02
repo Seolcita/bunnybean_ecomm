@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import './navItem.scss';
 
 function NavItem(props) {
-  const { icon, title, username, address, children } = props;
+  const { icon, title, username, address, badge, children } = props;
   const { cart } = useSelector(state => ({ ...state }));
   const [open, setOpen] = useState(false);
 
@@ -20,9 +20,7 @@ function NavItem(props) {
           <span className='navItem__btn--title'>
             {username ? username : title}
           </span>
-          {title === 'Cart' && (
-            <span className='navItem__count'>{cart.length}</span>
-          )}
+          {badge ? <span className='navItem__count'>{cart.length}</span> : null}
         </Link>
         {open ? children : null}
       </li>
