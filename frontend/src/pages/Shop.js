@@ -55,53 +55,20 @@ function Shop() {
 
   // CSS Purpose
   const [mobile, setMobile] = useState('0rem');
-  const [filterToggle, setFilterToggle] = useState('close');
-  const [currentWidth, setCurrentWidth] = useState(window.innerWidth);
-
-  // CSS RESPONSIVE - Check window inner width and change sidebar
-  useEffect(() => {
-    function handleResize() {
-      setCurrentWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-    handleResponsive();
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, [currentWidth]);
-
-  const handleResponsive = () => {
-    if (currentWidth < 859) {
-      setMobile('-20rem');
-      // setLaptop('none');
-    } else if (currentWidth >= 860) {
-      setMobile('0rem');
-      // setLaptop('block');
-    }
-  };
+  const [filterToggle, setFilterToggle] = useState(false);
 
   const handleFilterToggle = () => {
     console.log('CLICKED TOGGLE');
-    // setFilterToggle(!filterToggle);
+    setFilterToggle(!filterToggle);
+    console.log('TOGGLE', filterToggle);
 
-    if (filterToggle === 'close') {
-      setFilterToggle('open');
-      setMobile('-20rem');
-      console.log('current toggle', filterToggle);
-    } else if (filterToggle === 'open') {
-      setFilterToggle('close');
+    if (filterToggle) {
       setMobile('0rem');
       console.log('current toggle', filterToggle);
+    } else if (!filterToggle) {
+      setMobile('-26rem');
+      console.log('current toggle', filterToggle);
     }
-
-    // if (currentWidth < 859) {
-    //   if (filterToggle) {
-    //     setMobile('0rem');
-    //   }
-    //   if (!filterToggle) {
-    //     setMobile('-20rem');
-    //   }
-    // }
   };
 
   useEffect(() => {
@@ -201,6 +168,10 @@ function Shop() {
     } else {
       // If found pull out one item from the index
       inTheState.splice(foundInTheState, 1);
+
+      if (inTheState.length < 1) {
+        loadAllProducts();
+      }
     }
 
     // Set Categories to get data from backend
@@ -269,13 +240,12 @@ function Shop() {
       {/* {JSON.stringify(subCategory)} */}
       <div className='shop__container'>
         <div className='shop__left' style={{ marginLeft: mobile }}>
-          <label
-            className='shop__left--filter'
-            id='filter'
-            onClick={() => handleFilterToggle()}
-          >
+          <label className='shop__left--filter' id='filter'>
             <input type='checkbox' id='filter--input' for='filter' />
-            <FilterList id='filter--icon' />
+            <FilterList
+              id='filter--icon'
+              onClick={() => handleFilterToggle()}
+            />
           </label>
           <Menu
             defaultOpenKeys={['1', '2', '3', '4']}
