@@ -19,7 +19,7 @@ import {
 function AdminSidebar() {
   return (
     <div className='sidebar'>
-      <Link to='/admin/product/create'>
+      <Link to='/admin/product/create' className='sidebar__link'>
         <div className='sidebar__option sidebar__option--top'>
           <AddBox className='sidebar__icon' />
           Add Product

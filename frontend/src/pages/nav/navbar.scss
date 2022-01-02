@@ -5,7 +5,6 @@
 
 .navigation {
   width: 100%;
-  color: indianred;
 }
 
 .navbar {
@@ -89,7 +88,7 @@
     }
 
     &:hover {
-      color: orange;
+      color: $color-orange;
     }
   }
 
@@ -113,6 +112,7 @@
     }
   }
 
+  // MUI Icon Override
   &__icon {
     margin: 0.3rem 0 -0.3rem 0;
     width: 2.5rem !important;
@@ -122,10 +122,6 @@
       width: 2.3rem !important;
       height: 2.3rem !important;
       margin-bottom: -0.3rem;
-    }
-
-    &:hover {
-      color: orange;
     }
   }
 }
@@ -179,7 +175,7 @@
       color: white;
 
       &:hover {
-        color: orange;
+        color: orange !important;
       }
     }
 

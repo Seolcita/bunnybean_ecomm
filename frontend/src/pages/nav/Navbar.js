@@ -113,9 +113,7 @@ function Navbar() {
                         : 'user/history'
                     }
                     username={user.email?.split('@')[0]}
-                  >
-                    {/* <Dropdown /> */}
-                  </NavItem>
+                  ></NavItem>
 
                   <div className='navbar__logout' onClick={() => logout()}>
                     <Logout className='navbar__icon logout' />{' '}

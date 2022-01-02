@@ -106,6 +106,7 @@ const RegisterComplete = props => {
             className='register__btn submit'
             type='submit'
             onClick={handleSubmit}
+            disabled={!password || password.length < 6}
           >
             Submit
           </button>

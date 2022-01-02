@@ -13,6 +13,7 @@
     font-weight: 500;
     padding: 1rem 3rem;
     cursor: pointer;
+    transition: color 1s;
 
     display: flex;
     align-items: center;
@@ -24,6 +25,10 @@
 
     &:hover {
       background-color: $color-orange;
+      color: $color-blue-dark;
+    }
+
+    &__link:hover a {
       color: $color-blue-dark;
     }
   }

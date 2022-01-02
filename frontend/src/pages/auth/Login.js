@@ -33,7 +33,7 @@ const Login = props => {
       if (res.data.role === 'admin') {
         history.push('/admin/dashboard');
       } else {
-        history.push('/user/history');
+        history.push('/');
       }
     }
   };
@@ -148,7 +148,7 @@ const Login = props => {
             className='register__btn emailPW'
             type='submit'
             onClick={handleSubmit}
-            // disabled={!email || password.length < 6}
+            disabled={!email || password.length < 6}
           >
             Login with Email &amp; Password
           </button>
