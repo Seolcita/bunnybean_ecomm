@@ -34,8 +34,7 @@ function Navbar() {
   const [laptop, setLaptop] = useState('block');
   const [currentWidth, setCurrentWidth] = useState(window.innerWidth);
 
-  let intViewportWidth = window.innerWidth;
-
+  // CSS RESPONSIVE - Check window inner width and change nav
   useEffect(() => {
     function handleResize() {
       setCurrentWidth(window.innerWidth);
@@ -57,10 +56,9 @@ function Navbar() {
     }
   };
 
-  console.log('intViewportWidth', intViewportWidth);
-  console.log('currentWidth', currentWidth);
-  console.log('MOBILE', mobile);
-  console.log('LAPTOP', laptop);
+  // console.log('currentWidth', currentWidth);
+  // console.log('MOBILE', mobile);
+  // console.log('LAPTOP', laptop);
 
   const logout = () => {
     firebase.auth().signOut();

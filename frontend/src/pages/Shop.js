@@ -53,6 +53,57 @@ function Shop() {
   ]); // To display Brands' options in filter section
   const [brand, setBrand] = useState('');
 
+  // CSS Purpose
+  const [mobile, setMobile] = useState('0rem');
+  const [filterToggle, setFilterToggle] = useState('close');
+  const [currentWidth, setCurrentWidth] = useState(window.innerWidth);
+
+  // CSS RESPONSIVE - Check window inner width and change sidebar
+  useEffect(() => {
+    function handleResize() {
+      setCurrentWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResponsive();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [currentWidth]);
+
+  const handleResponsive = () => {
+    if (currentWidth < 859) {
+      setMobile('-20rem');
+      // setLaptop('none');
+    } else if (currentWidth >= 860) {
+      setMobile('0rem');
+      // setLaptop('block');
+    }
+  };
+
+  const handleFilterToggle = () => {
+    console.log('CLICKED TOGGLE');
+    // setFilterToggle(!filterToggle);
+
+    if (filterToggle === 'close') {
+      setFilterToggle('open');
+      setMobile('-20rem');
+      console.log('current toggle', filterToggle);
+    } else if (filterToggle === 'open') {
+      setFilterToggle('close');
+      setMobile('0rem');
+      console.log('current toggle', filterToggle);
+    }
+
+    // if (currentWidth < 859) {
+    //   if (filterToggle) {
+    //     setMobile('0rem');
+    //   }
+    //   if (!filterToggle) {
+    //     setMobile('-20rem');
+    //   }
+    // }
+  };
+
   useEffect(() => {
     loadAllProducts();
     loadAllCategories();
@@ -217,7 +268,15 @@ function Shop() {
     <div className='shop'>
       {/* {JSON.stringify(subCategory)} */}
       <div className='shop__container'>
-        <div className='shop__left'>
+        <div className='shop__left' style={{ marginLeft: mobile }}>
+          <label
+            className='shop__left--filter'
+            id='filter'
+            onClick={() => handleFilterToggle()}
+          >
+            <input type='checkbox' id='filter--input' for='filter' />
+            <FilterList id='filter--icon' />
+          </label>
           <Menu
             defaultOpenKeys={['1', '2', '3', '4']}
             mode='inline'
