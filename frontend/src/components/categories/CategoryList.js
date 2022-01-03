@@ -2,7 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+// Connections - Functions
 import { getCategories } from '../../connections/category';
+
+// Components
+import LoadingCard from '../cards/LoadingCard';
 
 // CSS
 import './categoryList.scss';
@@ -62,17 +67,23 @@ const CategoryList = () => {
         </div>
       </div>
 
-      {categories?.map(category => (
-        <div className='categoryList__section--category' key={category._id}>
-          <div className='categoryList__header--category'>
-            <Link to={`/category/${category.slug}`}>
-              <div className={`categoryList__item ${category.slug}`}>
-                <h3 className='categoryList__title'>{category.name}</h3>
+      {loading ? (
+        <LoadingCard count={4} />
+      ) : (
+        <>
+          {categories?.map(category => (
+            <div className='categoryList__section--category' key={category._id}>
+              <div className='categoryList__header--category'>
+                <Link to={`/category/${category.slug}`}>
+                  <div className={`categoryList__item ${category.slug}`}>
+                    <h3 className='categoryList__title'>{category.name}</h3>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-        </div>
-      ))}
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

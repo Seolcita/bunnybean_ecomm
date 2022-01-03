@@ -98,3 +98,16 @@
     }
   }
 }
+
+.loading {
+  width: 100rem;
+  margin: 0 0.5rem 3rem 0.5rem;
+
+  &__card {
+    margin: 1rem 0;
+  }
+
+  @include space-around;
+  flex-wrap: wrap;
+  max-width: 100rem;
+}
