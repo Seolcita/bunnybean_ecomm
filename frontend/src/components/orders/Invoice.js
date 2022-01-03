@@ -55,26 +55,26 @@ function Invoice(props) {
 
         <Text style={styles.text}>
           <Text>
-            Date: {'               '}
+            Date: {'                 '}
             {new Date(order.paymentIntent.created * 1000).toLocaleString()}
           </Text>
           {'\n'}
           <Text>
-            Order Id: {'         '}
+            Order Id: {'           '}
             {order._id}
           </Text>
           {'\n'}
           <Text>
-            Order Status: {'  '}
+            Order Status: {'    '}
             {order.orderStatus}
           </Text>
           {'\n'}
           <Text>
-            Tax: {'       '} $ {order.tax}
+            Tax: {'                  '} ${order.tax}
           </Text>
           {'\n'}
           <Text>
-            Total Paid: {'       '} ${' '}
+            Total Paid: {'         '}$
             {(order.paymentIntent.amount / 100).toLocaleString('en-US')}
           </Text>
         </Text>

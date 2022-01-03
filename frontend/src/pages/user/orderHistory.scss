@@ -96,9 +96,11 @@
       background-color: white;
       border-radius: 0.5rem;
       cursor: pointer;
+      transition: color 1s;
 
       &:hover {
         opacity: 0.8;
+        color: $color-blue-dark;
       }
     }
   }

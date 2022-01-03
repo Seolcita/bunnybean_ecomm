@@ -84,15 +84,15 @@ function OrderHistory() {
     ));
 
   const showDownloadLink = order => (
-    <div className='history__each--pdf'>
-      <PDFDownloadLink
-        document={<Invoice order={order} />}
-        fileName='invoice.pdf'
-        className='invoice'
-      >
+    <PDFDownloadLink
+      document={<Invoice order={order} />}
+      fileName='invoice.pdf'
+      className='invoice'
+    >
+      <div className='history__each--pdf'>
         <b>Download Invoice</b>
-      </PDFDownloadLink>
-    </div>
+      </div>
+    </PDFDownloadLink>
   );
 
   const showOrderInTable = order => (

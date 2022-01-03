@@ -62,7 +62,12 @@ exports.userCart = async (req, res) => {
     orderedBy: user._id,
   }).save();
 
-  console.log('NEW CART', newCart);
+  // Update User's cart in user model
+  const userCart = await User.findOneAndUpdate(
+    { email: req.user.email },
+    { cart: newCart }
+  ).exec();
+
   res.json({ ok: true });
 };
 
