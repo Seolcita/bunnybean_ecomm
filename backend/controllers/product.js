@@ -24,7 +24,7 @@ exports.listAll = async (req, res) => {
     .limit(count)
     .populate('category')
     .populate('subs')
-    .sort([['createdAt', 'desc']])
+    .sort([['createdAt', 'desc']]) // .sort([['createdAt', 'asc']])
     .exec();
   res.json(products);
 };
