@@ -12,6 +12,7 @@ import {
 
 // Components
 import Card from '../../components/cards/Card.js';
+import LoadingCard from '../../components/cards/LoadingCard';
 
 // CSS
 import '../../pages/category/categoryPage.scss';
@@ -19,7 +20,6 @@ import '../../pages/category/categoryPage.scss';
 const NewArrivals = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
   const [productsCount, setProductsCount] = useState(0);
 
   const count = 100;
@@ -29,7 +29,7 @@ const NewArrivals = () => {
 
   useEffect(() => {
     loadAllProducts();
-  }, [page]);
+  }, []);
 
   useEffect(() => {
     getProductsCount().then(res => setProductsCount(res.data));
@@ -52,17 +52,19 @@ const NewArrivals = () => {
   return (
     <div className='categoryPage'>
       <h1 className='categoryPage__title'>New Arrivals</h1>
-      <div className='categoryPage__container'>
-        {products.map(prod => (
-          <Card product={prod} />
-        ))}
-        {/* <Pagination
-        defaultCurrent={page}
-        total={(productsCount / 3) * 10}
-        onChange={value => setPage(value)}
-        className='home__pagination'
-      /> */}
-      </div>
+      {loading ? (
+        <>
+          <LoadingCard count={3} />
+          <LoadingCard count={3} />
+          <LoadingCard count={3} />
+        </>
+      ) : (
+        <div className='categoryPage__container'>
+          {products.map(prod => (
+            <Card product={prod} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

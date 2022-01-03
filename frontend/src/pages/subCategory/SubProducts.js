@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 // Components
 import Card from '../../components/cards/Card';
+import LoadingCard from '../../components/cards/LoadingCard';
 
 // Connections - Functions
 import { getSubCategory } from '../../connections/subCategory';
@@ -32,11 +33,18 @@ function SubProducts(props) {
       <h1 className='categoryPage__title'>
         {products.length} Products in "{subCategory.name}" Sub-Category
       </h1>
-      <div className='categoryPage__container admin'>
-        {products.map(prod => (
-          <Card product={prod} />
-        ))}
-      </div>
+      {loading ? (
+        <>
+          <LoadingCard count={3} />
+          <LoadingCard count={3} />
+        </>
+      ) : (
+        <div className='categoryPage__container admin'>
+          {products.map(prod => (
+            <Card product={prod} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

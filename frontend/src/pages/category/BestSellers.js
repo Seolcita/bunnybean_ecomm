@@ -8,6 +8,7 @@ import { getProductsBySortOrderLimit } from '../../connections/product';
 
 // Components
 import Card from '../../components/cards/Card.js';
+import LoadingCard from '../../components/cards/LoadingCard';
 
 // CSS
 import '../../pages/category/categoryPage.scss';
@@ -42,11 +43,19 @@ const BestSellers = () => {
   return (
     <div className='categoryPage'>
       <h1 className='categoryPage__title'>Top Selling Products</h1>
-      <div className='categoryPage__container'>
-        {products.map(prod => (
-          <Card product={prod} />
-        ))}
-      </div>
+      {loading ? (
+        <>
+          <LoadingCard count={3} />
+          <LoadingCard count={3} />
+          <LoadingCard count={3} />
+        </>
+      ) : (
+        <div className='categoryPage__container'>
+          {products.map(prod => (
+            <Card product={prod} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

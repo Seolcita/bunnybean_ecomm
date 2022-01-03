@@ -15,6 +15,7 @@ import { getSubCategories } from '../connections/subCategory';
 
 // Components
 import Card from '../components/cards/Card';
+import LoadingCard from '../components/cards/LoadingCard';
 
 // CSS & MUI Icons
 import './shop.scss';
@@ -25,7 +26,7 @@ import {
   FilterList,
 } from '@mui/icons-material';
 
-const { SubMenu, ItemGroup } = Menu;
+const { SubMenu } = Menu;
 
 function Shop() {
   let { search } = useSelector(state => ({ ...state }));
@@ -323,13 +324,21 @@ function Shop() {
         </div>
         <div className='shop__right'>
           <h4 className='shop__title right'> Products</h4>
-          <div className='shop__products'>
-            {products.length < 1 && <h1>No Product Found</h1>}
-            {/* {JSON.stringify(products)} */}
-            {products.map(prod => (
-              <Card product={prod} key={prod._id} />
-            ))}
-          </div>
+          {loading ? (
+            <>
+              <LoadingCard count={3} />
+              <LoadingCard count={3} />
+              <LoadingCard count={3} />
+            </>
+          ) : (
+            <div className='shop__products'>
+              {products.length < 1 && <h1>No Product Found</h1>}
+              {/* {JSON.stringify(products)} */}
+              {products.map(prod => (
+                <Card product={prod} key={prod._id} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
