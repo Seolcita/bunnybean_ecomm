@@ -20,7 +20,9 @@ function NavItem(props) {
           <span className='navItem__btn--title'>
             {username ? username : title}
           </span>
-          {badge ? <span className='navItem__count'>{cart.length}</span> : null}
+          {badge && cart.length > 0 ? (
+            <span className='navItem__count'>{cart.length}</span>
+          ) : null}
         </Link>
         {open ? children : null}
       </li>

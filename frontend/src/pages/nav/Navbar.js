@@ -60,6 +60,17 @@ function Navbar() {
   // console.log('LAPTOP', laptop);
 
   const logout = () => {
+    // Remove from local storage
+    // if (typeof window !== 'undefined') {
+    //   localStorage.removeItem('cart');
+    // }
+
+    // Remove from redux
+    // dispatch({
+    //   type: 'ADD_TO_CART',
+    //   payload: [],
+    // });
+
     firebase.auth().signOut();
     dispatch({
       type: 'LOGOUT',
