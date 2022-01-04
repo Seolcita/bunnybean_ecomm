@@ -55,24 +55,29 @@
     width: 100%;
     transform: translateY(7rem);
   }
-  // &__pagination {
-  //   width: 100%;
-  //   margin: 2rem;
-  //   font-size: 1.7rem;
+}
 
-  //   display: block;
+.carousel {
+  &__container {
+    display: flex;
+  }
 
-  //   button {
-  //     border: 1px solid black;
-  //   }
+  &.carousel-slider {
+    height: 230px;
+  }
 
-  //   a {
-  //     border: 1px solid black;
-  //     padding: 0.5rem 0.7rem;
-  //     font-size: 1.7rem;
-  //     cursor: pointer;
-  //   }
+  &__text {
+    width: 40rem;
+    height: 100%;
+  }
+  &__img {
+    width: 60rem;
+    object-fit: cover;
+  }
 
-  //   @include center;
-  // }
+  .control-dots {
+    .dot.selected {
+      background-color: $color-blue-dark;
+    }
+  }
 }

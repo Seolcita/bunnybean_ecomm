@@ -1,6 +1,7 @@
 /** @format */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 
 // Components
@@ -10,8 +11,8 @@ import SubCategoryList from '../components/subCategories/SubCategoryList';
 // CSS & Images
 import './home.scss';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import carousel4 from '../images/carousel4.png';
-import carousel5 from '../images/carousel5.png';
+import carousel1 from '../images/carousel1.png';
+import carousel2 from '../images/carousel2.png';
 import carousel3 from '../images/carousel3.png';
 
 const Home = () => {
@@ -19,7 +20,7 @@ const Home = () => {
     <div className='home'>
       <div className='home__container'>
         <div className='home__banner'>
-          <div className='productCard__carousel'>
+          <div className='carousel'>
             <Carousel
               showArrows={true}
               autoPlay
@@ -28,14 +29,20 @@ const Home = () => {
               width={1000}
               showThumbs={false}
             >
-              <div>
-                <img src={carousel4} />
+              <div className='carousel__container'>
+                <Link to='/category/camera'>
+                  <img src={carousel1} className='carousel__img' />
+                </Link>
               </div>
-              <div>
-                <img src={carousel5} />
+              <div className='carousel__container'>
+                <Link to='/category/appliance'>
+                  <img src={carousel2} className='carousel__img' />
+                </Link>
               </div>
-              <div>
-                <img src={carousel3} />
+              <div className='carousel__container'>
+                <Link to='/subcategory/laptop'>
+                  <img src={carousel3} className='carousel__img' />
+                </Link>
               </div>
             </Carousel>
           </div>

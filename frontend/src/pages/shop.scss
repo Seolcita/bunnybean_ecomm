@@ -6,6 +6,7 @@
 .shop {
   color: $color-blue-dark;
   font-family: 'Work Sans', sans-serif;
+  background-color: $color-grey-light;
   // min-width: 66rem;
 
   &__container {
@@ -30,14 +31,12 @@
 
   &__right {
     background-color: $color-grey-light;
-    // min-width: 35rem; //60
     display: flex;
-    // flex: 1 1 60%;
     flex-grow: 1;
     flex-shrink: 1;
     width: 60%;
-    @include center-column;
     min-width: 33rem;
+    @include center-column;
   }
 
   &__title {
