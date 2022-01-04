@@ -27,6 +27,13 @@ mongoose
 app.use(morgan('dev')); // display network info in terminal
 app.use(bodyParser.json({ limit: '2mb' })); // JSON data >> JS Object
 app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  })
+);
 
 // const corsOptions = {
 //   origin:
